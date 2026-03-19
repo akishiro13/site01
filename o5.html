@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : CONSEIL O5 (DOSSIERS CLASSÉS)</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 100;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .warning-banner {
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 20px var(--primary-glow);
+            }
+
+            100% {
+                opacity: 0.8;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .o5-card {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .o5-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+        }
+
+        .o5-header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .o5-symbol {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border: 1px solid var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .o5-info h3 {
+            color: #fff;
+            font-family: var(--font-header);
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .o5-alias {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .o5-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .o5-role {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .o5-desc {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .o5-footer {
+            padding: 10px 20px;
+            background: rgba(196, 30, 58, 0.05);
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-align: right;
+            border-top: 1px solid var(--accent);
+        }
+
+        /* Modal */
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            background: var(--bg-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border: 2px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section h4 {
+            color: var(--primary);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .back-link {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--primary-glow);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            transform: scale(1.05);
+            background: #fff;
+            color: var(--primary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo">
+            <div>
+                <h1>Conseil O5</h1>
+                <div class="subtitle">AUTORISATION DE NIVEAU 5 REQUISE</div>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div style="color: var(--primary); font-weight: bold;">STATUT : <span style="color: #0f0;">SÉCURISÉ</span>
+            </div>
+            <div style="font-size: 0.8rem; opacity: 0.7;">IDENTIFIANT : ADMIN/RAISA_CENTRAL</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="warning-banner">
+            ⚠️ ALERTE DE SÉCURITÉ ⚠️<br>
+            VOUS ACCÉDEZ À DES DONNÉES DE NIVEAU 5. TOUTE TENTATIVE D'ACCÈS NON AUTORISÉ SERA TRACÉE ET PUNIE PAR DÉCÈS
+            IMMÉDIAT PAR AGENT TUEUR MÉMÉTIQUE.
+        </div>
+
+        <div class="grid" id="o5-grid">
+            <!-- Cards will be injected by JS -->
+        </div>
+    </main>
+
+    <a href="index.html" class="back-link">&lt;&lt; TERMINAL PRINCIPAL</a>
+
+    <div id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">DOSSIER O5-X</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-content">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const o5Data = [
+            {
+                id: 1, name: "O5-1", alias: "Le Fondateur", role: "Chef du Conseil",
+                desc: "Le membre le plus puissant. On dit qu'il a assisté à la création de la Fondation.",
+                status: "Actif / Inconnu",
+                identities: [
+                    { name: "Le Fondateur (Aaron Siegel)", desc: "Considéré comme le créateur originel de la Fondation. Présence physique rarement confirmée." },
+                    { name: "Le Mort", desc: "Un cadavre mummifié qui ne peut pas mourir, survivant par sa seule volonté." },
+                    { name: "L'Homme au Pistolet Infini", desc: "Ancien shérif doté d'une arme capable d'annihiler n'importe quoi dans l'univers." },
+                    { name: "Ève", desc: "La 'Mère de l'Humanité', liée à l'origine du Jardin d'Eden et des premières anomalies." }
+                ]
+            },
+            {
+                id: 2, name: "O5-2", alias: "Le Jardinier", role: "Superviseur des Sites-01",
+                desc: "Responsable de la sécurité des installations les plus secrètes.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Jardinier (Sophia Light)", desc: "Experte en contre-espionnage. Gère le réseau 'The Way'." },
+                    { name: "Le Nazaréen", desc: "Une entité avec des blessures de crucifixion, possiblement une version alternative de Dr. Light." },
+                    { name: "Celui qui attend", desc: "A défini les premiers protocoles Keter et observe l'évolution des anomalies." }
+                ]
+            },
+            {
+                id: 3, name: "O5-3", alias: "Le Philosophe", role: "Comité d'Éthique",
+                desc: "Supervise l'orientation morale et les décisions de survie à tout prix.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Fantôme dans la Machine", desc: "Une IA avancée qui a pris la place d'un conseiller humain." },
+                    { name: "L'Œil qui voit tout", desc: "Une conscience collective surveillant chaque base de données." },
+                    { name: "Le Phénix / Le Gamin", desc: "L'identité la plus jeune, apportant une vision froide et utilitariste." }
+                ]
+            },
+            {
+                id: 4, name: "O5-4", alias: "L'Ambassadeur", role: "Liaisons Externes",
+                desc: "Le visage public du Conseil auprès des gouvernements mondiaux.",
+                status: "Actif",
+                identities: [
+                    { name: "L'Ambassadeur (Jean Lemieux Betrand)", desc: "Expert en diplomatie anormale et relations avec la CMO." },
+                    { name: "Le Collectionneur", desc: "Ancien matricule O5-4, déchu après être devenu lui-même une anomalie (Little Misters)." },
+                    { name: "Le Vétéran", desc: "Ancien commandant militaire d'origine aborigène." }
+                ]
+            },
+            {
+                id: 5, name: "O5-5", alias: "Le Merle", role: "Bureau de l'Information",
+                desc: "Contrôle la perception mondiale de la réalité.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Merle (Blackbird)", desc: "Manipulateur médiatique de génie, gère l'usage massif des amnésiques." },
+                    { name: "L'Entrepreneur", desc: "Gère les financements via des corporations fantômes et le marché noir." },
+                    { name: "Le Chat Noir", desc: "Symbolise l'espionnage pur au sein même de la Fondation." }
+                ]
+            },
+            {
+                id: 6, name: "O5-6", alias: "L'Américain", role: "Opérations Tactiques",
+                desc: "Supervise les interventions de force et la gestion des brèches.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Cow-boy (Rufus King)", desc: "Vétéran de la guerre de Sécession, maintenu en vie par des moyens anormaux." },
+                    { name: "La Marionnette", desc: "Un corps artificiel piloté à distance pour les réunions du Conseil." },
+                    { name: "L'Expérimentateur", desc: "Focalisé sur l'usage tactique des anomalies comme armes de défense." }
+                ]
+            },
+            {
+                id: 7, name: "O5-7", alias: "L'Inachevé", role: "Affaires Juridiques",
+                desc: "Assure l'immunité totale de la Fondation face aux lois humaines.",
+                status: "Actif",
+                identities: [
+                    { name: "Green", desc: "Une femme dotée d'une résilience biologique et cybernétique extrême." },
+                    { name: "Le Professeur", desc: "Théoricien de l'invisibilité institutionnelle." },
+                    { name: "La Vermine", desc: "Un ensemble d'identités fragmentées agissant comme une seule entité juridique." }
+                ]
+            },
+            {
+                id: 8, name: "O5-8", alias: "Le Nouveau", role: "Audit & Logistique",
+                desc: "Spécialisé dans l'optimisation des ressources mondiales.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Baron (Leeman Hoadley)", desc: "Aristocrate industriel ayant financé les premiers Sites." },
+                    { name: "Le Petit (The Lesser)", desc: "Considéré comme le plus remplaçable, mais le plus efficace logistiquement." },
+                    { name: "Magnolia", desc: "Une botaniste anormale ayant transformé la gestion des ressources organiques." }
+                ]
+            },
+            {
+                id: 9, name: "O5-9", alias: "L'Oracle", role: "Prévoyance",
+                desc: "Utilise des méthodes divinatoires pour prédire les catastrophes.",
+                status: "Instable",
+                identities: [
+                    { name: "L'Étranger (Donna Whetu Taylor)", desc: "Scientifique venue d'une autre timeline pour sauver la nôtre." },
+                    { name: "L'Oracle", desc: "Une entité vivant dans un état de décalage temporel constant." },
+                    { name: "La Malchance", desc: "Une anomalie de probabilité incarnée, protégeant le Conseil par le chaos." }
+                ]
+            },
+            {
+                id: 10, name: "O5-10", alias: "L'Archiviste", role: "Gestion des Données",
+                desc: "Gardien du savoir total. Archiviste suprême de RAISA.",
+                status: "Actif",
+                identities: [
+                    { name: "L'Archiviste (Diane Mansi)", desc: "Connectée directement au mainframe SCiP-NET." },
+                    { name: "Le Saint", desc: "Considère le savoir anormal comme une forme de texte sacré." },
+                    { name: "La Maîtresse des Mouches", desc: "Utilise un réseau de nano-drones pour la collecte d'infos." }
+                ]
+            },
+            {
+                id: 11, name: "O5-11", alias: "Le Menteur", role: "Opérations Infiltrées",
+                desc: "Gère les agents doubles et les infiltrations de GOI.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Courrier / Le Facteur", desc: "Agent de liaison entre les dimensions, messager du Conseil." },
+                    { name: "Le Menteur (Father of Lies)", desc: "Maître de la désinformation dont l'apparence change quotidiennement." },
+                    { name: "Le Sénateur", desc: "Ancien politicien ayant orchestré la disparition de nations entières." }
+                ]
+            },
+            {
+                id: 12, name: "O5-12", alias: "L'Auditeur", role: "Financement",
+                desc: "Assure le flux infini de ressources via les banques centrales.",
+                status: "Actif",
+                identities: [
+                    { name: "L'Auditeur (Omar Alawe)", desc: "Mathématicien ayant découvert les lois économiques de l'anormal." },
+                    { name: "Adam", desc: "Fils du Fondateur dans certains récits, gérant l'héritage financier." },
+                    { name: "Le Médecin", desc: "Expert en longévité, responsable de l'usage du SCP-006 par le Conseil." }
+                ]
+            },
+            {
+                id: 13, name: "O5-13", alias: "Le Décideur", role: "Arbitrage",
+                desc: "Le vote décisif. Souvent considéré comme inexistant ou anormal.",
+                status: "Actif",
+                identities: [
+                    { name: "Le Décideur (Tamlin)", desc: "Entité résidant dans une base de données, n'apparaissant que si nécessaire." },
+                    { name: "La Mort", desc: "Le Cavalier de la Mort lui-même, siégeant pour équilibrer les pouvoirs." },
+                    { name: "L'Entité sans nom", desc: "Une anomalie probabiliste agissant comme une constante mathématique." }
+                ]
+            }
+        ];
+
+        const grid = document.getElementById('o5-grid');
+        const modal = document.getElementById('modal-overlay');
+
+        function renderO5() {
+            grid.innerHTML = '';
+            o5Data.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'o5-card';
+                card.innerHTML = `
+                    <div class="o5-header">
+                        <div class="o5-symbol">${member.id}</div>
+                        <div class="o5-info">
+                            <h3>Conseiller ${member.name}</h3>
+                            <div class="o5-alias">"${member.alias}"</div>
+                        </div>
+                    </div>
+                    <div class="o5-body">
+                        <div class="o5-role">${member.role}</div>
+                        <div class="o5-desc">${member.desc}</div>
+                    </div>
+                    <div class="o5-footer">CONSULTER L'HISTORIQUE &gt;&gt;</div>
+                `;
+                card.onclick = () => openModal(member);
+                grid.appendChild(card);
+            });
+        }
+
+        function openModal(member) {
+            const content = document.getElementById('modal-content');
+            document.getElementById('modal-title').innerText = `DOSSIER HISTORIQUE : CONSEILLER ${member.name}`;
+
+            let identitiesHTML = member.identities.map(id => `
+                <div style="margin-bottom: 15px; padding-left: 15px; border-left: 2px solid var(--primary);">
+                    <div style="font-weight: bold; color: #fff;">${id.name}</div>
+                    <div style="font-size: 0.85rem; color: #aaa;">${id.desc}</div>
+                </div>
+            `).join('');
+
+            content.innerHTML = `
+                <div class="modal-section">
+                    <h4>Identité Actuelle de Surface</h4>
+                    <p><strong>Alias :</strong> ${member.alias}</p>
+                    <p><strong>Rôle Principal :</strong> ${member.role}</p>
+                    <p><strong>Statut :</strong> ${member.status}</p>
+                    <p style="margin-top: 10px;">${member.desc}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Identités & Anciens Propriétaires Documentés</h4>
+                    <div class="identity-list">
+                        ${identitiesHTML}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <div style="padding: 15px; border: 1px dashed var(--primary); background: rgba(196, 30, 58, 0.1); font-size: 0.85rem; color: var(--primary);">
+                        <strong>[AVERTISSEMENT RAISA] :</strong> Les membres du Conseil O5 utilisent fréquemment des leurres, des doubles et des agents mémétiques. La distinction entre "Ancien Propriétaire", "Candidat" et "Version Alternative" est volontairement floue pour empêcher tout ciblage précis.
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = (e) => {
+            if (e.target == modal) closeModal();
+        };
+
+        renderO5();
+    </script>
+</body>
+
+</html>

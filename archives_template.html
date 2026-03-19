@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : ARCHIVES SCP</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+
+            /* SCP Class Colors */
+            --safe: #4e9a06;
+            --euclid: #f57900;
+            --keter: #cc0000;
+            --thaumiel: #3465a4;
+            --neutralized: #888a85;
+            --apollyon: #ce5c00;
+            --archon: #5c3566;
+            --unknown: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: -1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 20px 40px;
+            min-height: 100vh;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: var(--secondary);
+            padding: 15px 25px;
+            border: 1px solid var(--accent);
+            border-left: 5px solid var(--primary);
+        }
+
+        .controls input {
+            background-color: var(--bg-color);
+            border: 1px solid var(--accent);
+            color: var(--text-color);
+            padding: 10px 15px;
+            font-family: var(--font-main);
+            width: 400px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .controls input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .stat-block {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: right;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .btn:disabled {
+            border-color: var(--accent);
+            color: var(--accent);
+            cursor: not-allowed;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-left: 4px solid var(--unknown);
+        }
+
+        .card.card-safe {
+            border-left-color: var(--safe);
+        }
+
+        .card.card-euclid {
+            border-left-color: var(--euclid);
+        }
+
+        .card.card-keter {
+            border-left-color: var(--keter);
+        }
+
+        .card.card-thaumiel {
+            border-left-color: var(--thaumiel);
+        }
+
+        .card.card-neutralized {
+            border-left-color: var(--neutralized);
+        }
+
+        .card.card-apollyon {
+            border-left-color: var(--apollyon);
+        }
+
+        .card.card-archon {
+            border-left-color: var(--archon);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03));
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-color: #444;
+        }
+
+        .card-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--accent);
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-id {
+            font-family: var(--font-header);
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .card-class {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--accent);
+            color: #888;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card.card-safe .card-class {
+            color: var(--safe);
+            border-color: var(--safe);
+        }
+
+        .card.card-euclid .card-class {
+            color: var(--euclid);
+            border-color: var(--euclid);
+        }
+
+        .card.card-keter .card-class {
+            color: var(--keter);
+            border-color: var(--keter);
+        }
+
+        .card.card-thaumiel .card-class {
+            color: var(--thaumiel);
+            border-color: var(--thaumiel);
+        }
+
+        .card.card-neutralized .card-class {
+            color: var(--neutralized);
+            border-color: var(--neutralized);
+        }
+
+        .card.card-apollyon .card-class {
+            color: var(--apollyon);
+            border-color: var(--apollyon);
+        }
+
+        .card.card-archon .card-class {
+            color: var(--archon);
+            border-color: var(--archon);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border: 1px solid var(--secondary);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: var(--font-header);
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/SCP_Foundation_(emblem) (1).svg" alt="SCP Logo"
+                class="logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=='">
+            <div>
+                <h1>Base de données SCiP-NET</h1>
+                <div class="subtitle">ARCHIVES PRINCIPALES // ACCÈS SÉCURISÉ</div>
+            </div>
+        </a>
+        <div class="stat-block">
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">NIVEAU D'ACCRÉDITATION</div>
+                <div style="color: var(--primary); font-weight: bold;">NIVEAU 4</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">STATUT DU RÉSEAU</div>
+                <div style="color: #0f0; font-weight: bold;">SÉCURISÉ</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">&lt; RETOUR AU HUB</a>
+
+        <div class="controls" style="margin-top: 40px;">
+            <input type="text" id="searchInput" placeholder="Rechercher un ID (ex: 173) ou un mot-clé (ex: lézard)...">
+            <div class="stat-item" style="text-align: right;">
+                <div style="font-size: 0.7rem; color: #888;">SCP RÉPERTORIÉS</div>
+                <div class="stat-value" id="countDisplay">0</div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button id="prevBtn" class="btn" disabled>&#9664; PRÉCÉDENT</button>
+            <span id="pageInfo" style="font-weight: bold;">PAGE 1 / 1</span>
+            <button id="nextBtn" class="btn" disabled>SUIVANT &#9654;</button>
+        </div>
+
+        <div id="grid" class="grid">
+            <div style="color: var(--primary); padding: 50px; text-align: center; text-transform: uppercase;">
+                INITIALISATION DE LA BASE DE DONNÉES SCP...</div>
+        </div>
+
+        <div class="pagination" style="margin-top: 20px;">
+            <button id="prevBtnBottom" class="btn" disabled>&#9664; PRÉCÉDENT</button>
+            <span id="pageInfoBottom" style="font-weight: bold;">PAGE 1 / 1</span>
+            <button id="nextBtnBottom" class="btn" disabled>SUIVANT &#9654;</button>
+        </div>
+    </main>
+
+    <script>
+        // DATA_INJECTION_POINT
+
+        const grid = document.getElementById('grid');
+        const searchInput = document.getElementById('searchInput');
+        const countDisplay = document.getElementById('countDisplay');
+        const pageInfo = document.getElementById('pageInfo');
+        const pageInfoBottom = document.getElementById('pageInfoBottom');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtnBottom = document.getElementById('prevBtnBottom');
+        const nextBtnBottom = document.getElementById('nextBtnBottom');
+
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 60; // Render 60 per page to match 3-column layouts nicely
+
+        function renderPage() {
+            grid.innerHTML = '';
+
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            pageInfo.innerText = `PAGE ${currentPage} / ${totalPages}`;
+            pageInfoBottom.innerText = `PAGE ${currentPage} / ${totalPages}`;
+
+            prevBtn.disabled = prevBtnBottom.disabled = (currentPage === 1);
+            nextBtn.disabled = nextBtnBottom.disabled = (currentPage === totalPages);
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredData.length);
+
+            const pageData = filteredData.slice(startIndex, endIndex);
+
+            if (pageData.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #888;">AUCUN DOSSIER SCP TROUVÉ CORRESPONDANT AUX CRITÈRES DE RECHERCHE.</div>';
+                return;
+            }
+
+            // Using DocumentFragment for performance
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < pageData.length; i++) {
+                const scp = pageData[i];
+                const card = document.createElement('div');
+
+                // Determine class for styling
+                const objectClass = (scp.class || 'UNKNOWN').toUpperCase();
+                let classStyle = 'unknown';
+                if (objectClass.includes('SAFE')) classStyle = 'safe';
+                else if (objectClass.includes('EUCLID')) classStyle = 'euclid';
+                else if (objectClass.includes('KETER')) classStyle = 'keter';
+                else if (objectClass.includes('THAUMIEL')) classStyle = 'thaumiel';
+                else if (objectClass.includes('NEUTRALIZED')) classStyle = 'neutralized';
+                else if (objectClass.includes('APOLLYON')) classStyle = 'apollyon';
+                else if (objectClass.includes('ARCHON')) classStyle = 'archon';
+
+                card.className = `card card-${classStyle}`;
+
+                // Allow clicking to theoretical specific document
+                card.onclick = () => {
+                    const idNumMatch = scp.id.match(/SCP-(\d+)/);
+                    if (idNumMatch) {
+                        window.open(`https://scp-wiki.wikidot.com/scp-${idNumMatch[1]}`, '_blank');
+                    }
+                };
+
+                const displayClass = objectClass === 'UNKNOWN' ? 'EN ATTENTE...' : objectClass;
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-id">${scp.id}</div>
+                        <div class="card-class">${displayClass}</div>
+                    </div>
+                    <div class="card-body" title="${scp.title}">
+                        ${scp.title}
+                    </div>
+                `;
+
+                fragment.appendChild(card);
+            }
+
+            grid.appendChild(fragment);
+            window.scrollTo(0, 0); // Scroll to top on page change
+        }
+
+        function filterData(term) {
+            if (!term) {
+                filteredData = scpData;
+            } else {
+                term = term.toLowerCase();
+                filteredData = scpData.filter(scp =>
+                    scp.id.toLowerCase().includes(term) ||
+                    scp.title.toLowerCase().includes(term)
+                );
+            }
+            countDisplay.innerText = filteredData.length;
+            currentPage = 1;
+            renderPage();
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            filterData(e.target.value);
+        });
+
+        function changePage(delta) {
+            currentPage += delta;
+            renderPage();
+        }
+
+        prevBtn.addEventListener('click', () => changePage(-1));
+        nextBtn.addEventListener('click', () => changePage(1));
+        prevBtnBottom.addEventListener('click', () => changePage(-1));
+        nextBtnBottom.addEventListener('click', () => changePage(1));
+
+        // Init
+        setTimeout(() => {
+            filteredData = scpData; // scpData injected via script
+            countDisplay.innerText = filteredData.length;
+            renderPage();
+        }, 500);
+
+    </script>
+</body>
+
+</html>

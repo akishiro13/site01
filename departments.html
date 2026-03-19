@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : DÉPARTEMENTS ET DIVISIONS</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            /* Deep Red */
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #121212;
+            --accent: #1a1a1a;
+            --glass: rgba(20, 20, 20, 0.9);
+            --font-main: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            --header-font: 'Outfit', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.05) 0%, transparent 70%),
+                linear-gradient(rgba(196, 30, 58, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            min-height: 100vh;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--primary);
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px var(--primary));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(90deg);
+        }
+
+        h1 {
+            font-family: var(--header-font);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        main {
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .section-header h2 {
+            font-family: var(--header-font);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            color: #888;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .search-container {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        #deptSearch {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: white;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+            backdrop-filter: blur(5px);
+        }
+
+        #deptSearch:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            background: rgba(40, 40, 40, 0.8);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: var(--glass);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .category-header {
+            background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        .category-name {
+            font-family: var(--header-font);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        .dept-list {
+            list-style: none;
+        }
+
+        .dept-item {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .dept-item:last-child {
+            border-bottom: none;
+        }
+
+        .dept-item:hover {
+            background: rgba(196, 30, 58, 0.05);
+        }
+
+        .dept-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .dept-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .dept-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--primary);
+            background: rgba(196, 30, 58, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(196, 30, 58, 0.2);
+        }
+
+        .dept-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid var(--accent);
+            color: #555;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=='">
+            <h1>SCiP-NET // DÉPARTEMENTS</h1>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-link">Terminal Principal</a>
+            <a href="archives.html" class="nav-link">Archives</a>
+            <a href="about.html" class="nav-link">Orientation</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-header">
+            <h2>Structure Organisationnelle</h2>
+            <p>RÉFÉRENCEMENT GLOBAL DES DIVISIONS OPÉRATIONNELLES // NIVEAU 4 REQUIS POUR LES DÉTAILS TACTIQUES</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="deptSearch" placeholder="FILTRER PAR NOM, DESCRIPTION OU CODE SECTEUR...">
+        </div>
+
+        <div class="category-grid">
+            <!-- 1. Départements principaux -->
+            <div class="category-card" style="animation-delay: 0.1s;">
+                <div class="category-header">
+                    <span class="category-icon">1️⃣</span>
+                    <span class="category-name">Départements Principaux</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département Administratif (AD)</span><span
+                                class="dept-tag">CORE-ADMIN</span></div>
+                        <div class="dept-desc">Gère les opérations quotidiennes, les nodes de commandement et la
+                            bureaucratie centrale de la Fondation.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Comité d'Éthique (EC)</span><span
+                                class="dept-tag">OVERSIGHT</span></div>
+                        <div class="dept-desc">Surveille les procédures de confinement et les expérimentations pour
+                            s'assurer qu'elles respectent un "mal nécessaire" acceptable.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Sécurité Interne
+                                (DSI/ISD)</span><span class="dept-tag">INTERNAL-SEC</span></div>
+                        <div class="dept-desc">La "police de la Fondation". Surveille le personnel pour détecter les
+                            trahisons, infiltrations de Groupes d'Intérêt ou corruption.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département des Affaires Externes
+                                (DEA)</span><span class="dept-tag">DIPLOMACY</span></div>
+                        <div class="dept-desc">Gère les relations diplomatiques avec les gouvernements mondiaux et les
+                            Groupes d'Intérêt (GOC, UIU, etc.).</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Agence de Renseignement (AR/IA)</span><span
+                                class="dept-tag">INTELLIGENCE</span></div>
+                        <div class="dept-desc">Collecte d'informations par espionnage et infiltrations. Identifie les
+                            menaces anormales avant qu'elles ne deviennent critiques.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département Scientifique (SCD)</span><span
+                                class="dept-tag">RESEARCH</span></div>
+                        <div class="dept-desc">Le cœur de la recherche. Étudie les propriétés des anomalies pour
+                            comprendre leurs lois et améliorer le confinement.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Sécurité (DS/SD)</span><span
+                                class="dept-tag">TACTICAL-SEC</span></div>
+                        <div class="dept-desc">Force armée stationnée sur sites, responsable de la garde des cellules et
+                            de la protection du personnel civil.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département Médical (MD)</span><span
+                                class="dept-tag">HEALTH</span></div>
+                        <div class="dept-desc">Soins physiques et psychologiques pour tout le personnel. Gère également
+                            les quarantaines biologiques.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Services d'Ingénierie & Techniques</span><span
+                                class="dept-tag">ENGINEERING</span></div>
+                        <div class="dept-desc">Construction et maintenance des infrastructures de sites et des
+                            dispositifs de confinement technologique.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département Logistique</span><span
+                                class="dept-tag">LOGISTICS</span></div>
+                        <div class="dept-desc">Gestion des ressources, du transport d'anomalies et du ravitaillement
+                            mondial des installations.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Manufacture (MaD)</span><span
+                                class="dept-tag">INDUSTRY</span></div>
+                        <div class="dept-desc">Production d'équipements spécialisés, d'amnésiques et de technologies
+                            propriétaires à la Fondation.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Forces d'Intervention Mobiles
+                                (FIM)</span><span class="dept-tag">ELITE-OPS</span></div>
+                        <div class="dept-desc">Unités d'élite spécialisées déployées pour la capture d'anomalies ou les
+                            combats tactiques à haut risque.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Équipe de Réponse Rapide (ERR)</span><span
+                                class="dept-tag">RAPID-RESP</span></div>
+                        <div class="dept-desc">Premiers intervenants sur site en cas de brèche de confinement ou
+                            d'urgence immédiate.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Services de Nettoyage et
+                                Sanitaires</span><span class="dept-tag">MAINTENANCE</span></div>
+                        <div class="dept-desc">Essentiels au maintien de la stérilité et du nettoyage post-incidents
+                            (souvent gérés par du personnel de classe D).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Départements spécialisés dans l’anormal -->
+            <div class="category-card" style="animation-delay: 0.2s;">
+                <div class="category-header">
+                    <span class="category-icon">2️⃣</span>
+                    <span class="category-name">Spécialistes de l'Anormal</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Division Antimémétique</span><span
+                                class="dept-tag">UNDEFINED-DATA</span></div>
+                        <div class="dept-desc">Étudie les idées qui se défendent seules en se faisant oublier. Si cette
+                            division existe, personne ne s'en souvient.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Division IA (AIAD)</span><span
+                                class="dept-tag">CYBER-PARA</span></div>
+                        <div class="dept-desc">Utilise les "Conscrits de l'Intelligence Artificielle" (ex: .aic) pour
+                            combattre les menaces logicielles anormales.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département d'Alchimie</span><span
+                                class="dept-tag">PARA-CHEM</span></div>
+                        <div class="dept-desc">Étudie les forces éthérées et la transmutation de la réalité par des
+                            moyens non-scientifiques traditionnels.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Division de Cryptozoologie</span><span
+                                class="dept-tag">PARA-BIO</span></div>
+                        <div class="dept-desc">Dédiée aux entités animales non-répertoriées et aux créatures mythiques
+                            réelles possédant des traits anormaux.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département des Anomalies</span><span
+                                class="dept-tag">PURE-ANOMALY</span></div>
+                        <div class="dept-desc">Un département mystérieux focalisé sur les structures et objets défiant
+                            toute tentative de classification standard.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Continuité</span><span
+                                class="dept-tag">TEMPORAL-FIX</span></div>
+                        <div class="dept-desc">Veille à la stabilité de la chronologie et empêche le paradoxe temporel
+                            d'effacer la réalité présente.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département des Erreurs de
+                                Communication</span><span class="dept-tag">LINGUISTIC</span></div>
+                        <div class="dept-desc">Spécialisé dans les anomalies linguistiques, sémantiques et les vecteurs
+                            de transmission verbale dangereux.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Mythologie et Collecte Folklorique</span><span
+                                class="dept-tag">CULT-RSCH</span></div>
+                        <div class="dept-desc">Trace les origines des anomalies dans les légendes humaines pour
+                            anticiper leurs comportements.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département Surréaliste</span><span
+                                class="dept-tag">ABSTRACT-INT</span></div>
+                        <div class="dept-desc">Utilise l'esprit humain comme seul laboratoire pour comprendre les
+                            anomalies dénuées de sens ou de logique.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Théologie Tactique</span><span
+                                class="dept-tag">DIVINE-OPS</span></div>
+                        <div class="dept-desc">Confinement des entités prétendant à la divinité ou issues de croyances
+                            religieuses actives.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de l'Irréalité</span><span
+                                class="dept-tag">NON-EXISTENT</span></div>
+                        <div class="dept-desc">[DONNÉES SUPPRIMÉES]. Ce département n'existe pas officiellement, tout
+                            comme les menaces qu'il traite.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département des Anomalies
+                                Temporelles</span><span class="dept-tag">TEMPORAL-SEC</span></div>
+                        <div class="dept-desc">Gestion des boucles temporelles, des voyageurs du temps et des
+                            modifications rétroactives du passé.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Revue des Organisations
+                                Paranormales</span><span class="dept-tag">GROUP-ANALYSIS</span></div>
+                        <div class="dept-desc">Analyse tactique et surveillance continue des capacités opérationnelles
+                            des autres Groupes d'Intérêt.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Départements scientifiques -->
+            <div class="category-card" style="animation-delay: 0.3s;">
+                <div class="category-header">
+                    <span class="category-icon">3️⃣</span>
+                    <span class="category-name">Départements Scientifiques</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Astrophysique & Para-astronomie</span><span
+                                class="dept-tag">SPACE-PARA</span></div>
+                        <div class="dept-desc">Étude des corps célestes anormaux, des signaux extra-solaires et des
+                            menaces venant du vide spatial.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Microbiologie & Épidémiologie</span><span
+                                class="dept-tag">B IO-HAZARD</span></div>
+                        <div class="dept-desc">Recherche sur les pathogènes anormaux et développement de vaccins ou
+                            protocoles de quarantaine.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Géologie & Para-géologie</span><span
+                                class="dept-tag">TERRA-PARA</span></div>
+                        <div class="dept-desc">Anomalies souterraines, minerais impossibles et instabilités
+                            géoscientifiques provoquées.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Affaires Extradimensionnelles</span><span
+                                class="dept-tag">MULTI-REALM</span></div>
+                        <div class="dept-desc">Étude des univers parallèles, des trous de ver et des incursions
+                            provenant d'autres dimensions.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Activités Extra-solaires</span><span
+                                class="dept-tag">SPACE-COLONY</span></div>
+                        <div class="dept-desc">Surveillance des avant-postes de la Fondation en dehors de l'atmosphère
+                            terrestre.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Mathématiques et Physique</span><span
+                                class="dept-tag">HARD-SCI</span></div>
+                        <div class="dept-desc">Recherche fondamentale sur les lois de l'univers que les anomalies
+                            parviennent à briser.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Thaumatologie</span><span
+                                class="dept-tag">MAGIC-SCI</span></div>
+                        <div class="dept-desc">Approche scientifique de la "magie". Étude des Rayonnements de Type Noir
+                            et de l'EVE.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Mémétique et Cognitohazards</span><span
+                                class="dept-tag">MIND-PARA</span></div>
+                        <div class="dept-desc">Étudie les images ou concepts qui modifient le cerveau par simple
+                            perception (risques cognitifs).</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Infohazards</span><span
+                                class="dept-tag">DATA-HAZARD</span></div>
+                        <div class="dept-desc">Menaces déclenchées par la simple possession ou l'échange d'une
+                            information spécifique.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Départements d’administration et d’information -->
+            <div class="category-card" style="animation-delay: 0.4s;">
+                <div class="category-header">
+                    <span class="category-icon">4️⃣</span>
+                    <span class="category-name">Administration & Information</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">RAISA (Archives et Sécurité Info)</span><span
+                                class="dept-tag">INFO-SEC</span></div>
+                        <div class="dept-desc">Sécurisation physique et numérique de la base de données SCiP-NET.
+                            Censure les documents pour le personnel subalterne.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Bureau de Désinformation</span><span
+                                class="dept-tag">PUBLIC-COMS</span></div>
+                        <div class="dept-desc">Crée des couvertures médiatiques pour expliquer les incidents anormaux
+                            aux civils (fuites de gaz, météores).</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Division de Récupération de
+                                Documents</span><span class="dept-tag">ARCHAEOLOGY</span></div>
+                        <div class="dept-desc">Spécialisée dans la fouille d'archives historiques pour retrouver des
+                            traces d'anomalies anciennes.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Bureau de Surveillance Télécom</span><span
+                                class="dept-tag">MONITOR-SEC</span></div>
+                        <div class="dept-desc">Intercepte les appels, courriels et trafics web mondiaux pour traquer les
+                            fuites d'informations anormales.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Censure et Détraction des
+                                Informations</span><span class="dept-tag">CENSORSHIP</span></div>
+                        <div class="dept-desc">Force d'intervention numérique supprimant les preuves visuelles
+                            d'anomalies sur Internet en temps réel.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Départements logistiques / opérationnels -->
+            <div class="category-card" style="animation-delay: 0.5s;">
+                <div class="category-header">
+                    <span class="category-icon">5️⃣</span>
+                    <span class="category-name">Logistique & Opérations</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Approvisionnement & Liquidation</span><span
+                                class="dept-tag">PROCUREMENT</span></div>
+                        <div class="dept-desc">Achat légal d'armement et destruction sécurisée des matériaux contaminés
+                            ou non-confinables.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Force Appliquée</span><span
+                                class="dept-tag">STRIKE-FORCE</span></div>
+                        <div class="dept-desc">Spécialisé dans l'usage intensif de moyens conventionnels pour le
+                            confinement par la force.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Diplomatie Avancée</span><span
+                                class="dept-tag">INT-POLITICS</span></div>
+                        <div class="dept-desc">Gère les traités complexes avec des entités non-humaines intelligentes ou
+                            des réalités alternatives.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département des Forces
+                                d'Intervention</span><span class="dept-tag">OPS-COORD</span></div>
+                        <div class="dept-desc">Quartier général coordonnant le déploiement mondial de toutes les FIM
+                            actives.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Transport et Transit Logistique</span><span
+                                class="dept-tag">TRANSIT</span></div>
+                        <div class="dept-desc">Gère la complexe chaîne de transport pour déplacer les anomalies de
+                            Classe Keter sans provoquer d'incidents.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Départements spéciaux / méta -->
+            <div class="category-card" style="animation-delay: 0.6s; border-color: #ff000033;">
+                <div class="category-header" style="background: linear-gradient(90deg, #2a0a0e 0%, #0a0a0a 100%);">
+                    <span class="category-icon">6️⃣</span>
+                    <span class="category-name" style="color: #ff4d6a;">Spécial / Méta-physique</span>
+                </div>
+                <div class="dept-list">
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Pataphysique</span><span
+                                class="dept-tag">META-FICTION</span></div>
+                        <div class="dept-desc">Étudie notre monde en tant que récit fictionnel. Tente de manipuler les
+                            "auteurs" pour protéger notre univers.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département "Autres"</span><span
+                                class="dept-tag">MISC-PARA</span></div>
+                        <div class="dept-desc">Gère les anomalies absurdes ou inclassables qui ne rentrent dans aucun
+                            autre cadre opérationnel.</div>
+                    </div>
+                    <div class="dept-item">
+                        <div class="dept-top-row"><span class="dept-name">Département de Suppression de Feu</span><span
+                                class="dept-tag">INTERNAL-ADMIN</span></div>
+                        <div class="dept-desc">Un département sinistre chargé de maintenir la motivation du personnel
+                            par des moyens psychologiques extrêmes.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 FONDATION SCP - TERMINAL SCiP-NET SITE-01<br>
+        SÉCURISER. CONFINER. PROTÉGER.
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('deptSearch');
+        const deptItems = document.querySelectorAll('.dept-item');
+        const categories = document.querySelectorAll('.category-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+
+            categories.forEach(category => {
+                let hasVisibleDept = false;
+                const items = category.querySelectorAll('.dept-item');
+
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(term)) {
+                        item.style.display = 'block';
+                        hasVisibleDept = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (hasVisibleDept || term === '') {
+                    category.style.display = 'flex';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+
+        // Interactive hover sound simulation or logging if needed
+        deptItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const name = item.querySelector('.dept-name').textContent;
+                const tag = item.querySelector('.dept-tag').textContent;
+                console.log(`[ACCESS] Accès aux registres de la division ${tag} (${name})...`);
+            });
+        });
+    </script>
+</body>
+
+</html>

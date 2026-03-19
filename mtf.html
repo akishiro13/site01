@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : FORCES D'INTERVENTION MOBILES (FIM)</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 100;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: var(--secondary);
+            padding: 15px 25px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .controls input {
+            background-color: var(--bg-color);
+            border: 1px solid var(--accent);
+            color: var(--text-color);
+            padding: 10px 15px;
+            font-family: var(--font-main);
+            width: 350px;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .mtf-card {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mtf-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.2);
+        }
+
+        .mtf-header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mtf-logo {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border: 1px solid var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .mtf-info h3 {
+            color: #fff;
+            font-family: var(--font-header);
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .mtf-codename {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .mtf-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .mtf-specialization {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .mtf-desc {
+            font-size: 0.9rem;
+            color: #bbb;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .mtf-footer {
+            padding: 10px 20px;
+            background: rgba(196, 30, 58, 0.05);
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-align: right;
+            border-top: 1px solid var(--accent);
+        }
+
+        /* Modal */
+        #modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal {
+            background: var(--bg-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border: 2px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 20px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section h4 {
+            color: var(--primary);
+            border-bottom: 1px solid var(--primary);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .mission-log {
+            background: #111;
+            padding: 15px;
+            border-left: 3px solid var(--primary);
+            font-style: italic;
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #333;
+            color: #eee;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        .status-active {
+            color: #0f0;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=='">
+            <div>
+                <h1>SCiP-NET : DÉPLOIEMENT TACTIQUE</h1>
+                <div class="subtitle">REGISTRE DES FORCES D'INTERVENTION MOBILES (FIM)</div>
+            </div>
+        </div>
+        <div class="stat-block">
+            <div style="text-align: right;">
+                <div style="font-size: 0.7rem; color: #888;">UNITÉS DÉPLOYÉES</div>
+                <div style="color: var(--primary); font-weight: bold; font-size: 1.5rem;" id="mtf-count">0</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-link">&lt;&lt; RETOUR AU TERMINAL PRINCIPAL</a>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Rechercher une unité (ex: Alpha-1, Nu-7)...">
+            <div style="font-size: 0.8rem; color: #888;">
+                STATUT OPÉRATIONNEL : <span class="status-active">OPTIMAL</span>
+            </div>
+        </div>
+
+        <div class="grid" id="mtf-grid">
+            <!-- Dynamically populated -->
+        </div>
+    </main>
+
+    <div id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <span id="modal-title">DOSSIER TACTIQUE</span>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-content">
+                <!-- Content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mtfData = [
+            {
+                id: "alpha-1",
+                name: "Alpha-1",
+                codename: "Red Right Hand",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Alpha1.png",
+                specialization: "Sécurité du Conseil O5 / Missions Classifiées",
+                description: "La Force d'Intervention Mobile Alpha-1 traite directement avec le Conseil O5. Elle est utilisée pour les missions nécessitant une loyauté absolue.",
+                details: "Ses membres font partie de l'élite de la Fondation. Ils agissent comme la main exécutrice des O5. Tout dossier les concernant est classé Secret Défense Niveau 5.",
+                missions: ["Protection du Site-01", "Opérations d'élimination interne", "Sécurisation de SCP-001."],
+                tags: ["O5", "Elite", "Secret"]
+            },
+            {
+                id: "alpha-4",
+                name: "Alpha-4",
+                codename: "Pony Express",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Alpha4.png",
+                specialization: "Logistique / Interception Postale",
+                description: "Spécialisée dans l'infiltration des services postaux et de livraison pour intercepter les colis anormaux.",
+                details: "Ils surveillent les réseaux de transport mondiaux pour détecter tout transfert d'objets suspects avant qu'ils n'atteignant le public.",
+                missions: ["Opération 'Colis Piégé'", "Infiltration de FedEx/UPS", "Surveillance des services de messagerie sécurisés."],
+                tags: ["Logistique", "Civil", "Espionnage"]
+            },
+            {
+                id: "alpha-9",
+                name: "Alpha-9",
+                codename: "Last Hope",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Alpha9.png",
+                specialization: "Utilisation d'anomalies au combat",
+                description: "Successeur du projet Boîte de Pandore, Alpha-9 utilise des anomalies entraînées pour aider la Fondation sur le terrain.",
+                details: "Cette unité controversée emploie des agents anormaux comme SCP-105 (Iris) pour des missions de haute importance.",
+                missions: ["Récupération d'artefacts en zone hostile", "Contre-terrorisme anormal", "Soutien tactique spécialisé."],
+                tags: ["Anomalie", "Experimental", "Terrain"]
+            },
+            {
+                id: "beta-4",
+                name: "Beta-4",
+                codename: "Castaways",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Beta4.png",
+                specialization: "Surveillance Insulaire / Maritime",
+                description: "Spécialisée dans la surveillance et la sécurisation des anomalies situées sur des îles isolées ou dans des zones côtières.",
+                details: "Ils opèrent souvent sous couverture de garde-côtes ou d'expéditions scientifiques marines.",
+                missions: ["Surveillance de l'Archipel [REDACTED]", "Sécurisation de zones de ponte SCP", "Interception de contrebande marine."],
+                tags: ["Maritime", "Isolé", "Tactique"]
+            },
+            {
+                id: "beta-7",
+                name: "Beta-7",
+                codename: "Maz Hatters",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Beta7.png",
+                specialization: "Risques NBC (Nucléaire, Biologique, Chimique)",
+                description: "Spécialisée dans le confinement et le nettoyage des zones affectées par des agents infectieux ou chimiques anormaux.",
+                details: "Équipés pour les environnements les plus hostiles, ils sont le premier rempart contre les pandémies anormales.",
+                missions: ["Confinement de SCP-008", "Opération 'Clean Sweep' au Site-19", "Neutralisation de foyers infectieux."],
+                tags: ["NBC", "Santé", "Urgence"]
+            },
+            {
+                id: "gamma-5",
+                name: "Gamma-5",
+                codename: "Red Herrings",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Gamma5.png",
+                specialization: "Discrétion / Amnésiques / Couverture",
+                description: "Spécialisée dans la manipulation de l'information et l'administration d'amnésiques à grande échelle pour maintenir le Voile.",
+                details: "Ils créent des explications rationnelles pour des événements anormaux publics (météorites, fuites de gaz, etc.).",
+                missions: ["Opération 'Ciel Bleu'", "Distribution d'amnésiques de classe A après l'Incident [REDACTED]", "Manipulation des médias nationaux."],
+                tags: ["Information", "Voile", "Amnésiques"]
+            },
+            {
+                id: "gamma-6",
+                name: "Gamma-6",
+                codename: "Deep Feeders",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Gamma6.png",
+                specialization: "Abysses / Grands Fonds Marins",
+                description: "Spécialisée dans la gestion des anomalies situées à des profondeurs extrêmes dans les océans.",
+                details: "Utilise des submersibles avancés et des scaphandres pressurisés pour contenir des entités aquatiques massives.",
+                missions: ["Surveillance de SCP-169", "Exploration de la Fosse des Mariannes", "Récupération d'épaves anormales."],
+                tags: ["Océanic", "Abyssal", "Lourd"]
+            },
+            {
+                id: "gamma-13",
+                name: "Gamma-13",
+                codename: "Asimov's Lawbringers",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Gamma13.png",
+                specialization: "Cyber-anomalies / IA Hostiles",
+                description: "Traque les IA rebelles et infiltre les réseaux de l'Église de l'Australisme et de Maxwellisme.",
+                details: "Experts en informatique de combat capable de 'lutter' contre des virus mémétiques numériques sur le réseau SCiP-NET.",
+                missions: ["Neutralisation de l'IA [REDACTED]", "Infiltration du réseau Anderson Robotics", "Protection du mainframe Site-15."],
+                tags: ["Cyber", "IA", "Informatique"]
+            },
+            {
+                id: "delta-5",
+                name: "Delta-5",
+                codename: "Front Runners",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Delta5.png",
+                specialization: "Espionnage / Interception de GOI",
+                description: "Infiltre et surveille les autres Groupes d'Intérêt (GOI) pour subtiliser des anomalies avant eux.",
+                details: "Leurs agents sont experts en camouflage social et opèrent souvent au cœur de l'Insurrection du Chaos ou de l'Eglise du Dieu Brisé.",
+                missions: ["Vol de l'artefact SCP-[...] à la CGM", "Surveillance des enchères de MC&D", "Infiltration d'une cellule du GOC."],
+                tags: ["Espionnage", "Infiltration", "GOI"]
+            },
+            {
+                id: "epsilon-6",
+                name: "Epsilon-6",
+                codename: "Village Idiots",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Epsilon6.png",
+                specialization: "Milieux Ruraux / Forêts",
+                description: "Spécialisée dans les enquêtes et le confinement en milieu rural et sauvage.",
+                details: "Souvent déguisés en shérifs locaux ou en randonneurs pour ne pas attirer l'attention dans les petites communautés.",
+                missions: ["Capture d'entités cryptides dans les Appalaches", "Incident de la ferme [REDACTED]", "Pistage en zone forestière épaisse."],
+                tags: ["Rural", "Pistage", "Navigation"]
+            },
+            {
+                id: "epsilon-9",
+                name: "Epsilon-9",
+                codename: "Fire Eaters",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Epsilon9.png",
+                specialization: "Thermique / Incendies",
+                description: "Spécialisée dans l'utilisation et le confinement d'anomalies liées au feu ou opérant à haute température.",
+                details: "Chaque membre est un expert en pyrotechnie armé de lance-flammes à haute intensité et de combinaisons ignifugées.",
+                missions: ["Destruction de foyers de SCP-610", "Confinement d'entités pyrocinétiques", "Opération 'Forge Ardente'."],
+                tags: ["Feu", "Destruction", "Thermique"]
+            },
+            {
+                id: "epsilon-11",
+                name: "Epsilon-11",
+                codename: "Nine-Tailed Fox",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Epsilon11.png",
+                specialization: "Contrôle Interne / Brèches de Confinement",
+                description: "Unité de réponse rapide chargée de la reprise de contrôle des sites en cas de brèche majeure.",
+                details: "L'unité d'intervention la plus célèbre, entraînée pour toutes les classes d'anomalies au sein des installations de la Fondation.",
+                missions: ["Incident du Site-19", "Brèche de confinement du Site-02", "Neutralisation de SCP-682 (support)."],
+                tags: ["Réponse Rapide", "Interne", "Tactique"]
+            },
+            {
+                id: "zeta-9",
+                name: "Zeta-9",
+                codename: "Mole Rats",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Zeta9.png",
+                specialization: "Exploration Souterraine / Labyrinthes",
+                description: "Spécialisée dans l'exploration de zones souterraines, grottes et structures à géométrie spatiale distordue.",
+                details: "Unité à haut risque. Leurs missions se déroulent souvent dans des lieux où la boussole et la raison ne fonctionnent plus.",
+                missions: ["Exploration de SCP-1730", "Nettoyage des sous-sols du Site-19", "Cartographie de dimensions labyrinthiques."],
+                tags: ["Souterrain", "Labyrinthe", "Risque"]
+            },
+            {
+                id: "eta-10",
+                name: "Eta-10",
+                codename: "See No Evil",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Eta10.png",
+                specialization: "Dangers Mémétiques / Visuels",
+                description: "Infiltre et sécurise les zones affectées par des agents tueurs mémétiques ou des entités visuellement dangereuses.",
+                details: "Utilise des casques à flux vidéo différé et filtré pour ne jamais voir directement les anomalies mortelles.",
+                missions: ["Capture de SCP-096", "Neutralisation de peintures mémétiques au Louvre", "Incident [REDACTED]."],
+                tags: ["Mémétique", "Radar", "Optique"]
+            },
+            {
+                id: "eta-11",
+                name: "Eta-11",
+                codename: "Savage Beasts",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Eta11.png",
+                specialization: "Anomalies Auditives / Musicales",
+                description: "Spécialisée dans les dangers qui se propagent par le son, la musique ou les vibrations.",
+                details: "Utilisent des systèmes de réduction de bruit active et des implants cochléaires protecteurs.",
+                missions: ["Neutralisation de la partition SCP-[...]", "Confinement d'un orchestre fantôme", "Opération 'Silence de Mort'."],
+                tags: ["Auditif", "Sonore", "Protective"]
+            },
+            {
+                id: "theta-4",
+                name: "Theta-4",
+                codename: "Gardeners",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Theta4.png",
+                specialization: "Anomalies Végétales / Botaniques",
+                description: "Spécialisée dans le confinement d'anomalies botaniques, de forêts carnivores ou de croissances végétales rapides.",
+                details: "Travaillent en étroite collaboration avec le Département Biologique pour l'étude des pathogènes sylvestres.",
+                missions: ["Nettoyage de l'Incident [REDACTED]", "Surveillance de SCP-628", "Élagage de zones de distorsion végétale."],
+                tags: ["Botanique", "Biologique", "Nature"]
+            },
+            {
+                id: "theta-90",
+                name: "Theta-90",
+                codename: "Angle Grinders",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Theta90.png",
+                specialization: "Topologie / Géométrie Non-Euclidienne",
+                description: "Spécialisée dans la navigation au sein d'espaces où les lois de la géométrie conventionnelle ne s'appliquent pas.",
+                details: "Experts en calcul spatial en temps réel pour ne pas se perdre dans des pièces 'plus grandes à l'intérieur qu'à l'extérieur'.",
+                missions: ["Exploration de la Maison de [REDACTED]", "Cartographie de SCP-184", "Récupération d'agents perdus en espace-N."],
+                tags: ["Topologie", "Mathématique", "Spacial"]
+            },
+            {
+                id: "iota-10",
+                name: "Iota-10",
+                codename: "Damn Feds",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Iota10.png",
+                specialization: "Infiltration des forces de l'ordre",
+                description: "Agents infiltrés dans divers services de police et agences de renseignement civils pour intercepter les dossiers anormaux.",
+                details: "Ils redirigent les appels d'urgence anormaux et saisissent les preuves avant l'arrivée des médias.",
+                missions: ["Infiltration du FBI/CIA", "Détournement des rapports du 911", "Nettoyage de scènes de crime paranormales."],
+                tags: ["Infiltration", "Police", "Civil"]
+            },
+            {
+                id: "kappa-10",
+                name: "Kappa-10",
+                codename: "Skynet",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Kappa10.png",
+                specialization: "Intelligence Artificielle / Digital",
+                description: "Composée uniquement d'Intelligences Artificielles de la Fondation (AIC) patrouillant sur Internet.",
+                details: "Ils traquent les fichiers mémétiques sur les forums, les réseaux sociaux et le darknet pour les supprimer instantanément.",
+                missions: ["Surveillance du réseau 4chan/Reddit", "Destruction d'images tueuses virales", "Guerre cyber contre Maxwellisme."],
+                tags: ["Digital", "AIC", "Internet"]
+            },
+            {
+                id: "lambda-4",
+                name: "Lambda-4",
+                codename: "Birdwatchers",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Lambda4.png",
+                specialization: "Anomalies Aviaires / Aériennes",
+                description: "Spécialisée dans la traque et le confinement d'entités volantes et d'anomalies atmosphériques.",
+                details: "Utilisent des drones de haute technologie et des unités de surveillance radar.",
+                missions: ["Pistage de SCP-1500", "Capture d'une nuée d'oiseaux mémétiques", "Surveillance des courants-jets anormaux."],
+                tags: ["Aérien", "Pistage", "Radar"]
+            },
+            {
+                id: "lambda-5",
+                name: "Lambda-5",
+                codename: "White Rabbits",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Lambda5.png",
+                specialization: "Traque de fugitifs / Réalité",
+                description: "Spécialisée dans la traque d'anomalies instables et de fugitifs capables de traverser les dimensions.",
+                details: "Leurs agents sont formés pour 'bondir' d'une réalité à l'autre en suivant la trace énergétique des cibles.",
+                missions: ["Capture du Fugitif de classe-E", "Chasse dans les couloirs du temps", "Opération 'Trou de Ver'."],
+                tags: ["Dimensionnel", "Chasse", "Vitesse"]
+            },
+            {
+                id: "lambda-12",
+                name: "Lambda-12",
+                codename: "Pest Control",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Lambda12.png",
+                specialization: "Parasites / Organismes de petite taille",
+                description: "Spécialisée dans le confinement d'infestations massives d'organismes anormaux de petite taille (insectes, rongeurs, etc.).",
+                details: "Utilisent des agents chimiques de neutralisation de masse et des techniques de quarantaine strictes.",
+                missions: ["Éradication d'essaims de SCP-[...]", "Décontamination de l'entrepôt [REDACTED]", "Contrôle parasitaire au Site-19."],
+                tags: ["Parasite", "Biologique", "Contrôle"]
+            },
+            {
+                id: "mu-4",
+                name: "Mu-4",
+                codename: "Debuggers",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Mu4.png",
+                specialization: "Logiciels / Virus Informatiques",
+                description: "Spécialisée dans le confinement et l'étude des virus et logiciels anormaux.",
+                details: "Ils interviennent directement sur le hardware pour isoler les circuits affectés par des entités numériques.",
+                missions: ["Désolation du serveur [REDACTED]", "Analyse de SCP-079", "Protection du réseau sécurisé Niveau 4."],
+                tags: ["Informatique", "Software", "Hardware"]
+            },
+            {
+                id: "mu-13",
+                name: "Mu-13",
+                codename: "Ghostbusters",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Mu13.png",
+                specialization: "Ectoplasmes / Entités Spectrales",
+                description: "Spécialisée dans la traque, le confinement et la neutralisation des apparitions fantomatiques et spectres.",
+                details: "Équipés de détecteurs de champs électromagnétiques (CEM) et d'ancres de réalité de poche.",
+                missions: ["Exorcisme du Site-12", "Sécurisation du manoir hanté de [REDACTED]", "Capture d'un esprit frappeur de classe Keter."],
+                tags: ["Spectre", "Ectoplasme", "Para-psychologie"]
+            },
+            {
+                id: "nu-7",
+                name: "Nu-7",
+                codename: "Hammer Down",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Nu7.png",
+                specialization: "Guerre Urbaine / Force de Frappe Lourde",
+                description: "Unité de taille régimentaire équipée de blindés et d'artillerie, utilisée pour le combat ouvert.",
+                details: "Déployée lorsque la discrétion n'est plus une option et qu'une force de destruction massive est nécessaire.",
+                missions: ["Défense du Site-19 lors du siège de GoI-003", "Intervention en zone de guerre civile", "Contre-attaque contre SCP-682."],
+                tags: ["Militaire", "Lourd", "Assaut"]
+            },
+            {
+                id: "xi-8",
+                name: "Xi-8",
+                codename: "Dernier à Tomber",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Xi8.png",
+                specialization: "Guerre Anti-Sarkique",
+                description: "Spécialisée dans l'éradication des cultes sarkiques et des abominations de chair liées à l'Adytum.",
+                details: "Chaque membre est un expert en combat rapproché et en techniques d'incinération chirurgicale.",
+                missions: ["Destruction d'une cellule néo-sarkique à Londres", "Purge d'une infestation de chair SCP-610", "Campagne de Russie."],
+                tags: ["Sarkique", "Combat", "Incinération"]
+            },
+            {
+                id: "pi-1",
+                name: "Pi-1",
+                codename: "City Slickers",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Pi1.png",
+                specialization: "Milieux Urbains / Villes",
+                description: "Spécialisée dans le confinement d'anomalies dans les zones à forte densité de population.",
+                details: "Entraînés au combat de rue et à l'évacuation rapide des civils sous couvert de fausses alertes attentats.",
+                missions: ["Incident de New York", "Capture d'un entité dans le métro de Tokyo", "Contrôle de foule sous gaz amnésique."],
+                tags: ["Urbain", "Civil", "Logistique"]
+            },
+            {
+                id: "rho-1",
+                name: "Rho-1",
+                codename: "The Professors",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Rho1.png",
+                specialization: "Archives / Contre-Espionnage Interne",
+                description: "Spécialisée dans la protection et la récupération d'informations sensibles au sein de la Fondation.",
+                details: "Ils traquent les taupes et les fuites d'informations vers le GOC ou l'Insurrection du Chaos.",
+                missions: ["Audit de sécurité du Site-01", "Traque de l'Agent Double [REDACTED]", "Récupération des dossiers brûlés."],
+                tags: ["Renseignement", "Interne", "Secret"]
+            },
+            {
+                id: "sigma-3",
+                name: "Sigma-3",
+                codename: "Bibliographers",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Sigma3.png",
+                specialization: "Bibliothèque des Vagabonds / Magie",
+                description: "Spécialisée dans l'exploration de la Bibliothèque des Vagabonds et l'étude des voies occultes.",
+                details: "Leurs agents apprennent souvent les bases de la thaumaturgie pour survivre dans les dimensions magiques.",
+                missions: ["Infiltration de la Bibliothèque", "Récupération d'un grimoire volé", "Négociation avec 'La Main du Serpent'."],
+                tags: ["Occulte", "Librarie", "Thaumaturgie"]
+            },
+            {
+                id: "tau-5",
+                name: "Tau-5",
+                codename: "Samsara",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Tau5.png",
+                specialization: "Soldats Cyborgs Immortels",
+                description: "Unité expérimentale composée de quatre cyborgs créés à partir de la chair d'une divinité morte.",
+                details: "Leurs corps sont remplaçables, leurs esprits sont téléchargés d'un clone à l'autre après chaque mort au combat.",
+                missions: ["Opération 'Feu Divin'", "Capture de Divinités Mineures", "Exploration de l'Adytum."],
+                tags: ["Cyborg", "Divin", "Guerre"]
+            },
+            {
+                id: "psi-7",
+                name: "Psi-7",
+                codename: "Home Improvement",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Psi7.png",
+                specialization: "Bâtiments / Architecture Anormale",
+                description: "Spécialisée dans l'investigation et la 'déconstruction' de bâtiments et structures anormaux.",
+                details: "Composée d'ingénieurs et de démolisseurs experts en architecture non-euclidienne.",
+                missions: ["Démolition du Manoir de [REDACTED]", "Sécurisation d'un centre commercial infini", "Audit de structures instables."],
+                tags: ["Architecte", "Démolition", "Structure"]
+            },
+            {
+                id: "omega-1",
+                name: "Omega-1",
+                codename: "Law's Left Hand",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Omega1.png",
+                specialization: "Contrôle du Conseil O5 / Internal Affairs",
+                description: "Le bras armé du Comité d'Éthique, chargé de surveiller et, si nécessaire, de s'opposer au Conseil O5.",
+                details: "Ils sont le seul contre-pouvoir militaire réel face à l'unité Alpha-1.",
+                missions: ["Détention d'un Directeur de Site corrompu", "Audit du projet [REDACTED]", "Prévention d'un coup d'État interne."],
+                tags: ["Ethique", "Justice", "Haute Sécurité"]
+            },
+            {
+                id: "omega-7",
+                name: "Omega-7",
+                codename: "Pandora's Box",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Omega7.png",
+                specialization: "Utilisation offensive de SCP [DÉSACTIVÉE]",
+                description: "Ancienne unité utilisant SCP-076 et SCP-105. Dissoute après l'Incident [REDACTED].",
+                details: "Ce dossier est maintenu pour archives historiques. La réactivation de cette unité est strictement interdite.",
+                missions: ["Missions classifiées en zone de guerre", "Opération 'Abel'"],
+                tags: ["Historique", "Danger", "Dissoute"]
+            },
+            {
+                id: "omega-12",
+                name: "Omega-12",
+                codename: "Achilles' Heels",
+                logo: "https://scp-wiki.wdfiles.com/local--files/task-forces/Omega12.png",
+                specialization: "Guerre contre Plieurs de Réalité",
+                description: "Composée de Plieurs de Réalité loyaux à la Fondation, vivant sur une Terre alternative.",
+                details: "Leur mission est de traquer et neutraliser les entités capables de modifier les probabilités et la physique.",
+                missions: ["Neutralisation de classe 'Green'", "Guerre ontologique", "Stabilisation de lignes temporelles."],
+                tags: ["Réalité", "Plieurs", "Divin"]
+            }
+        ];
+
+        const grid = document.getElementById('mtf-grid');
+        const searchInput = document.getElementById('searchInput');
+        const countDisplay = document.getElementById('mtf-count');
+        const modal = document.getElementById('modal-overlay');
+
+        function renderMTF(data) {
+            grid.innerHTML = '';
+            countDisplay.innerText = data.length;
+
+            data.forEach(unit => {
+                const card = document.createElement('div');
+                card.className = 'mtf-card';
+                card.innerHTML = `
+                    <div class="mtf-header">
+                        <div class="mtf-logo">
+                            <img src="${unit.logo}" alt="${unit.name}" 
+                                 style="width:100%; height:100%; object-fit:contain;"
+                                 onerror="this.parentElement.innerHTML='${unit.name[0]}'">
+                        </div>
+                        <div class="mtf-info">
+                            <h3>FIM ${unit.name}</h3>
+                            <div class="mtf-codename">"${unit.codename}"</div>
+                        </div>
+                    </div>
+                    <div class="mtf-body">
+                        <div class="mtf-specialization">${unit.specialization}</div>
+                        <div class="mtf-desc">${unit.description}</div>
+                        <div style="margin-top: 10px;">
+                            ${unit.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="mtf-footer">CONSULTER LE DOSSIER &gt;&gt;</div>
+                `;
+                card.onclick = () => openModal(unit);
+                grid.appendChild(card);
+            });
+        }
+
+        function openModal(unit) {
+            const content = document.getElementById('modal-content');
+            document.getElementById('modal-title').innerText = `DOSSIER TACTIQUE : FIM ${unit.name}`;
+
+            content.innerHTML = `
+                <div style="display:flex; gap:20px; align-items:start;">
+                    <div style="width:120px; height:120px; background:#111; border:1px solid var(--primary); flex-shrink:0;">
+                         <img src="${unit.logo}" alt="${unit.name}" 
+                                 style="width:100%; height:100%; object-fit:contain;"
+                                 onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <div class="modal-section">
+                            <h4>Description Opérationnelle</h4>
+                            <p>${unit.description}</p>
+                            <p style="margin-top:10px;">${unit.details}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h4>Spécialisation</h4>
+                    <p>${unit.specialization}</p>
+                    <div style="margin-top:10px;">
+                        ${unit.tags.map(tag => `<span class="tag" style="background:var(--primary);">${tag}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h4>Missions Notables</h4>
+                    <ul style="margin-left:20px; color:#ccc;">
+                        ${unit.missions.map(m => `<li>${m}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h4>Journal d'Intervention</h4>
+                    <div class="mission-log">
+                        "En attente de déploiement tactique. Unité prête pour intervention immédiate. Statut vocal : Radio-Silence."
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        searchInput.oninput = (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = mtfData.filter(u =>
+                u.name.toLowerCase().includes(term) ||
+                u.codename.toLowerCase().includes(term) ||
+                u.specialization.toLowerCase().includes(term)
+            );
+            renderMTF(filtered);
+        };
+
+        window.onclick = (e) => {
+            if (e.target == modal) closeModal();
+        };
+
+        // Initial render
+        renderMTF(mtfData);
+    </script>
+</body>
+
+</html>

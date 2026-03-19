@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : SITE-01 // MENTIONS LÉGALES</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: -1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 120px);
+        }
+
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+        }
+
+        .legal-header h2 {
+            font-family: var(--font-header);
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .info-block {
+            background: var(--secondary);
+            border: 1px solid var(--accent);
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .info-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .info-block h3 {
+            font-family: var(--font-header);
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-block p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 140px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: var(--font-header);
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            transition: all 0.2s;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .license-box {
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px dashed var(--primary);
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        strong {
+            color: var(--primary);
+        }
+
+        .stamp {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border: 3px solid rgba(196, 30, 58, 0.5);
+            padding: 5px 10px;
+            color: rgba(196, 30, 58, 0.5);
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            transform: rotate(15deg);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=='">
+            <div>
+                <h1>Base de données SCiP-NET</h1>
+                <div class="subtitle">SITE-01 // PROTOCOLES LÉGAUX</div>
+            </div>
+        </a>
+        <div class="stat-block" style="display: flex; gap: 20px;">
+            <div style="text-align: right;">
+                <div style="font-size: 0.7rem; color: #888;">STATUT JURIDIQUE</div>
+                <div style="color: #fff; font-weight: bold;">EXTRA-TERRITORIAL</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.7rem; color: #888;">ID DU DOCUMENT</div>
+                <div style="color: var(--primary); font-weight: bold;">LEG-001-ALPHA</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">&lt; RETOUR</a>
+
+        <div class="legal-header">
+            <h2>Mentions Légales</h2>
+            <p style="color: var(--primary); font-weight: bold; letter-spacing: 2px;">INFORMATIONS RÉGLEMENTAIRES &
+                LICENCES</p>
+        </div>
+
+        <div class="info-block">
+            <h3>1. ÉDITEUR ET RESPONSABILITÉ</h3>
+            <p>Le présent site est un projet personnel à but non lucratif, créé dans un cadre de divertissement et de
+                démonstration technique.</p>
+            <p><strong>Éditeur :</strong> Hunter Snow (pseudonyme)</p>
+            <p><strong>Contact :</strong> [discord officiel]</p>
+            <p>L'éditeur s'efforce d'assurer l'exactitude des informations diffusées au maximum, mais ne saurait être tenu
+                responsable des erreurs ou de l'utilisation faite des contenus présentés en raison d'ajouts de details au lors a fin de le rend plus pertinent.</p>
+        </div>
+
+        <div class="info-block">
+            <h3>2. PROPRIÉTÉ INTELLECTUELLE (LICENCE SCP)</h3>
+            <p>Ce site est une œuvre de fan basée sur l'univers de la <strong>Fondation SCP</strong>.</p>
+            <p>Conformément aux règles de la communauté SCP, l'ensemble du contenu de ce site est publié sous la licence
+                <strong>Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)</strong>.</p>
+            <ul>
+                <li style="margin-left: 20px;"><strong>Crédits :</strong> Les concepts originaux, le logo et les textes
+                    de l'univers SCP sont issus du site <a href="http://www.scp-wiki.net"
+                        style="color: var(--primary);">scp-wiki.net</a> et de sa branche française <a
+                        href="http://fondationscp.wikidot.com/"
+                        style="color: var(--primary);">fondationscp.wikidot.com</a>.</li>
+                <li style="margin-left: 20px;"><strong>Attribution :</strong> Toute réutilisation ou adaptation de ce
+                    contenu doit obligatoirement inclure un lien vers la source originale (wiki de base) et être redistribuée sous la
+                    même licence.</li>
+            </ul>
+        </div>
+
+        <div class="info-block">
+            <h3>3. HÉBERGEMENT</h3>
+            <p>Le site est actuellement hébergé à titre local, et peut etre supprimé à tout moment. pour quelque raison que ce soit.</p>
+        </div>
+
+        <div class="info-block">
+            <h3>4. DONNÉES PERSONNELLES ET COOKIES</h3>
+            <p>Ce site est statique et ne procède à aucune collecte de données personnelles concernant les visiteurs.
+                Aucun cookie de suivi ou publicitaire n'est utilisé dans le cadre de la navigation sur ce terminal
+                SCiP-NET.</p>
+        </div>
+
+        <div class="info-block">
+            <h3>5. AVERTISSEMENT SUR LE CONTENU</h3>
+            <p>Les contenus présentés sur ce site (journaux de tests, rapports d'anomalies, protocoles de confinement)
+                sont strictement <strong>fictifs</strong>. La Fondation SCP n'existe pas dans la réalité. Tout lien avec
+                des personnes ou des événements réels serait purement fictive etant donné que l'univers est entièrement fictif.</p>
+        </div>
+
+        <p style="text-align: center; color: #555; font-size: 0.8rem; margin-top: 50px;">
+            Dernière mise à jour : 10 Mars 2026 // Système SCiP-NET v8.4.2
+        </p>
+    </main>
+</body>
+
+</html>

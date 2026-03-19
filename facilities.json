@@ -1,0 +1,454 @@
+[
+  {
+    "title": "Info",
+    "description": ""
+  },
+  {
+    "title": "Map of Foundation Facilities",
+    "description": ""
+  },
+  {
+    "title": "International Branches and Facilities",
+    "description": ""
+  },
+  {
+    "title": "Site List",
+    "description": ""
+  },
+  {
+    "title": "NULL-Site-0",
+    "description": "Location: N/A\nSite-0 is a containment Facility that does not exist, for the purpose of containment and research into Unreality.\nSecure Facility Dossier: Site-0"
+  },
+  {
+    "title": "Protected Site-01",
+    "description": "Location: [DATA EXPUNGED]\nSite-01, also known as Overwatch HQ, is a safe zone that acts as a data backup for all major Foundation facilities worldwide, as well as a secure meeting facility for O5 Council members and other high-ranking Foundation personnel. All further details, including the location of Site-01, are strictly classified."
+  },
+  {
+    "title": "Site-5",
+    "description": "Location: Unknown.\nSite-5 is a man-made island constructed to store hazardous materials, currently used for the containment of SCP-001 , SCP-001-EX , SCP-1661 , SCP-2193 , SCP-2923 , SCP-3280 , SCP-3963 , SCP-3980 and SCP-8110 .\nThis document has been altered by SCP-4182 . Personnel are to be reminded that there is no Site-5."
+  },
+  {
+    "title": "Humanoid Containment Site-06-3",
+    "description": "Location: Lorraine, Grand Est, France\nSite-06-3 is a containment facility housing numerous low-risk human and humanoid entities, most notably several former Foundation personnel. Site-06-3 employs a multi-national staff, and was formerly located in the United States of America ( Site-06 ) and Germany ( Site-06-2 ) prior to the decommission and demolition of these prior facilities.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-069 Safe SCP-706 Euclid SCP-1036 Euclid SCP-1255-1 Euclid SCP-1586 Euclid SCP-1669 Euclid SCP-1676 Euclid SCP-1702 Euclid SCP-1897-1 Euclid SCP-1943 Euclid SCP-1969-EX Euclid Keter Explained SCP-2032 Safe Keter SCP-2368 Euclid SCP-2592 Euclid SCP-2608 Safe SCP-2884-2 Euclid SCP-3023-B Keter SCP-3047 Safe SCP-3048 Safe SCP-3228 Euclid SCP-3274 Keter SCP-3356 Safe SCP-3564 Euclid SCP-3811 Keter SCP-4477 Keter SCP-4617 Euclid SCP-5002 Neutralized SCP-5147 Euclid SCP-5151 (formerly) Keter SCP-5199 Euclid SCP-5424 Euclid SCP-5534 Euclid SCP-5582 (formerly) Keter SCP-5728 Euclid SCP-6676 (formerly) Decommissioned SCP-7032 Safe Euclid SCP-7038 Keter SCP-8122 Safe SCP-9177 Euclid SCP-9777 Tiamat"
+  },
+  {
+    "title": "Protected Site-7",
+    "description": "Location: Norton Sound, 80km off the coast of Alaska, USA\nProtected Site-7 is a centralized headquarters and command center for the Records, Archival, and Information Security Administration (RAISA), which handles almost every aspect of the Foundation's technical and infosec concerns. The highly-classified facility is made up of nine offshore oil rigs that have been extensively retrofitted to support almost 400 RAISA personnel and their workstations. Site-7 hosts AIAD's AI Farm, the PANOPTICON global surveillance system, and the servers for the SCiPnet database.\nDue to its Protected status, no non-Thaumiel anomalies are allowed aboard Site-7, and no SCPs are contained there."
+  },
+  {
+    "title": "Site-11",
+    "description": "Location: Lansing, Michigan, USA\nSite-11 is a large-scale Foundation facility consisting of an entire self-sustaining community, complete with residential housing, commercial businesses, and industrial/manufacturing facilities, as well as an extensive underground containment and research complex. The Foundation tracks all personnel and civilians within Site-11, and so the facility is often used as a safe location for personnel requiring additional security and protection.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Research and Containment Site-12",
+    "description": "Location: Devon, England, UK\nSite-12 is situated underneath the Avon Dam, within the Dartmoor National Park. One of the first sites to be commissioned after the Foundation's formation, Site-12 focuses primarily on research and administration, and is one of the most important sites in the British Isles. The site's more prominent feature is its library, which holds the largest collection of anomalous history and documentation within the Foundation. As a result, numerous research departments have taken residence there, including the Department of History, who use the site as their headquarters.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Storage and Containment Site-13",
+    "description": "Location: Columbus, Ohio, USA.\nSite-13 is a facility used to contain anomalous objects and easy-to-contain sapient SCPs. It is primarily focused on the containment and the study of anomalies produced by Dr. Wondertainment . Hall 8 of Site-13, per O5-4's orders, is entirely dedicated to the containment of \"Little Misters\".\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-1007 Safe SCP-3537 Euclid SCP-3938 Safe SCP-4876 Safe SCP-4890 Safe"
+  },
+  {
+    "title": "Protected Site-14",
+    "description": "Location: Sacramento, California, USA\nSite-14 is the primary hub for the SCP Foundation's Telecommunications Monitoring Office. It is their largest facility worldwide, with a staff of more than 1300 Foundation employees, screening calls from across the western hemisphere. It also serves as the location of the primary servers for the Emergency Services Anomaly Screening (ESAS) algorithm, responsible for parsing all phone calls made to emergency services in the western hemisphere.\nSecure Facility Dossier: Site-14"
+  },
+  {
+    "title": "Site-15",
+    "description": "Location: Santa Clara Valley, California, USA\nSite-15 is a Foundation facility specialising in the containment and study of electric, electronic, and computer-based anomalies, within a building designed to blend in amongst the civilian tech companies of Silicon Valley. The storage and containment wings of Site-15 are electromagnetically isolated to prevent any interaction between anomalous electronics and the outside world. The Site also serves as the headquarters of the Foundation's IT department and Artificial Intelligence Applications Division (AIAD), managing Foundation databases and communications worldwide.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-079 Euclid SCP-687 Safe SCP-719 Safe SCP-896 Safe SCP-1314 Safe SCP-1315 Safe SCP-1343 Euclid SCP-1488 Euclid SCP-1675 Safe SCP-1900 Euclid SCP-2223 Euclid SCP-2242 Euclid SCP-2352 Neutralized (formerly Euclid) SCP-2502 Euclid Safe SCP-2519 Safe SCP-2543 Safe SCP-2569 Safe SCP-2656 Safe SCP-2698 Euclid SCP-3014 Safe Euclid SCP-3334 Thaumiel SCP-3482 Euclid SCP-3579 Safe SCP-3869 Euclid SCP-4053 Neutralized SCP-4218 Euclid SCP-4361 Euclid SCP-4374 Safe SCP-4527 Thaumiel SCP-4610 Safe SCP-4645 Euclid SCP-4794 Keter SCP-4904 Keter SCP-5018 Euclid SCP-5070 Euclid SCP-5094 Safe SCP-5228 Thaumiel SCP-5241 Maksur SCP-INTEGER CHALLENGE SCP-5403 Euclid Neutralized SCP-5452 Safe SCP-6276 Null SCP-6289 Thaumiel SCP-6488 Kušum SCP-6747 Thaumiel SCP-7039 Safe SCP-7342 Euclid SCP-7358 Neutralized SCP-7401 Safe Keter SCP-7390 Euclid SCP-7579 Keter SCP-7880 Euclid SCP-8483 Euclid (Pending Thaumiel) SCP-8888 Vault SCP-9079 Safe SCP-9331 Safe"
+  },
+  {
+    "title": "Site-17",
+    "description": "Location: [DATA REDACTED]\nSite-17 is the second largest Foundation facility, primarily focused on the containment and study of low-risk humanoid entities, although the Site has additional capacities for the containment of inanimate objects, non-humanoid creatures, and higher risk anomalies. As per its main focus, Site-17's permanent staff includes a large number of medical and psychiatric professionals, to deal with the unique physical and psychological needs of both the contained anomalies and the on-site staff working in this challenging environment.\n▷ Contained Objects ◁ Objects contained at this facility: Anomalous Humanoids ID Number Object Class SCP-030 Euclid SCP-073 Euclid SCP-091-ARC Euclid SCP-105 Safe SCP-108 Safe SCP-114 Euclid SCP-191 Safe SCP-196 Euclid/Keter SCP-208 Safe SCP-239 Keter SCP-343 Safe SCP-347 Euclid SCP-430 Euclid SCP-486 Safe SCP-545 Euclid SCP-600 Euclid SCP-637 Safe SCP-726 Euclid SCP-752 Keter SCP-890 Euclid SCP-893 Safe SCP-953 Keter SCP-1005 Safe SCP-1041 Euclid-alterius SCP-1058 Safe SCP-1203 Euclid SCP-1304-1 Euclid SCP-1484 Safe SCP-1500 Safe SCP-1805 Euclid SCP-1846 Euclid-exsequi SCP-1904 Euclid SCP-1915 Euclid SCP-1922 Euclid SCP-1952 Euclid SCP-2020 Euclid-exsequi SCP-2156 Euclid SCP-2230 Euclid SCP-2231 (formerly) Safe Neutralized SCP-2240 Euclid SCP-2247 Euclid SCP-2269 Euclid SCP-2273 Euclid SCP-2404 Euclid SCP-2422 Euclid SCP-2430 Euclid SCP-2486-A Euclid SCP-2552 Euclid SCP-2562 Euclid SCP-2586 Euclid SCP-2618-1 Euclid presumed Neutralized SCP-2724 Euclid SCP-2785 Euclid SCP-2842 Euclid SCP-2857 Euclid SCP-2978 Safe SCP-3009-C Safe SCP-3090 Euclid SCP-3217-A Keter SCP-3299 Euclid SCP-3307 Euclid SCP-3427 Euclid SCP-3503 Keter SCP-3619 Euclid SCP-3727 Euclid SCP-3887 Euclid SCP-4020 Euclid SCP-4051 Keter SCP-4055 Euclid SCP-4056 Euclid SCP-4168 Euclid SCP-4175 (formerly) Decommissioned SCP-4295-B Safe SCP-4415 Euclid SCP-4518 Euclid SCP-4579 Euclid SCP-4606 Thaumiel SCP-4624 Euclid SCP-4628 Euclid SCP-4726 Euclid SCP-4770 Euclid SCP-4818 Euclid SCP-4820 (formerly) Euclid SCP-4855 Euclid SCP-4864 Safe SCP-4960 Euclid SCP-5025-1 Humanoid/Artifact SCP-5047 Keter SCP-5083-1 Keter SCP-5207 Euclid SCP-5282 Euclid SCP-5286 Euclid SCP-5305 Euclid SCP-5467 Euclid SCP-5529-A Keter SCP-5535 Euclid SCP-5700 Keter SCP-5715-1 Keter SCP-5752 Keter SCP-5864 Pending SCP-5912 Safe Father Utmost Importance SCP-6113-3 (formerly) Eparch SCP-6126 Euclid SCP-6206 (formerly) Thaumiel SCP-6214 Neutralized SCP-6303 Euclid Neutralized SCP-6514 Euclid SCP-6546 Euclid SCP-6703 Euclid Neutralized SCP-6879 Keter Euclid SCP-6899 Euclid SCP-7031 Euclid SCP-7065 Euclid SCP-7108 Euclid SCP-7191 Euclid Thaumiel SCP-7356 Safe SCP-7376-C Euclid SCP-7454 Euclid SCP-7585 Neutralized SCP-7652 Euclid SCP-8133 Keter SCP-8266 Euclid SCP-8410 Safe SCP-8549-1 Keter SCP-8560 Keter SCP-8745 Safe SCP-8915 Neutralized SCP-8980 Euclid SCP-9196-A Safe SCP-9239-A Euclid SCP-9303 Euclid SCP-9996 Euclid Non-Humanoid Objects ID Number Object Class SCP-289 Safe SCP-408 Safe SCP-458 Safe SCP-640 Euclid SCP-705 Safe SCP-745 Euclid SCP-978 Safe SCP-1023 Safe SCP-1038 Safe SCP-1539 Safe SCP-1696 Safe SCP-1757 Safe SCP-1780 Safe SCP-1789 Euclid SCP-1828 Safe SCP-1880 Safe SCP-1978 Safe SCP-2158 Safe SCP-2239 Euclid SCP-2246 Euclid SCP-2315 Euclid SCP-2318 Safe SCP-2343 Keter SCP-2356 Safe SCP-2402 Euclid SCP-2433-1 Euclid SCP-2471 Safe SCP-2476 Euclid SCP-2482 Safe SCP-2492 (formerly) Safe Neutralized SCP-2608 Safe SCP-2837-1 Safe SCP-3111 Euclid SCP-3223 Euclid SCP-3262 Safe SCP-3505 Safe SCP-3636 Euclid SCP-3717 Safe SCP-3962 Safe SCP-3992 Safe SCP-4462 Safe SCP-4563 Thaumiel SCP-4569 Safe SCP-4583 Euclid SCP-4642 Euclid SCP-4864 Safe SCP-4870 Euclid SCP-4886 Euclid Keter SCP-4966 Safe SCP-5059 Safe SCP-5083 Keter SCP-5087 Keter SCP-5160 Keter SCP-5183 Safe SCP-5337 Keter SCP-5529 Keter SCP-5582 (formerly) Keter SCP-5591 Safe SCP-5603 Safe Pending SCP-5872 Safe SCP-5905 Safe SCP-6037 Safe SCP-6110 Neutralized SCP-6111 Safe SCP-6400 Safe SCP-7196 Maksur SCP-7228 Euclid SCP-7320-2C Safe SCP-7408 Radix SCP-7586 Keter-provisi SCP-7845 Eparch SCP-7859 Safe Uncontained Keter Messorem SCP-7972 Safe SCP-8053 Safe SCP-8112 Safe Keter SCP-8152 Safe SCP-8171 Safe Neutralized SCP-8295 Safe SCP-8333-1 Safe SCP-8344 Safe SCP-8413 Safe SCP-8786 Euclid SCP-9196-B Safe"
+  },
+  {
+    "title": "Site-18",
+    "description": "Location: [DATA REDACTED]\nSite-18 is a relatively small facility, primarily used for the storage and testing of anomalous objects. The Site also has a biological sector used for the containment of anomalous animals.\nSite-18 is not the Headquarters of the Department of Disinformation."
+  },
+  {
+    "title": "Site-19",
+    "description": "Location: [DATA REDACTED]\nSite-19 is the largest and one of the most important Foundation facilities currently in operation, housing hundreds of Safe- and Euclid-class anomalies, some located within additional Facilities separate from the main Site. Site-19 also has dedicated laboratories for the processing and storage of Anomalous Items not warranting their own Special Containment Procedures. Site security is prioritized, since the danger of containment breaches is heightened by the large number of anomalous objects contained in one location. Despite these dangers, Site-19 staff are notorious for their casual approach to low-risk anomalies .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-010 Safe SCP-049 Euclid SCP-055 Keter SCP-063 Safe SCP-083-D Decommissioned SCP-092-B Safe SCP-101 Euclid SCP-105-B Safe SCP-107 Safe SCP-109 Euclid SCP-111 Safe SCP-112-ARC (formerly) Keter SCP-116 Euclid SCP-122 Keter SCP-131 Safe SCP-132-ARC Safe SCP-133 Safe SCP-135-D Euclid Decommissioned SCP-137 Euclid SCP-166 Euclid SCP-173 Euclid SCP-174 Safe Euclid SCP-199 Euclid SCP-223 Euclid SCP-232-ARC Euclid SCP-241 Safe SCP-251 Euclid SCP-263 Safe SCP-266 Euclid SCP-269 Safe SCP-276-ARC Safe SCP-286 Safe Euclid SCP-290 Safe SCP-295 Euclid SCP-297 Safe SCP-312 Euclid SCP-313 Safe SCP-348 Safe SCP-355 Euclid SCP-357 Safe Euclid SCP-361 Safe SCP-384 Safe SCP-387 Safe SCP-407 (formerly) Neutralized SCP-409 Keter SCP-412 Safe SCP-451 Euclid SCP-457 Euclid/Potential Keter SCP-460 Euclid SCP-465 Safe SCP-493 Safe SCP-518 Neutralized SCP-523 Euclid SCP-527 Euclid SCP-572 Euclid SCP-576 Safe SCP-585 Safe SCP-588 Safe SCP-625 Euclid-flecto SCP-626 Safe SCP-657 Safe SCP-663 Euclid SCP-668 Euclid SCP-669 Safe SCP-682 Keter SCP-683 Euclid SCP-708 Euclid SCP-721 Safe SCP-736 Hazardous C/3 SCP-742 Keter SCP-744-ARC Keter/Neutralized SCP-786 Safe SCP-807 Euclid SCP-809 Safe SCP-812 Euclid SCP-819 Safe SCP-832 Safe SCP-833 Euclid SCP-842 Euclid SCP-877 Euclid Keter SCP-894 Safe SCP-903 Euclid SCP-914 Safe SCP-931 Safe SCP-935 Euclid SCP-971 Safe SCP-987-ARC Euclid SCP-991 Safe SCP-997 Safe SCP-999 Safe SCP-1021-1 Safe SCP-1023-ARC Safe SCP-1035 Safe SCP-1037 Euclid (Formerly Safe) SCP-1079 Safe SCP-1123 Safe SCP-1137 Euclid SCP-1158 Euclid SCP-1187 Safe SCP-1198 Safe SCP-1208 Safe SCP-1229 Safe SCP-1258 Euclid SCP-1288 Safe SCP-1297 Keter SCP-1307 Safe SCP-1321 Safe Neutralized SCP-1326 Euclid SCP-1327 Safe SCP-1360 Euclid SCP-1376 Safe SCP-1379 Safe SCP-1394 Safe SCP-1398 Safe SCP-1401-EX Pending Explained SCP-1510 Safe SCP-1519 Safe SCP-1536 Euclid SCP-1650 Safe SCP-1687 Safe SCP-1711 Euclid SCP-1721 Safe SCP-1722 Safe SCP-1770 Euclid SCP-1772 Safe SCP-1804 Safe SCP-1806 Safe SCP-1814 Euclid SCP-1839 Safe SCP-1841-EX Euclid Neutralized Euclid Keter Explained SCP-1848 Euclid Safe SCP-1906 Euclid SCP-1930 Safe SCP-1934 Safe SCP-1991 Safe SCP-1997 Safe SCP-2036 Euclid SCP-2048-1 Euclid SCP-2107 Euclid SCP-2145 Euclid SCP-2216 Euclid SCP-2256 Euclid SCP-2283 Euclid SCP-2291 Euclid SCP-2294 Safe SCP-2332 Euclid SCP-2338 Euclid SCP-2343 Keter SCP-2364 Safe SCP-2373 Euclid SCP-2379 (samples) Keter SCP-2396 Keter Euclid SCP-2435 Euclid SCP-2463 Safe SCP-2522 Euclid SCP-2533 Euclid SCP-2580 Euclid Safe SCP-2598 Safe SCP-2608 Safe SCP-2620 Euclid SCP-2626 Safe SCP-2637 Safe SCP-2801 Keter SCP-2826 Safe SCP-2848 Neutralized SCP-2860 Euclid (Formerly Safe) SCP-2885 Safe SCP-2900 Euclid SCP-2904 Safe SCP-2918 Safe SCP-2944 Safe SCP-2981 Safe SCP-2993 Safe SCP-3009-B Safe SCP-3022 Thaumiel SCP-3027 Euclid SCP-3037 Safe SCP-3105 Neutralized SCP-3107 Euclid SCP-3126 Euclid SCP-3148-1 Keter SCP-3152 Safe SCP-3162 Safe SCP-3163 Safe SCP-3188 Keter SCP-3238 Safe SCP-3246 Thaumiel SCP-3301 Safe SCP-3304 Euclid SCP-3334 Thaumiel SCP-3346 Safe SCP-3364 Safe SCP-3412 Safe SCP-3424 Safe SCP-3449 Safe Euclid Keter SCP-3481 Safe SCP-3533 Safe SCP-3547-A Euclid Urgent Reclassification Required SCP-3567 Safe SCP-3569 Safe SCP-3631 Euclid SCP-3650 Safe SCP-3653 Safe SCP-3665 Safe SCP-3671 Safe SCP-3693 Euclid SCP-3758-A Keter SCP-3860 Euclid SCP-3932 Keter 3991-Sample-1 Safe SCP-4057 Euclid SCP-4150 Keter SCP-4163 Keter SCP-4164 Safe SCP-4171 Euclid SCP-4206 Euclid (Partially Neutralized) SCP-4228 Keter SCP-4256 Thaumiel SCP-4308 Safe SCP-4317 Severe SCP-4384 Euclid SCP-4483 Euclid SCP-4490 Neutralized SCP-4497 Keter SCP-4513 Safe SCP-4586 Euclid Thaumiel SCP-4624 Euclid SCP-4682 Safe SCP-4714 Safe SCP-4771 Safe SCP-4816 Pending Safe Neutralized (Provisional) SCP-4955 Safe Mendax Decommissioned SCP-5003 Safe SCP-5004 Keter SCP-5055 Pending SCP-5127 Safe Euclid SCP-5148 Malchut SCP-5236 Safe SCP-5289 Safe SCP-5371 Safe SCP-5376 Keter SCP-5399 Safe Euclid/Pending SCP-5436 Safe SCP-5518 Thaumiel SCP-5582 (formerly) Keter SCP-5696 Safe Neutralized SCP-5726 Keter SCP-5760 Safe SCP-5776 Keter SCP-5816 Safe SCP-5888 Euclid SCP-5913 Euclid SCP-5944 Safe Euclid SCP-5981-2 Euclid SCP-6092 Euclid SCP-6095 Safe SCP-6096 Keter SCP-6118 Euclid SCP-6121 (temporarily) Decommissioned SCP-6182 Neutralized SCP-6186 Euclid SCP-6317 Euclid SCP-6322 Safe SCP-6333-2C and -2C-α Euclid SCP-6386 Keter SCP-6455-N Keter SCP-6604-3 Safe SCP-6647 Safe SCP-6714 (formerly) Euclid SCP-6725 Euclid SCP-6740 Safe SCP-6742 Anomalous Pending SCP-6761 Euclid SCP-6774 Safe SCP-6785-1 Euclid SCP-6817 Euclid SCP-6900-D Decommissioned SCP-6913 (formerly) Keter SCP-6928 Euclid SCP-6929 Safe SCP-6974 Safe SCP-6985 Euclid SCP-7043 Safe SCP-7066 Safe SCP-7103 Euclid SCP-7144-1 Safe Keter Neutralized SCP-7145 Safe SCP-7225 Safe SCP-7275 Euclid SCP-7277 Pending SCP-7334 Safe SCP-7360 Safe SCP-7370 Keter SCP-7424 Thaumiel SCP-7544 Safe SCP-7583 Euclid SCP-7614 Safe SCP-7649 Thaumiel SCP-7660 [DATA EXPUNGED] SCP-7670 Euclid SCP-7760 Safe Thaumiel SCP-7851 Thaumiel SCP-8003 Safe SCP-8063 Euclid Thaumiel SCP-8166 Safe SCP-8187 Safe SCP-8208 Safe SCP-8246 Thaumiel SCP-8290 Euclid SCP-8305 Safe SCP-8345 Euclid SCP-8365 Safe SCP-8417 Keter SCP-8505 Vault SCP-8515 Euclid SCP-8522 Keter SCP-8537 Neutralized SCP-8717 Safe SCP-8797 Neutralised SCP-8799 Safe Keter SCP-8804 Safe SCP-8828 Pending SCP-8855 Safe SCP-8895 Safe SCP-8900 SCP-8933 Keter SCP-8973 Safe SCP-9010 Safe SCP-9088 Safe SCP-9420 Euclid SCP-9592 Safe SCP-9800 Euclid SCP-9889 Neutralized Specific Collated Placement #9945 Safe Euclid SCP-9991 Euclid"
+  },
+  {
+    "title": "Storage Site-23",
+    "description": "Location: [DATA REDACTED]\nSite-23 is used to store inanimate objects, particularly those with anomalous metamorphic or transfiguring effects on biological entities. The Site also possesses facilities for anomalous animal research, and for the cryogenic containment of deceased or inactive anomalous entities. The Site is publicly known to be a biological research facility, although the exact nature of its work is carefully concealed.\n▷ Contained Objects ◁ Objects contained at this facility: Inanimate Objects ID Number Object Class SCP-038 Safe SCP-113 Safe SCP-205 Euclid SCP-228 Safe SCP-324 Safe SCP-385 Safe SCP-525 Euclid SCP-528 Euclid SCP-551 Safe SCP-674 Safe SCP-785-2 Keter SCP-1066 Safe SCP-1273 Safe Euclid SCP-1374 Keter SCP-1404 Safe SCP-1445 Safe SCP-1473 Safe SCP-1534 (partially contained) Keter SCP-1564 Euclid-numen SCP-1575 Safe SCP-1597 Euclid SCP-1667 Euclid SCP-1704 Euclid-numen SCP-1705 Safe SCP-1731 Safe SCP-1807 Euclid SCP-1902 Euclid-numen SCP-1970 Safe SCP-2137 Euclid Keter Thaumiel SCP-2488 Neutralized Safe SCP-3634 Safe SCP-3866 Safe SCP-4110-1 Euclid SCP-4193 Safe SCP-4509 Safe SCP-4566 Euclid SCP-4828 Euclid SCP-5275 Thaumiel Keter SCP-5567 Safe SCP-5604 Safe SCP-5701 Safe SCP-6482 Neutralized SCP-6976 Safe SCP-7376-B (samples) Euclid/Thaumiel SCP-7437 Safe SCP-7469 (formerly) Safe Uncontained SCP-7803 Euclid SCP-7943 Safe SCP-9076 Thaumiel Within Cryogenic Containment ID Number Object Class SCP-356 Neutralized SCP-1517 Euclid SCP-1610 Euclid SCP-1657 Euclid SCP-3578 Safe Neutralized SCP-7448 Efla Animals ID Number Object Class SCP-410 Safe SCP-2619 Euclid SCP-3718 Keter SCP-5582 (formerly) Keter SCP-5993 (formerly) Euclid Thaumiel Humanoids (Relocated from Site-55 due to SCP-3085 ) ID Number Object Class SCP-1487 Euclid SCP-2054 Keter SCP-2098-Red vectors Keter SCP-9271 PLEASE DON'T"
+  },
+  {
+    "title": "Containment Site-28",
+    "description": "Location: SoHo neighborhood, New York City, New York, USA\nSite-28 was initially established to contain SCP-602 within a former apartment building. Since then, it has been expanded into a containment facility with temporary and permanent housing for Foundation personnel, while maintaining the appearance of an ordinary apartment building with commercial space at street level. The facility specialises in anomalous artwork, containing many Safe-class artefacts on-site. Personnel from Site-28 also monitor the Backdoor Soho extradimensional Freeport, and have assisted in the containment of other anomalies in New York, including SCP-2409 and SCP-4198 .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-602 Safe SCP-720 Euclid SCP-1388 Safe SCP-2581 Euclid SCP-2816 Safe SCP-2890 Safe Euclid SCP-3337 Safe SCP-3369 Euclid SCP-3407 Safe SCP-4152 Safe SCP-4603 Safe SCP-4986 Neutralized SCP-5042 Keter SCP-5069 Safe SCP-7669 Euclid SCP-8278 Safe Keter SCP-9000-ARC Safe"
+  },
+  {
+    "title": "Site-34",
+    "description": "Location: [DATA REDACTED]\nSite-34 is the largest facility operated by the Spanish-speaking Branch of the Foundation. Serving as a regional hub for research and containment, the Site handles a wide variety of different anomalies, and also possesses administrative, manufacturing and medical facilities.\n▷ Contained Objects ◁ Objects contained at this facility: Mainlist SCP Objects ID Number Object Class SCP-1542 Explained SCP-4235 Safe SCP-5030 Euclid SCP-7162 Thaumiel Spanish (ES) Series SCP Objects ID Number Object Class SCP-ES-006 Safe SCP-ES-019 Safe SCP-ES-020 Safe Euclid SCP-ES-030 Safe SCP-ES-028 Safe SCP-ES-038 Euclid SCP-ES-044 Keter SCP-ES-054 Safe SCP-ES-059 Safe SCP-ES-071 Safe Euclid SCP-ES-100 Safe SCP-ES-107 Safe SCP-ES-111 Euclid Neutralized SCP-ES-112 Safe SCP-ES-132 Keter Thaumiel SCP-ES-197 Keter SCP-ES-214 Euclid SCP-ES-217 Pending Uncontained SCP-ES-227 Safe SCP-ES-234 Euclid SCP-ES-243 Safe SCP-ES-268 Safe SCP-ES-297 Keter SCP-ES-397 Safe"
+  },
+  {
+    "title": "Site-36",
+    "description": "Location: Banaskantha District, Gujarat, Republic of India\nConstructed around SCP-1135 and disguised as a military base, this facility specialises in theological anomalies. The Site also functions as a regional command facility for personnel operating in the area, coordinating Foundation operations across India and supervising facilities such as Adjunct Site-2498 .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-089 Euclid SCP-475 Safe SCP-550 Euclid SCP-831 Euclid SCP-1135 Euclid SCP-3507 (former weapon and armor) Thaumiel Neutralized SCP-3615 Keter SCP-3854 Safe SCP-4263 Euclid SCP-4475 Keter SCP-4824 Euclid SCP-4942 Euclid SCP-6125 Keter SCP-6333-2AF Euclid SCP-8660 Thaumiel"
+  },
+  {
+    "title": "Site-37",
+    "description": "Location: Northern Ontario, Canada\nSecure Facility 37 is a safe containment facility which acts as the headquarters for the Human Resources Department. Site-37 is underfunded and composed mostly of HR-cases, yet still leads the front in a current war against anomalous appliances.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-7119 Safe SCP-7639 Keter SCP-7939 Euclid"
+  },
+  {
+    "title": "Site-38",
+    "description": "Location: Rural Tennessee, USA\nSite-38 is an inanimate object containment site, primarily focused on the study of Group of Interest Alpha-388 , the \"Alexylva University\" . The Site's inland location has proven advantageous for the Foundation's Astronomy Department , and the Site has been disguised as a civilian observatory.\n▷ Contained Objects ◁ Objects contained at this facility: Related to the \"Alexylva University\" ID Number Object Class SCP-961 Euclid SCP-1080 Safe SCP-1081 Safe SCP-1083 Safe SCP-1546 Safe SCP-1998 Safe Other Objects ID Number Object Class SCP-373 Safe SCP-1082 Euclid SCP-1085 Euclid SCP-1086 Euclid SCP-1087 Safe SCP-1259 Safe SCP-1783 Safe SCP-1893 Euclid SCP-1963 Euclid SCP-2336-A8 Euclid Keter SCP-3531 Safe SCP-3046 Safe SCP-4720 Safe (formerly Euclid) SCP-7837 Keter"
+  },
+  {
+    "title": "Site-41",
+    "description": "Location: Central Colorado, USA\nSite-41 serves as the headquarters of the Antimemetics Division, which investigates objects and concepts that are anomalously difficult to remember or communicate. Site-41 is used for training, research, and the containment of SCP objects that require experts in antimemes. A side-effect of its research is that Site-41 is often overlooked or forgotten, and so the \"Site-41\" designation has been mistakenly reused to refer to unfinished , abandoned or completely different facilities.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-3002 Keter SCP-3125 Keter SCP-5401 Keter SCP-6579-D Decommissioned SCP-7427 Keter SCP-7658 Keter SCP-7992 Euclid SCP-8316 Safe SCP-9555 Thaumiel"
+  },
+  {
+    "title": "Site-42",
+    "description": "Location: Seabreeze, North Carolina, USA\nA facility used to contain sapient SCP objects. Following the public reveal of the Foundation, Site-42 could be significantly expanded, growing to the size of a small town now that secrecy was no longer necessary. However, this change came with increased scrutiny from the civilian population, requiring investment in public relations.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-2648 Safe (pending Euclid) SCP-2758 Safe SCP-3069 Keter SCP-4427-A and -B Keter SCP-4433 Euclid SCP-4434 Euclid"
+  },
+  {
+    "title": "Research and Containment Site-43",
+    "description": "Location: Ipperwash Provincial Park, Ontario, Canada\nSite-43 is situated one kilometre below sea level on the southeastern shore of Lake Huron , a Nexus of anomalous activity. The Site takes an unconventional approach to the containment of its low- to medium-risk anomalies, and also possesses research divisions arranged in a pseudoacademic structure and abatement refineries for esoteric substances.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Research and Containment Site-44",
+    "description": "Location: Essex, England, UK\nSite-44 is a large facility situated beneath Foulness Island. Used primarily for research, containment, and task force training, but also handling administrative work, being the lead site for the Foundation’s operations within and around Britain. The area is publicly known as Ministry of Defence land, allowing Foundation activities to proceed without much concern for public discovery. The Site is best known for its contributions to the cryptobiological sciences, hosting the headquarters of the Cryptozoology Division.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Research Site-45",
+    "description": "Location: Off-Shore, Western Australia\nOSWA Research Site-45 is an armed facility built beneath the Indian Ocean off the coast of Australia, with surface-level facilities disguised as an oil rig. The Site is used to conduct the research and containment of anomalous objects under armed guard and well away from a civilian populace. Site-45 also serves as a staging point for MTF operations within the Pacific and Indian Oceans.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-45",
+    "description": "Location: Las Vegas, Nevada, USA\nThe American Site-45 was established as a provisional measure to contain an abnormally high number of anomalous events in the Las Vegas district. The Site specialises in anomalies relating to religion and mythology, and consults on offsite anomalies such as SCP-2988 and SCP-3998 . The Site itself consists of three connected structures - an office building within city limits (Site-45-A), a newer facility disguised as a private mental care institution (Site-45-B) and a subterranean research facility (Site-45-C).\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-1619 Euclid SCP-1903 Euclid SCP-1913 Euclid SCP-2746 Euclid SCP-2792 Euclid SCP-2999 Euclid SCP-6167 Apollyon SCP-7572 Safe SCP-7925 Keter"
+  },
+  {
+    "title": "Site-50",
+    "description": "Location: Chiyoda City, Tokyo, Japan\nLocated beneath the National Diet building complex, Site-50 (also referred to as Site-8150) was the former Headquarters of the Imperial Japanese Anomalous Matters Examination Agency , before being taken over by the Foundation in 1946 to serve as the center for the review of records previously collected by Japanese normalcy organisations. This role was expanded over time, and the Site now holds data on anomalies from across Japan, with more than 50 Departments present at the Site. Containment is relatively limited, mostly holding Safe or immobile anomalies, although the Site is also responsible for monitoring a number of anomalies in the Tokyo Prefecture.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-6410 Keter SCP-6979 Keter SCP-7892 Euclid"
+  },
+  {
+    "title": "Site-54",
+    "description": "Location: Leipzig, Saxony, Germany\nSite-54 is a containment facility located in, around, and underneath the city of Leipzig. Specialising in the containment of those anomalies deemed \"partially uncontainable\", the Site's staff are heavily armed, highly trained, and permanently on edge. Featuring an extensive rapid-response vehicle hangar (with transport both normal and anomalous ) and a wide array of holding cells, Site-54 is generally considered to be the Foundation site both best-prepared for the worst to happen, and the location at which said worst is most likely to occur.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-265 Euclid SCP-724 Safe SCP-907 Safe SCP-1052 (formerly) Safe SCP-1911 Euclid SCP-2302 Euclid SCP-2668 Euclid Safe SCP-2790 BFF SCP-2856 Safe SCP-3617 Safe SCP-3663 Euclid Keter SCP-3862 Euclid SCP-4417 Safe SCP-4786 Keter SCP-4856 Keter SCP-5151 Keter SCP-5667 Keter SCP-6070 Apollyon SCP-6528 Keter SCP-7223 Euclid SCP-8185 Euclid"
+  },
+  {
+    "title": "Site-55",
+    "description": "Location: Boston, Massachusetts, USA\nSite-55 is the centre of the Foundation's research into Groups of Interest , lead by Dr. Jay Everwood. The Site's proximity to the extradimensional Wonder World!™ Location of Interest means that the Site is involved in the containment of a large number of Dr Wondertainment products, in addition to various objects with known or suspected ties to other organisations. The exterior of the Site is disguised as a food cannery, and it operates as one during daytime hours.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-56",
+    "description": "Location: Black Rock Desert, Nevada, USA\nEstablished in May 1972, Site-56 was intended to serve as the base of operations for the enactment of the Kraken Protocol within the American Southwest. Over time, Site-56 took on increasing responsibilities, eventually transitioning into one of the largest containment and administration sites in the US, responsible for select offsite anomalies such as SCP-5994 and SCP-5952 . However, recent Overwatch audits suggest its expansion has surpassed its budgetary and logistical limitations, and personnel frequently cite its \"labyrinthine\" structure as a detriment to day-to-day operations.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-001 Keter SCP-378 Thaumiel SCP-1285 Safe SCP-1339 Safe SCP-1769 Keter SCP-2007-12 Keter SCP-2670 Euclid SCP-3944 Safe SCP-4219 Thaumiel SCP-4495 Keter SCP-4618 Euclid SCP-4747 Euclid SCP-4969 Keter SCP-5444 Euclid SCP-6654 Euclid SCP-6856 Euclid SCP-6857 Safe SCP-7404 Neutralized SCP-8376 Safe SCP-8947 Euclid SCP-9002 Epochal"
+  },
+  {
+    "title": "Containment and Anomalous Relations Site-58",
+    "description": "Location: Nanticoke, Pennsylvania, USA\nSite-58 is the Foundation's premier site for sapient humanoid and zoological anomalies. Its approach to containment is viewed as nontraditional, aiming for humane containment via direct communication and negotiation with contained anomalies. As a result anomalies are granted a level of freedom on site, allowed privileges within reason.\nSite-58 is also one of the Foundation's only publicly accessible sites, having the cover story of a public therapy practice. As a result, the citizens of Nanticoke are given mild exposure to low-risk anomalies, with the Foundation believing that one day these anomalies will be permitted to live free."
+  },
+  {
+    "title": "Dimensional Site-62",
+    "description": "Location: [DATA REDACTED]\nFormerly Provisional Site-62, this facility was built around and within SCP-004 . The facility was eventually expanded to house other objects requiring high-security Dimensional Containment, back up critical Foundation data, and provide an external reference point for detecting and reporting reality shifts.\n▷ Contained Objects ◁ Objects contained at this facility: Objects in Dimensional Containment ID Number Object Class SCP-579 Keter SCP-2414 Euclid SCP-2608 Safe"
+  },
+  {
+    "title": "Storage Site-64",
+    "description": "Location: Forest Park, northwest Portland, Oregon, USA\nLocated approximately 0.5 km underground, Site-64 is a low to medium-security storage facility. It primarily houses anomalous art and paratechnology confiscated from various groups operating in Oregon, with a particular focus on the Three Portlands Free Port and the Boring Nexus . This has resulted in many collaborations with the Unusual Incidents Unit of the FBI and with the Boring-based Wilson's Wildlife Solutions .\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-65",
+    "description": "Location: Saskatchewan, Canada\nSite-65 is located in the prairie fields north of Saskatoon, a scenic location chosen for its isolation and vast flat area. The Site operates as a cement factory, and forms the SCP Foundation Saskatchewan Operational Region along with Site-177 and Site-AE7 .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-5027 Euclid SCP-5068 Safe SCP-5118 Euclid SCP-5839 Thaumiel Neutralized SCP-6399 Thaumiel SCP-6956 Euclid"
+  },
+  {
+    "title": "Biological Containment Site-66",
+    "description": "Location: [DATA REDACTED]\nOriginally built as Provisional Site-66 around SCP-1479 , Bio-Site-66 has been built in and around a former coal-fired power plant, expanding the facility to contain and research a wide variety of biological and organic anomalies.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-013 Safe SCP-060 Keter SCP-366 Euclid SCP-478 Euclid SCP-517 Safe SCP-569 Euclid SCP-646 Euclid SCP-746 Euclid SCP-799 Euclid SCP-806 Safe SCP-886 Safe SCP-1429 Euclid SCP-1479 Euclid SCP-1512-EX Safe Explained SCP-1579 Safe SCP-1779 Euclid SCP-1912 Euclid SCP-1929 Euclid SCP-2075 (formerly) Euclid Keter SCP-2113 Safe SCP-2196 Safe SCP-2245 Euclid SCP-2289 Euclid SCP-2292 Euclid SCP-2389 Keter SCP-2404-2 Euclid SCP-2517 Euclid SCP-2607 (samples) Euclid SCP-2840 Euclid SCP-2912 Safe Neutralized SCP-3101-A Keter SCP-3121 Safe SCP-3102 Euclid SCP-3156 Safe SCP-3215 Euclid SCP-3421 Euclid SCP-3441 Safe SCP-3484 Safe SCP-3571 Euclid SCP-3818 Euclid SCP-3877-2 Euclid SCP-3904 Safe SCP-3966 Keter SCP-4167 Keter SCP-4225 Euclid SCP-4292 Safe SCP-4409 Safe SCP-4653 Safe SCP-5517 Euclid SCP-5522 Keter SCP-5582 (formerly) Keter SCP-5625 Keter SCP-5679 Euclid SCP-5706 (samples) Euclid SCP-6118 (formerly) Euclid SCP-6314 (formerly) Uncontained SCP-6374-B (formerly) Euclid Keter SCP-8393 Safe"
+  },
+  {
+    "title": "Site-69",
+    "description": "Location: Western Australia\nEstablished in the 1930s by O5-7, the purpose of Site-69 is a closely-guarded secret.\nDEEPWELL is solely responsible for the Site's upkeep. It receives a continuous broadcast, which is not to be viewed by any living person or AIC, but any interruption to it is grounds for immediate intervention. Transfers to Site-69 are autonomously requisitioned by DEEPWELL and orchestrated by Site-300-12. Personnel losses are considered acceptable and the Site is not to be disturbed."
+  },
+  {
+    "title": "Site-73",
+    "description": "Location: Texas, USA\nSite-73 is a facility within a converted office building, designed for the containment and study of inert, Safe-class, or otherwise benign anomalous objects, including the analysis and storage of deceased specimens. The Site also manages satellite facilities such as Storage Location 73-E .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-232 Safe SCP-252-EX (formerly) Safe Explained SCP-667-2 (remains) Keter SCP-696 (formerly) Neutralized (formerly Safe) SCP-865 Safe SCP-1156 Safe SCP-1176 Euclid SCP-1365 Safe SCP-1390 Euclid SCP-1454 Safe SCP-1520 Safe SCP-1756 Safe SCP-1852 Safe SCP-2138 Safe SCP-2139 Euclid SCP-2228 Safe SCP-2262 Safe SCP-2276/3 Keter SCP-2366 Safe SCP-2388 Safe SCP-2486 Euclid SCP-2658 Safe SCP-2749 Safe SCP-3058 Safe SCP-3148 Safe SCP-3285 Safe SCP-3345 Safe SCP-3450 Safe SCP-3605 Safe SCP-3708 Safe SCP-3796 Safe SCP-3819 Safe SCP-3857 Safe SCP-4095 Safe SCP-4387 Safe SCP-4727 Safe SCP-4745 Safe SCP-4896 Safe SCP-5163 Safe SCP-5447 Euclid (formerly Safe) SCP-5733 Safe SCP-5739 Neutralized SCP-5819 Safe SCP-5836 Safe SCP-6035 Safe Neutralized SCP-6195 Eparch SCP-6215 Euclid SCP-6612 Pending Neutralized SCP-6733 Euclid SCP-6750 Euclid SCP-6843 Safe SCP-7364 Neutralized - Draugr SCP-7387 Safe SCP-7443 Safe SCP-8283 Thaumiel SCP-8682 Safe (Neutralized) SCP-8866 Safe"
+  },
+  {
+    "title": "Reliquary Research and Containment Site-76",
+    "description": "Location: [DATA REDACTED]\nSite-76 is a major containment site located in the United States of America, housing a large number of anomalous objects presumed to be man-made. The Site is one of the oldest American facilities still in operation, located within former US government buildings.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-140 Keter SCP-141 Safe SCP-180 Euclid SCP-235 Safe SCP-256 Euclid SCP-281 Safe SCP-341 Safe SCP-680 Safe SCP-1024 Safe SCP-1068 Safe SCP-1426 Safe SCP-1558 Safe SCP-1634 Safe SCP-1883 Euclid SCP-1939 Safe SCP-1954 Safe SCP-1971 Safe SCP-2061 Safe SCP-2220 Safe SCP-2444 Euclid SCP-2446-1 Keter SCP-2618 Safe SCP-2824 Safe SCP-2867 Keter SCP-3110 Euclid SCP-3189 (in satellite Site-76-F) Euclid SCP-3277 Euclid SCP-3315 Safe SCP-3549 Safe SCP-3784 Safe SCP-4060 Safe SCP-4061 Euclid Neutralized Safe SCP-4099 Safe SCP-4108 (documentation and archeological findings) Safe SCP-4229 Euclid SCP-4412 Safe SCP-4581 Safe SCP-4688 Safe SCP-4836 Safe SCP-5026 Safe SCP-5490 Safe SCP-6434 Safe SCP-6476 Neutralized SCP-6497-1 Keter SCP-6650 Neutralized SCP-6943 Safe SCP-6944 Keter SCP-7109 Safe SCP-7155 Pending SCP-7474 Keter SCP-7720 Euclid SCP-7891 Safe SCP-8109 Esoteric SCP-8612 Euclid SCP-9140 Safe SCP-9640 Keter SCP-9961 Euclid"
+  },
+  {
+    "title": "Storage Site-77",
+    "description": "Location: L'Aquila, Abruzzo, Southern Italy\nOne of the Foundation's largest storage facilities, Site-77 was initially built in 1924 in southern Italy and served as an Italian containment facility until the second World War, when it was damaged by Allied bombing and subsequently destroyed by a containment breach. Site-77 was taken over by the Foundation and rebuilt in 1944.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-78",
+    "description": "Location: Chugwater, Wyoming, USA\nSite-78 is a Research and Development facility located in the rural town of Chugwater, where the anomalous is just a part of everyday life. The Site's R&D efforts are focused on cataloging the town's oddities as well as the containment, monitoring, and investigation into the Set of Nine; a series of anomalous books believed to be capable of creating a CK-Class Reality Restructuring Scenario.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Research Site-79",
+    "description": "Location: Tokushima, Japan\nSite-79 is a facility constructed outside the Yumegēmu Nexus , a location with anomalous properties themed around video games, logic puzzles, and dream logic. In addition to containing Nexus-58, the Site specialises in studying anomalies related to games, dreams, and the Oneiroi Collective .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-6722 Neutralized SCP-8872 Euclid"
+  },
+  {
+    "title": "Site-80",
+    "description": "Location: Tiveden National Park, Örebro County, Sweden\nSite-80 was founded in 1909 by a Swedish anomalous containment organisation that was later incorporated into Foundation, the Secret Committee for Paranormal Findings. Site-80 primarily serves as an archive for religious and mythological texts and anomalous items, with employees advising on the containment of related anomalies throughout Sweden. The Site is located almost entirely underground, with Foundation staff posing as park rangers or visitors to the unsuspecting public, with the Site also serving as a recreational facility for Foundation personnel on leave.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Research and Containment Site-81",
+    "description": "Location: Bloomington, Indiana, USA\nLocated beneath Lake Monroe, Site-81 is the primary hub for anomalous activity in the United States Midwest. Initially founded as an expeditionary site to monitor SCP-2812 , Site-81 has since grown to become one of the largest sites in the region. Located within is the Foundation's Classifications Committee , as well as a massive Mobile Task Force deployment post.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-83",
+    "description": "Location: Lyndhurst, New Jersey, USA\nOriginally established as Provisional Site-83 for the containment of SCP-5967 , Site-83 primarily houses Euclid and Safe class anomalies, and so has a more relaxed staff than other Foundation Sites. There are only a few Keter and Esoteric class anomalies contained within, under the jurisdiction of higher-clearance staff. Departments on Site include Nomenclative Research, Multiversal Cartography, and (at least in theory ) the Theoretical Anomalies Department.\n▷ Contained Objects ◁ Objects contained at this facility: Initially Documented at Site-83 ID Number Object Class SCP-999-EX (formerly) Explained SCP-3723 Euclid Decommissioned SCP-3873 Euclid SCP-5053 Euclid SCP-5498 Safe SCP-5629 Keter SCP-5874 Safe SCP-5876 Safe SCP-5918 Safe SCP-5967 Keter SCP-5978 Neutralized SCP-5980 Euclid SCP-6027 Safe SCP-6032 Neutralized SCP-6163 Safe SCP-6305 Safe SCP-6412 Keter SCP-6526 Safe SCP-6757 Euclid SCP-6800 Thaumiel SCP-7091 Safe SCP-7168 Safe SCP-7310 Safe SCP-7781 Euclid Transferred to Site-83 SCP-699 Euclid SCP-739 Euclid SCP-1129 Euclid SCP-1668 Safe-praedico SCP-1822 Euclid-Kudzu SCP-1832 Euclid SCP-1905 Safe SCP-2633 Euclid SCP-4280 Safe SCP-5262 Safe Neutralized Safe SCP-7829 Euclid SCP-8078 Euclid SCP-8094 Euclid SCP-8104 Safe SCP-8264 (formerly) Conscientia"
+  },
+  {
+    "title": "Bio-Site-84",
+    "description": "Location: Northern Territory, Australia\nBio Site-84 is a remote facility in the Australian Outback near the town of Alice Springs, used for the containment of anomalous animals, both native to Australia and imported in from other facilities. Despite being located in a desert, the facility is capable of simulating and sustaining more temperate habitats within underground containment chambers.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-1563 Safe Euclid SCP-2394 Euclid SCP-3419 Safe Keter SCP-7042 Safe SCP-7284 (formerly) Euclid"
+  },
+  {
+    "title": "Research Site-87",
+    "description": "Location: Douglas County, Wisconsin, USA\nSite-87 is a research site, established in September 1976 to oversee the containment of a minor anomaly in the town of Sloth's Pit (pop. 17,291 as of 2020). In that same month, researchers discovered that Sloth's Pit was a highly active Nexus , an inhabited zone with a high concentration of anomalous phenomena. Site-87's civilian front is S & C Plastics , and it possesses its own Task Force— Sigma-10 , \"The Sloth's Arm\", for containment of anomalies within city limits. Citizens of Sloth's Pit are considered E-Class Personnel, and have knowledge of the Foundation insofar as a research organization is monitoring the town'. The primary goal of Site-87 is to research and catalog anomalies in Sloth's Pit, such as SCP-4040 ; however, it is also the headquarters of the Department of Multi-Universal Affairs , Pataphysics and Nexological Studies, as well as serving as a regional command for the Midwestern USA.\nA catalogue of incidents that have taken place at Site-87 and within the Sloth's Pit Nexus can be found in the \"S&C Plastics\" Archive."
+  },
+  {
+    "title": "Humanoid Containment Site-88",
+    "description": "Location: Central Baldwin County, Alabama, USA\nSite-88 houses many humanoid SCP objects, along with several high-value anomalous items, as well as serving as a base for Foundation operations throughout the Gulf Coast Region of the Southern United States. While research is not a primary focus of the Site, it has the capacity for it and has overseen many projects related to its occupants.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Xenobiological Research and Containment Site-91",
+    "description": "Location: Yorkshire, England, UK\nEstablished as Provisional Site-91 in 1986, shortly after the discovery of SCP-4612 in the substructure below a manor known as Eckhart House. The Site was fully commissioned by Overwatch command the following year and was expanded into a full containment facility, research lab and library focused on the containment and analysis of xenobiological specimens, with a secondary focus on the development of thaumaturgical countermeasures and containment of thaumaturgical artifacts. The Site serves as the primary station for MTF-Beta-777 (“Hecate’s Spear”) .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-3743 Euclid SCP-4612 Uncontained SCP-4712 Euclid SCP-5079 Keter SCP-5512 Keter SCP-5267 Keter SCP-5612 Safe SCP-5626 Euclid SCP-5957 Euclid SCP-6520 Neutralized SCP-6602 Euclid SCP-6664 Safe SCP-6796 Euclid SCP-6830 Cernunnos SCP-7812 Keter SCP-7840 Euclid SCP-8140 Safe"
+  },
+  {
+    "title": "Biological Research and Containment Site-95",
+    "description": "Location: Hobart, Tasmania, Australia\nAfter being confiscated from a wealthy family practising demonic rituals, Site-95 was originally established as a small testing facility. After the arrival of SCP-6220 , the site became a containment and research site for biological entities, and the Entomology, Mycology and Botany departments were formed.\nToday, Site-95 is the headquarters of the Entomology Department as well as a major hub for the Mycology and Botany departments. Site-95 is known for being both relaxed and chaotic, and is often regarded with disdain by the wider Foundation. However, the Site is rapidly growing, and is one of the most densely populated Foundation Facilities."
+  },
+  {
+    "title": "Dimensional Research Site-98",
+    "description": "Location: Philadelphia, Pennsylvania, USA\nSite-98 develops and innovates the bleeding-edge technologies that enable the Foundation to contain, analyze, and research various anomalous threats endangering the world, all behind the front of NASA research. Site-98 is often considered to be the Foundation's most technologically-advanced research facility.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-101",
+    "description": "Location: Louisiana, USA\nSpecialising in the containment and study of plant anomalies, Site-101's conservatory holds the largest collection of anomalous flora in the Northern Hemisphere, and actively researches new pharmaceutical applications for these plants and their products. Concealed within the Louisiana bayou, the estate had been in Site Director Beatrice Rappaccini’s family for generations, until she arranged to transfer ownership to the Foundation in 2004.\nSecure Facility Dossier: Site-101"
+  },
+  {
+    "title": "Biological Containment Site-103",
+    "description": "Location: [DATA REDACTED]\nSite-103 possesses extensive facilities for the containment and research of plant and plant-based anomalies, and also serves as the base of operations for MTF-Theta-4 , \"The Gardeners\". This sprawling complex of glasshouses and laboratories has been disguised as an institute for research into non-anomalous plants.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-392 Safe SCP-757 Safe SCP-822 Euclid SCP-1001 Euclid SCP-1785 Safe SCP-2189 Safe Euclid Keter SCP-2393 Euclid SCP-2941 Euclid SCP-3028 Safe SCP-3342 Safe SCP-3535 Euclid SCP-3552 Safe SCP-3694 Keter SCP-3778 Keter SCP-4277 Safe SCP-4665 Euclid SCP-5387 Euclid SCP-5593 Safe SCP-5798 Safe SCP-6288 Euclid SCP-6664 Safe SCP-6896 Euclid SCP-7391 Euclid"
+  },
+  {
+    "title": "Biological Research Site-104",
+    "description": "Location: [DATA REDACTED]\nFormerly Provisional Site-104 , this facility covers an area of more than 10 km, operating under the guise of a wildlife preserve for endangered species. The Site focuses on the containment and study of biological anomalies too large or too numerous to be contained in conventional facilities, although a number of greenhouses and indoor enclosures have been constructed within its perimeter to hold smaller anomalous organisms.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-628 Euclid SCP-936 Euclid SCP-1104 Keter SCP-1569 Euclid SCP-2532 Keter SCP-2977 Euclid SCP-3076 Euclid SCP-3233 Euclid Keter SCP-3378 Keter SCP-3391 Euclid/Thaumiel SCP-3524 Euclid SCP-4108 Safe SCP-4968 Euclid SCP-5408-A (remaining fragments) Neutralized SCP-6299 Euclid SCP-7817 Keter"
+  },
+  {
+    "title": "Storage and Surveillance Site-106",
+    "description": "Location: Southern Miami, Florida, USA\nSite-106 consists of several facilities. The primary building serves as the logistical base and headquarters of the Department of Procurement & Liquidation, which specializes in acquiring and containing anomalous items through semi-legitimate financial means, including the purchasing of individual objects and corporate entities. The rest of Site-106 is made up of containment warehouses for the items acquired, as well as a storehouse for its Anomalous Item Request program. Anomalies contained at Site-106 range from \"cursed items\" procured at estate sales, to the remnants of an occult corporation, to the assets of a bank intimately tied with the more anomalous aspects of Florida.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-107",
+    "description": "Location: West of Giza, Egypt\nSite-107, founded in early July of 2023, was established as a Foundation base in collaboration with the Arab Republic of Egypt after both entities reported a large uptick of anomalous activity within the region. The site's founding was finally approved despite several years of anomalous activity occurring within the region, with Director Heba Gomaa spearheading efforts to get a location founded on the African continent.\nThe site specializes mainly in underworld and mythological anomalies, which seem to be the most prevalent kinds of anomalies within its region. Its main purpose is to be a hub for containment and research for these anomalies. It also serves as an observation post for the Nile River, a location that has very recently become an area of high anomalous activity."
+  },
+  {
+    "title": "Containment Site-118",
+    "description": "Location: Sonoran Desert, Arizona, USA\nBuilt from a hunted and quartered labyrinth, Site-118 specializes in the containment of ontokinetic, phobologic and nomenclative anomalies, focusing on Keter-Class objects and entities. Although not going as far as other Sites , containment at Site-118 relies on the facility's labyrinthine layout, as well as interactions between multiple anomalies to achieve mutual containment.\nThe Site has been increasingly focused on the Fae, particularly their \" Cycle of Seasons \". Due to the critical nomenclative situation at Site-118, personnel are advised not to discuss the Site until fully briefed."
+  },
+  {
+    "title": "Cyberanomalous Containment and Research Site-119",
+    "description": "Location: Mound City, Kansas, USA\nSite-119 is the Foundation's epicenter for cyberanomalous objects and other digital phenomenon across the world. While intended to operate in tandem with Site-15 and other similar facilities for cyberanomalous containment and IT-related management, Site-119 has been uniquely equipped with significantly more advanced computational capabilities due to its importance in top secret projects and the Foundation's existing network infrastructure. Among such projects includes Project SIMULACRUM , a long-term Foundation initiative intended to virtually simulate and fully migrate the physical world into digital cyberspace.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-643 Safe Keter TATTLETALE Uncontained SCP-3476 Safe SCP-4523 Thaumiel SCP-6200 Irrelevant SCP-7766 Pending SCP-8359 Keter"
+  },
+  {
+    "title": "Research and Reliquary Dimensional Containment Site-120",
+    "description": "Location: Częstochowa, Silesian Voivodeship, Poland\nBuilt atop SCP-5292 , Site-120 specializes in thaumaturgic, ontokinetic, and theological anomalies, utilizing unconventional methods to contain them. One of the few Sites actively encouraging the usage of the anomalous, it acts as the main observation point for the Free Port of Esterberg . During numerous years in operation, Site-120 has been noted to be among the most loyal Sites to the Foundation-wide rehabilitation program , in accordance with Directive Alpha/1911 .\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-169",
+    "description": "Location: Yavapai County, Arizona, USA\nSite-169 is home to the Foundation’s only dedicated facilities for recreational activity. Overseen by the Anomalous Entity Engagement Division, anomalies are given temporary or extended stays at Site-169 as part of corrective procedures or positive reinforcement. Site-169 has successfully hosted a variety of recreational events since its establishment in 1986, including yearly birthday parties, multiple Dungeons & Dragons campaigns, and the infamous Star Wars Viewing Party of 2011.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-184",
+    "description": "Location: Nova Scotia, Canada\nDisguised as a shipyard and naval research facility, Site-184 serves two purposes simultaneously. As the main Research & Containment Site on the east coast of Canada, the Site hosts cutting-edge facilities such as the Applied Metaphysics Research Laboratories, innovative Aquatic Anomalies facilities, and an Anomalous Art & Artefacts wing, in addition to supervising several satellite sites such as Mobile Site-184/A . As the primary command center and shipyard for the Foundation’s naval presence in the North-West Atlantic, the Site oversees ocean-based Search & Rescue, Salvage, Anomaly Containment, Force Projection, and Research operations. The responsibility for balancing these two (at times conflicting) structural frameworks currently falls on Site Director Barrett.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-188",
+    "description": "Location: Australian Capital Territory, Australia\nFounded in 1981, Site-188 is located directly below Parliament House in Canberra. It was established after five weeks of negotiation with the Australian government following the discovery of a spatial anomaly during a survey of Parliament House's proposed location. The negotiations resulted in the New Parliament House Agreement and the simultaneous construction of both buildings.\nSince becoming fully operational in 1988, Site-188 has become the largest Foundation facility in Oceania, exclusively dealing with anomalies from within the region. The site is also the primary base of operations for the Department of Advanced Diplomacy due to the need to ensure the New Parliament House Agreement remains intact and to counteract the increasing influence of the GOC over the Australian government."
+  },
+  {
+    "title": "Site-201",
+    "description": "Location: Toronto, Ontario, Canada\nA facility built to contain anomalous activity in and around Toronto and Lake Ontario. One of the main responsibilities of the site is maintaining the Arete Dimensional Array , a network of pipes and sensors on the lakebed designed to monitor fluctuations in spacetime and seal any dimensional tears that form. Site-201 also has containment facilities for various Safe and Euclid class objects, including prehistoric and aquatic anomalies.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-2417 Safe SCP-2742 Euclid SCP-3464 Neutralized SCP-3730 Safe SCP-4131 Euclid SCP-4137 Safe SCP-4143 Euclid SCP-4631 Euclid SCP-4990 Euclid SCP-5791 Neutralized"
+  },
+  {
+    "title": "Site-222",
+    "description": "Location: Missoula, Montana, USA\nSite-222 is a secure research, containment, and development facility acting as the Foundation's hub for the field of horology, also known as the study of timekeeping. Site-222 serves as the headquarters for the Department of Applied Horology, with anomalous clocks from all across history being stored within the Site.\nSince 1958, the Site has served as the primary location of the Foundation's extensive atomic clock systems, which keep highly-accurate time for the organization's operations worldwide."
+  },
+  {
+    "title": "Biological Research & Containment Site-225",
+    "description": "Location: Ely, Nevada, USA\nSite-225 is a large-scale containment facility predominantly focused on the containment and study of biological anomalies, primarily anomalous animals. One of the newest Foundation facilities in operation, Site-225 takes a more congenial approach to the containment of live anomalies and is home to the largest and most advanced veterinary facilities maintained by the Foundation.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-228",
+    "description": "Location: Hungary\nSite-228 is a major Central European containment facility, one of the first Foundation facilities to be located in Hungary. It was originally designed for humanoid containment, but following modernization, it is now also capable of containing sapient non-humanoid entities.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-4791 Euclid SCP-5083 Keter SCP-5287 Euclid SCP-5564 Euclid SCP-5576 Euclid SCP-5652 Euclid SCP-5826 Safe SCP-6564 Euclid SCP-6782 Pending SCP-6868 Safe SCP-6879 (formerly) Keter Euclid SCP-7211 Euclid SCP-7344 Euclid SCP-7868 Euclid SCP-8732 Neutralized SCP-8919 Euclid SCP-9188 Euclid"
+  },
+  {
+    "title": "Site-234",
+    "description": "Location: Outside Birmingham, Alabama, USA\nSite-234 is the Foundation's center for the containment of Microbiological and Biochemical anomalies, disguised as pharmaceutical research laboratories. One of the Foundation's youngest facilities, constructed in the fall of 1983, and also one of the largest, containing more than 200 anomalies, housing 1000 personnel on site, and employing another 8000 that commute in from the surrounding area. To enable biohazardous anomalies to be safely studied, the facility possesses laboratories built to various Biosafety Levels , including laboratories built to BSL-4 standards, allowing even the most infectious anomalous pathogens to be safely studied. The Site also serves as the base of operations for MTF-Chi-7 , the \"Plague Tamers\".\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-2376 Euclid SCP-2381 Keter SCP-2431 Safe SCP-2546 Keter SCP-3044 Euclid SCP-3056 Euclid SCP-3536 Safe SCP-3839 Euclid SCP-4243-A Euclid SCP-4849 Euclid SCP-6473 Safe SCP-9886 Euclid"
+  },
+  {
+    "title": "Site-246",
+    "description": "Location: Minnesota, USA\nSite-246 is located beneath Lake Superior and was the regional command site for the North American Great Lakes operations area until the establishment of Site-87. The Site was later reactivated to serve as the headquarters for MTF Delta-3 (\"Solomon's Hand\") as part of the Special Asset Task Force Program. After Delta-3 was disbanded following the loss of its primary special asset, Site-246 was downgraded once again and is now mainly used as a training center, submarine drydock, and underwater research facility.\nSecure Facility Dossier: Site-246"
+  },
+  {
+    "title": "Suppression and Archival Site-247",
+    "description": "Location: Aspen Mountain, Wyoming\nSite-247 is located on the top of the Aspen Mountain in Wyoming, its height assisting in the Site's duties to monitor the world's broadcasting mediums for signs of anomalous activity, suppress them, and store them in their archives. Headquarters of the Department of Anomalous Broadcasting and Stationary Task Force Pi-247 \"… Calling All Stations…\".\nLevel B5 of the Site does not exist."
+  },
+  {
+    "title": "Site-300",
+    "description": "Location: Multiple:\nUpper Troposphere (\"The Hub, Site-300-01\") Northern Territory, Australia (\"Site-300-12\") Krasnoyarsk Krai, Russia (\"Site-300-14\")\nSite-300 is the collective designation given to 3 facilities located across Asia and Oceania. While Site-300 mostly specializes in the creation and usage of anomalous weapons, its operations vary, as its unique features are useful for the transport of anomalies."
+  },
+  {
+    "title": "Site-322",
+    "description": "Location: Philadelphia, Pennsylvania, USA\nSite-322 specializes in the containment of sapient anomalies, as well as monitoring select offsite anomalies . Its unique contribution to the Foundation is its Integration Program, inspired by the discoveries of SCP-5031 , which employs anomalies for their various abilities should they be found useful to the Foundation.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-001 Keter SCP-3837 Euclid SCP-5591 Euclid SCP-5592 Euclid SCP-5595 Integrated SCP-5596 Keter SCP-5694 Keter SCP-6483 Integrated SCP-6592 Safe SCP-6593 Safe SCP-6594 N/A SCP-6595 Neutralized SCP-6597 Euclid SCP-6598 Safe SCP-6833 Safe SCP-6850 Euclid SCP-6984 Integrated SCP-7522 Ticonderoga SCP-7590 Thaumiel SCP-7595 Safe SCP-7596 Pending SCP-7597 (formerly) Euclid SCP-7599 Keter SCP-8000 Safe SCP-8350 Integrated SCP-8593 Euclid SCP-8595 Safe SCP-8596 Neutralized SCP-9595 Keter SCP-9597 Keter"
+  },
+  {
+    "title": "Site-333",
+    "description": "Location: Atlantic City, New Jersey, USA\nDespite numerous proposals for its dissolution, Site-333 remains a general-purpose, low-cost containment facility for low-risk, low-threat anomalies and pseudo-anomalous phenomena within Nexus-36: Atlantic City.\nSite-333 also holds a museum dedicated to the Jersey Devil and includes an additional tourist attraction in the form of a lighthouse offering a panoramic view of the Nexus. Tourist revenue from these attractions contributes the majority of Site-333's annual funding."
+  },
+  {
+    "title": "Site-387",
+    "description": "Location: Site-19's Basement\nThe Foundation's smallest site, Site-387 is a 1:42 scale replica of Site-19, primarily built out of SCP-387 . It contains Lego replicas of anomalies contained by the Foundation, imitating the anomalous properties of the original, but only capable of affecting other structures composed of Lego. Within this plastic replica of Site-19, Site-387's staff of Lego minifigures are able to conduct safe and ethically approved tests using Lego simulations of real anomalies.\nSecure Facility Dossier: Site-387"
+  },
+  {
+    "title": "Containment and Resource Site-400",
+    "description": "\nLocation: Newcastle, Northern Ireland, UK\nEstablished in 1918, Site-400 is a large-scale containment and resource production facility, located somewhere within the forested regions of Newcastle. Disguised as a private forestry research institute, Site-400 specializes in multiple fields of anomalous science, primarily paraastronomy, metafiction, and humanoid experimentation. Ironically, a large number of personnel stationed at Site-400 exhibits anomalous properties themselves, and possess their own SCP classification."
+  },
+  {
+    "title": "Site-418",
+    "description": "Location: Minecraft, multiple servers.\nSite-418, the Foundation's first (and currently only) virtual containment facility, is built within the popular video game Minecraft. It is responsible for containing anomalies that are difficult to contain in the real world, such as informational para-organisms, as well as monitoring organizations and anomalies of concern that exist within Minecraft and the surrounding community. Most containment, experimentation, and maintenance work at Site-418 is done by the Minecraft Division, a division of the Foundation that specializes in containment and research relating to Minecraft.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Site-433",
+    "description": "Location: California, USA\nInitially founded for the investigation of the children's television company Sputnik Studios (GoI-411), Site-433 is a center for the research and containment of anomalous artwork. It has become the foremost facility for studying and containing Alucinari-Class Entities: poorly-understood beings believed to originate from the collective of human imagination, referred to in sub-Veil communities as \"Toons.\"\nSite-433 is known for its labrinthine layout, sprawling out in all directions, both above and below ground."
+  },
+  {
+    "title": "Site-666",
+    "description": "Location: Las Vegas, Nevada, USA\nSite-666 is a large-scale research, containment, and staging site, publicly known as the Luxor Hotel and Casino. The Site lies within the anomalous hotspot of Undervegas , anchoring the Las Vegas Strip to baseline reality. The Site primarily deals with anomalies in the Las Vegas/Paradise region, but occasionally serves outlying areas. Due to its unique position, Site-666 heavily utilizes mutually-beneficial agreements with anomalies, including their employment , and other forms of \"creative containment\" .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-4661 Euclid SCP-5383 Keter SCP-5690 Safe SCP-7616 Thaumiel/Draugr SCP-7666 Keter SCP-8131 Uncontained"
+  },
+  {
+    "title": "Geological Research Site-898",
+    "description": "Location: Dutch Mountain, Pennsylvania, USA\nFounded on blood and coal dust, Site-898 rests in the depths of the Northern Appalachian Mountains. Built in 1966 after the discovery of SCP-8987 , the Site's grounds are an unconventional one. Heavily wooded, bordering both swamp and mountain, the staff are housed in a mining town's old cabins, and the main facility extends down into the mine herself.\nHours from civilization, the Site is isolated from the Foundation at large and partially self-sufficient via their hydroelectric systems."
+  },
+  {
+    "title": "Protected Site-θ",
+    "description": "Location: Yellowstone National Park, Wyoming, USA\nProtected Site-θ, also known as Site-2000, is a subterranean disaster shelter, the entrance concealed within a disused Park Ranger station. It has been prepared and provisioned to ensure continued Foundation operations, even in the event that a K Class \"End of the World\" scenario causes the near-extinction of human life. Access to further details on Procedure Lazarus-01 requires Level 4/2000 Security Clearance.\nObjects contained at this facility:"
+  },
+  {
+    "title": "Site-⌘",
+    "description": "Location: The Looped Square Symbol (⌘)\nSite-⌘ (otherwise known as SCP-⌘) was created by the Department of Surrealistics through unknown means (or vice versa) to serve as its base of operations and primary containment site.\nSite-⌘ is contained. Site-⌘ has breached containment. Site-⌘ has devoured the world."
+  },
+  {
+    "title": "Extrasolar Site-Anvil",
+    "description": "Location: TRAPPIST-1e (Aachen)\nExtrasolar Site Anvil is the first permanent human outpost established outside of the Solar System, located 39 light years from Earth in the TRAPPIST-1 star system. Site Anvil was established by the Damocles Initiative to serve as a starship staging point, and to ensure the continued survival of the human species even if planet Earth is destroyed.\nSecure Planet Dossier: Site Anvil"
+  },
+  {
+    "title": "Area List",
+    "description": ""
+  },
+  {
+    "title": "Armed Reliquary and Containment Area-02",
+    "description": "Location: [DATA REDACTED]\nArea-02 is a remote facility whose primary purpose is to contain highly dangerous, hostile, or otherwise hazardous anomalies, including multiple Keter-class objects. In addition to a battalion-strength security detachment, Area-02 is also equipped with multiple nuclear fail-safes as a final option in the case of a catastrophic breach or loss of containment. This facility is heavily involved with the Foundation's ongoing engagement with a resurgent Sarkic Empire.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-743 Keter SCP-2004 Keter SCP-2608 Safe SCP-2834-1 Euclid SCP-3911 Keter SCP-5509 Keter SCP-5984 (once secured) Keter"
+  },
+  {
+    "title": "Area-09",
+    "description": "Location: Great Basin Desert, Central Nevada, USA\nArea-09 is a facility located just outside the small reservation community of Duckwater. This remote facility serves as the headquarters for the Emergent Threat Tactical Response Authority (ETTRA), the Foundation department responsible for finding innovative solutions to the threats posed by hostile Groups of Interest.\n▷ Notable Incidents ◁ Notable incidents occurring at this facility: Resurrection: His Will Be Done A Funny Thing Happened on the Way to the Manor A Study in Cinnabar Old Faces, New Foes SCP-5883 - The Flip Side SCP-6221 - A Very VKTM Christmas SCP-9410 - THE NEVER WΔR The Specter and the Crushing Case of the Orphan Crusher The Time After Time Password /Under Whack-a-Mole"
+  },
+  {
+    "title": "Biological Research Area-12",
+    "description": "Location: Sugar Grove, West Virginia, United States.\nServing as the Foundation's premier parabiological research facility, Area-12 manages many satellite installations across one of the largest areas of land currently under Foundation control.\nHidden beneath the guise of the United States Federal Radio Quiet Zone, the land was sought for its extensive real estate, pure creation & purpose , relatively remote location, and sparse inhabitation; ensuring the secrecy of the primary mountain facility and the safety of the general public in the event that one of the facility's many (seemingly overabundant) contingencies must be utilized."
+  },
+  {
+    "title": "Armed Biological Containment Area-14",
+    "description": "Location: Ruby Mountains, Nevada, USA\nArea-14 is a dedicated facility for the containment of large-scale, dangerous, and/or hostile anomalous entities, and is staffed with a regiment-strength security detachment, equipped with heavy weapons, armored vehicles, and air support. The facility, officially off-limits to the public and designated as a military firing range, serves as the primary station of MTF Nu-7 (“Hammer Down”) .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-058 Keter SCP-082 Euclid SCP-165 Keter SCP-326 Euclid SCP-939 Keter SCP-940 Keter SCP-1801 Keter SCP-2068 Euclid Keter SCP-2480-1 Safe Keter Presumed Neutralized SCP-2608 Safe SCP-4820 Euclid SCP-5229 Safe SCP-7241 Euclid SCP-7390 Keter SCP-7587 Neutralized SCP-8775 Safe"
+  },
+  {
+    "title": "Treatment Area-21",
+    "description": "Location: Vienna, Austria\nLocated beneath a decommissioned chemical plant on the banks of the Danube River, Area-21 is the headquarters of the Foundation's think tank for the neutralization of esoteric effluence: the Acroamatic Abatement Group.\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-6643 Gleipnir SCP-6721 Khonsu"
+  },
+  {
+    "title": "Reliquary Area-27",
+    "description": "Location: Ottawa, Ontario, Canada\nArea-27 is an underground facility beneath the Saint Notre-Dame Cathedral Basilica. Area-27 serves as both the headquarters for the Department of Tactical Theology and as emergency quartering in the case of a large-scale K-Class Scenario. The site is also used to develop theological weaponry and to contain religiously-orientated anomalies.\n▷ Contained Objects ◁ Objects contained at this facility: Contained On-Site ID Number Object Class SCP-3483 (formerly) Neutralized SCP-5502 Pending SCP-5993 Euclid Thaumiel SCP-7324-Prime (formerly) Keter SCP-7638 Neutralized SCP-7967 Thaumiel Safe Contained Off-Site ID Number Object Class SCP-3310 Archon SCP-5349 Safe-Eparch"
+  },
+  {
+    "title": "Lunar Area-32",
+    "description": "Location: Mare Imbrium, The Moon\nConsisting of several floors beneath the lunar surface, and built around the ninth destination point of SCP-120 , Lunar Area-32 is a facility used to contain immobile anomalies present on the lunar surface, or for anomalies that are significantly less hazardous to contain outside of Earth’s atmosphere.\nObjects contained at this Facility are listed in its Secure Facility Dossier."
+  },
+  {
+    "title": "Area-179",
+    "description": "Location: Scranton, Pennsylvania, USA\nFormerly Provisional Containment Area-179, created for the containment of SCP-1179 , Area-179 stores and researches recovered anomalous objects, and supervises nearby Sites such as Site-5076-1 .\n▷ Contained Objects ◁ Objects contained at this facility: ID Number Object Class SCP-1050 Safe SCP-1179 Keter SCP-2608 Safe SCP-5035 Safe SCP-5061 Safe SCP-5104 Safe SCP-5175 Safe SCP-5293 Euclid SCP-5466 Contained. Imperfect. Finished. Complete. SCP-5648 Keter SCP-5813 Neutralized (Formerly Keter) SCP-6062 Safe SCP-6373 Neutralized SCP-6451 Pending SCP-6453 Safe SCP-6504 Euclid SCP-6592 Safe SCP-6599 Keter SCP-6865 Keter SCP-6977 Safe SCP-7838 Keter SCP-7960 Euclid"
+  },
+  {
+    "title": "Area-314",
+    "description": "Location: Iqaluit, Nunavut, Canada\nArea-314 is a research, containment, and administrative facility, located a few hours out from Iqaluit, Nunavut. Originally an overbuilt warehouse in the frozen desert of northern Canada, Area-314 serves as the headquarters of the Accounting Department and is the hub for most research, development, and application of esoteric financial assets.\nSecure Facility Dossier: Area-314"
+  },
+  {
+    "title": "Facility Types",
+    "description": ""
+  },
+  {
+    "title": "Site",
+    "description": "Foundation facilities designated as Sites are covert facilities, meaning that while the existence of the facility is known to the public, such facilities are often disguised with government or corporate fronts. Sites are often built in relatively close proximity to civilian populations, where facilities would require such cover."
+  },
+  {
+    "title": "Area",
+    "description": "Foundation facilities designated as Areas are clandestine facilities, meaning that civilians are not aware of their existence at all. Such facilities are often built far away from civilian populations and may contain highly dangerous anomalies and extreme fail-safe measures such as on-site nuclear warheads."
+  },
+  {
+    "title": "Outposts",
+    "description": "Outposts are small facilities subordinate to a nearby Site or Area, used to contain immobile objects or to monitor anomalous locations."
+  },
+  {
+    "title": "Observation Posts",
+    "description": "Observation Posts are tiny facilities, often small standalone buildings or single units within larger buildings, and are typically used to monitor regional communications, nearby Foundation facilities, or immobile SCP objects. Many Observation Posts also serve as secure communications hubs or safe-houses for undercover Foundation agents.\n"
+  },
+  {
+    "title": "Prefixes",
+    "description": "These prefixes are often used to denote specializations of facilities or facility sections, and are often omitted even in internal communication. These prefixes are not exclusive and can be used together to form a Facility name, and additional prefixes may be used for sites with a particular specialisation. Certain terms have been assigned their own color codes to enable Sites and Areas with a similar function to be more easily identified."
+  },
+  {
+    "title": "Armed",
+    "description": "Armed denotes a facility or facility section with abnormally high physical security concerns, either due to containment of violent hostile entities or threat of outside attack. Such facilities typically have a large amount of military-grade weaponry and vehicles as well as a disproportionately large number of permanent security staff; in the case of a full facility, this typically entails a detachment of at least battalion or regiment strength."
+  },
+  {
+    "title": "Biological",
+    "description": "Biological or Bio-facilities contain and research living organisms and infectious or otherwise biohazardous anomalies. These facilities are both isolated and self-contained to prevent the escape and spread of these entities."
+  },
+  {
+    "title": "Containment",
+    "description": "Containment facilities or facility sections are primarily equipped and intended for the mass containment of anomalous objects, entities, or phenomena."
+  },
+  {
+    "title": "Dimensional",
+    "description": "Dimensional containment facilities or facility sections deal with extradimensional apertures or anomalies exhibiting inconsistent or warped spacetime, or anomalies of ontokinetic nature in general."
+  },
+  {
+    "title": "Humanoid",
+    "description": "Humanoid containment facilities or facility sections primarily deal with sentient, sapient human or near-human entities capable of understanding and complying with instructions, and often attempt to develop means of communication with them to facilitate containment."
+  },
+  {
+    "title": "Exclusionary",
+    "description": "Most often used by Δt personnel , Exclusionary Sites are unaffected by reality-changing effects, and are often built outside of reality itself."
+  },
+  {
+    "title": "Extrasolar",
+    "description": "Extrasolar Facilities are located outside of the Solar System containing the planet Earth."
+  },
+  {
+    "title": "Lunar",
+    "description": "A Lunar facility is located on the moon, for the containment of extraplanetary anomalies."
+  },
+  {
+    "title": "Protected",
+    "description": "Protected facilities and facility sections are \"safe zones\" kept free of anomalous influence. No anomalies are allowed within these facilities at any time. Generally used for administration, data storage, and for housing essential personnel."
+  },
+  {
+    "title": "Provisional",
+    "description": "Provisional facilities are those that are established or built around an immobile anomaly. Provisional facilities typically contain only a single anomaly, although many Provisional facilities have later been expanded to contain additional anomalies."
+  },
+  {
+    "title": "Reliquary",
+    "description": "Reliquary facilities or facility sections are designed for handling artifacts and objects of religious or historical significance."
+  },
+  {
+    "title": "Research",
+    "description": "Research facilities or facility sections are designed for either the handling and study of anomalies or anomalous materials, or research and development into new containment schemes and methods."
+  },
+  {
+    "title": "Storage",
+    "description": "Storage facilities or facility sections are intended for long-term mass storage of non-anomalous material or inert anomalies with no risk of autonomous interaction, including Anomalous Items and inanimate Safe-class SCP objects."
+  },
+  {
+    "title": "Surveillance",
+    "description": "Surveillance sites monitor their surroundings, or send field operatives out further afield, in order to search for anomalies not currently in containment."
+  }
+]

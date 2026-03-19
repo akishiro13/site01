@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : SITE-01 // CODES DE RÉPONSE</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+
+            /* Response Specific colors */
+            --code-red: #ff0000;
+            --code-orange: #ff8c00;
+            --code-yellow: #ffd700;
+            --code-blue: #0000ff;
+            --code-green: #008000;
+            --code-black: #000000;
+            --code-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: -1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 40px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 120px);
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        .page-title h2 {
+            font-family: var(--font-header);
+            color: var(--primary);
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--primary-glow);
+            text-transform: uppercase;
+        }
+
+        .page-title p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .section-header {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header::before {
+            content: ">>";
+            color: var(--primary);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .code-card {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .code-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+            border-color: var(--primary);
+        }
+
+        .code-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: left;
+        }
+
+        .code-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .code-color-box {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fff;
+            flex-shrink: 0;
+        }
+
+        .code-name {
+            font-family: var(--font-header);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .code-meaning {
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .ten-code-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 10px;
+        }
+
+        .ten-code-item:hover {
+            background: rgba(196, 30, 58, 0.1);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        @keyframes pulse-red {
+            0% {
+                box-shadow: 0 0 5px var(--primary);
+            }
+
+            50% {
+                box-shadow: 0 0 15px var(--primary);
+            }
+
+            100% {
+                box-shadow: 0 0 5px var(--primary);
+            }
+        }
+
+        .pulse-critical {
+            animation: pulse-red 2s infinite;
+        }
+
+        .ten-code-num {
+            font-family: var(--font-header);
+            color: var(--primary);
+            width: 80px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .ten-code-desc {
+            color: #fff;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 40px;
+            top: 140px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: var(--font-header);
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .stat-block {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: right;
+        }
+
+        .alert-banner {
+            background: rgba(196, 30, 58, 0.15);
+            border: 1px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo">
+            <div>
+                <h1>Base de données SCiP-NET</h1>
+                <div class="subtitle">SITE-01 // DIVISION SÉCURITÉ</div>
+            </div>
+        </a>
+        <div class="stat-block">
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">NIVEAU D'ACCRÉDITATION</div>
+                <div style="color: var(--primary); font-weight: bold;">ACCÈS SDS</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">STATUT DU RÉSEAU</div>
+                <div style="color: #0f0; font-weight: bold;">CHIFFRÉ</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">&lt; RETOUR</a>
+
+        <div class="page-title">
+            <h2>Codes de Réponse et Protocoles</h2>
+            <p>Directives de communication radio et protocoles d'alerte de sécurité</p>
+        </div>
+
+        <div class="alert-banner">
+            PROTOCOLE OBLIGATOIRE POUR TOUT LE PERSONNEL DE SÉCURITÉ // LE NON-RESPECT EST UN MOTIF DE LICENCIEMENT
+        </div>
+
+        <h3 class="section-header">CODES COULEURS DE SÉCURITÉ</h3>
+        <div class="grid-layout">
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-white);"></div>
+                    <div class="code-name">CODE BLANC</div>
+                </div>
+                <div class="code-meaning">
+                    Situation normale. Opérations de routine. Aucune menace détectée.
+                </div>
+            </div>
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-green);"></div>
+                    <div class="code-name">CODE VERT</div>
+                </div>
+                <div class="code-meaning">
+                    Incident mineur sous contrôle. Pas de risque de propagation ou de brèche.
+                </div>
+            </div>
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-blue);"></div>
+                    <div class="code-name">CODE BLEU</div>
+                </div>
+                <div class="code-meaning">
+                    Urgence médicale ou technique. Intervention d'une équipe spécialisée requise.
+                </div>
+            </div>
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-yellow);"></div>
+                    <div class="code-name">CODE JAUNE</div>
+                </div>
+                <div class="code-meaning">
+                    Menace potentielle détectée. Vigilance accrue. Préparation à un possible confinement.
+                </div>
+            </div>
+            <div class="code-card">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-orange);"></div>
+                    <div class="code-name">CODE ORANGE</div>
+                </div>
+                <div class="code-meaning">
+                    Brèche de confinement mineure ou intrusion suspectée. Déplacement restreint.
+                </div>
+            </div>
+            <div class="code-card pulse-critical" style="border-bottom: 1px solid var(--primary); padding-bottom: 5px;">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-red);"></div>
+                    <div class="code-name" style="color: var(--code-red);">CODE ROUGE</div>
+                </div>
+                <div class="code-meaning">
+                    BRÈCHE DE CONFINEMENT MAJEURE. Combat engagé. Évacuation immédiate des secteurs non-combattants.
+                </div>
+            </div>
+            <div class="code-card pulse-critical" style="background-color: #000; border: 1px solid #333;">
+                <div class="code-header">
+                    <div class="code-color-box" style="background-color: var(--code-black); border: 1px solid #555;">
+                    </div>
+                    <div class="code-name" style="color: #fff;">CODE NOIR</div>
+                </div>
+                <div class="code-meaning">
+                    DÉCONFINEMENT TOTAL / SCÉNARIO DE CLASSE K. Destruction du site imminente. Protocole "Last Stand".
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-header">CODES RADIOPHONIQUES (SYSTEM 10)</h3>
+        <div class="ten-code-list">
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-0</div>
+                <div class="ten-code-desc">Attention / Silence Radio</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-1</div>
+                <div class="ten-code-desc">Réception Médiocre</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-2</div>
+                <div class="ten-code-desc">Réception Bonne</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-4</div>
+                <div class="ten-code-desc">Affirmatif / Compris</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-7</div>
+                <div class="ten-code-desc">Hors Service</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-8</div>
+                <div class="ten-code-desc">En Service / Disponible</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-9</div>
+                <div class="ten-code-desc">Répétez le message</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-12</div>
+                <div class="ten-code-desc">Visiteurs / Civils à proximité</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-20</div>
+                <div class="ten-code-desc">Position actuelle / Localisation</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-23</div>
+                <div class="ten-code-desc">Sur place / Arrivé</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-31</div>
+                <div class="ten-code-desc">Crime/Infraction en cours</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-32</div>
+                <div class="ten-code-desc">Personne armée détectée</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-33</div>
+                <div class="ten-code-desc">URGENCE - Officier en détresse</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-45</div>
+                <div class="ten-code-desc">État de la cible (Vif/Mort)</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-78</div>
+                <div class="ten-code-desc">Demande de renforts immédiats</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-90</div>
+                <div class="ten-code-desc">Alarme brèche de confinement</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-91</div>
+                <div class="ten-code-desc">Sujet anormal / SCP détecté</div>
+            </div>
+            <div class="ten-code-item">
+                <div class="ten-code-num">10-99</div>
+                <div class="ten-code-desc">Mission terminée / Site sécurisé</div>
+            </div>
+        </div>
+
+        <h3 class="section-header">CODES FONTAINE (SPÉCIFIQUES)</h3>
+        <div class="grid-layout">
+            <div class="code-card" style="border-top: 5px solid cyan;">
+                <div class="code-name">SIGNAL CHARLIE</div>
+                <div class="code-meaning">
+                    Alerte chimique ou biologique. Équipement HAZMAT obligatoire. Confinement des conduits d'air.
+                </div>
+            </div>
+            <div class="code-card" style="border-top: 5px solid #ff0;">
+                <div class="code-name">SIGNAL DELTA</div>
+                <div class="code-meaning">
+                    Alerte radioactive. Utilisation de compteurs Geiger et blindage plombé.
+                </div>
+            </div>
+            <div class="code-card" style="border-top: 5px solid #f0f;">
+                <div class="code-name">SIGNAL ECHO</div>
+                <div class="code-meaning">
+                    Phénomène mémétique ou cognitif détecté. Utilisation de filtres visuels et protections auditives.
+                </div>
+            </div>
+            <div class="code-card" style="border-top: 5px solid #0f0;">
+                <div class="code-name">SIGNAL X-RAY</div>
+                <div class="code-meaning">
+                    Entité invisible ou déphasée détectée. Sortie des scanners thermiques et radars à ondes courtes.
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

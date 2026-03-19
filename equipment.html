@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : DOSSIER ÉQUIPEMENT BRANCHE FR</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --secondary: #121212;
+            --accent: #1a1a1a;
+            --glass: rgba(20, 20, 20, 0.95);
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --header-font: 'Outfit', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&family=Outfit:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(196, 30, 58, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(196, 30, 58, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        header {
+            background: var(--glass);
+            border-bottom: 2px solid var(--primary);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo {
+            width: 40px;
+        }
+
+        h1 {
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .section-header h2 {
+            font-family: var(--header-font);
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            font-family: var(--font-mono);
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        /* Tabs / Categories */
+        .category-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background: var(--secondary);
+            border: 1px solid var(--accent);
+            color: #888;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .cat-btn.active,
+        .cat-btn:hover {
+            border-color: var(--primary);
+            color: white;
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .equip-card {
+            background: var(--glass);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+
+        .equip-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 30, 58, 0.5);
+        }
+
+        .equip-img {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .equip-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .equip-info {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .equip-type {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .equip-name {
+            font-family: var(--header-font);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .equip-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .equip-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+
+        .stat-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--accent);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="Logo" class="logo">
+            <h1>SCiP-NET // ARSENAL FR</h1>
+        </a>
+        <nav style="display: flex; gap: 20px;">
+            <a href="index.html" style="color: #888; text-decoration: none; font-size: 0.8rem;">RETOUR TERMINAL</a>
+            <a href="departments.html" style="color: #888; text-decoration: none; font-size: 0.8rem;">DÉPARTEMENTS</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-header">
+            <h2>Équipement de la Branche Francophone</h2>
+            <p>RÉFÉRENCEMENT TACTIQUE // UNITÉS D'INTERVENTION ET SERVICES DE SÉCURITÉ</p>
+        </div>
+
+        <nav class="category-nav">
+            <button class="cat-btn active" data-cat="all">Tous</button>
+            <button class="cat-btn" data-cat="land">Véhicules Terrestres</button>
+            <button class="cat-btn" data-cat="air">Aéronautique</button>
+            <button class="cat-btn" data-cat="weapons">Armement Létal</button>
+            <button class="cat-btn" data-cat="special">Spécial & Prototypes</button>
+        </nav>
+
+        <div class="equipment-grid" id="equipGrid">
+            <!-- LAND -->
+            <div class="equip-card" data-category="land">
+                <div class="equip-info">
+                    <span class="equip-type">Transport Logistique</span>
+                    <h3 class="equip-name">Renault TRM 10000</h3>
+                    <p class="equip-desc">Principal véhicule de transport de la Branche FR. Permet de déplacer matériel,
+                        personnel et production industrielle sans attirer l'attention (utilisé par l'armée française).
+                    </p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Équipage: 1+2</span>
+                        <span class="stat-tag">Capacité: 24 fantassins</span>
+                        <span class="stat-tag">Couverture: Militaire Standard</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="land">
+                <div class="equip-info">
+                    <span class="equip-type">Blindé d'Intervention</span>
+                    <h3 class="equip-name">Nexter TITUS</h3>
+                    <p class="equip-desc">Véhicule standard pour l'insertion en milieu hostile. Modulable, tout-terrain
+                        et urbain. Haute protection contre mines et IEDs.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">VMAX: 110 km/h</span>
+                        <span class="stat-tag">Armement: 7.62mm à 25mm</span>
+                        <span class="stat-tag">Protection: STANAG Niv 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="land">
+                <div class="equip-info">
+                    <span class="equip-type">Reconnaissance NBC</span>
+                    <h3 class="equip-name">Renault VAB NBC</h3>
+                    <p class="equip-desc">Évolue en milieu contaminé (Nucléaire, Biologique, Chimique). Modifié par la
+                        Branche FR pour spécifiquement détecter les menaces bio-anormales.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Spécialité: Détection NBC</span>
+                        <span class="stat-tag">Blindage: Niveau 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="land">
+                <div class="equip-info">
+                    <span class="equip-type">Char de Combat Principal</span>
+                    <h3 class="equip-name">Nexter Leclerc</h3>
+                    <p class="equip-desc">Le blindé le plus massif de la Branche FR. 10 exemplaires déployés pour la
+                        défense stratégique du Site-Aleph uniquement.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Armement: Canon 120mm</span>
+                        <span class="stat-tag">Rôle: Défense Stationnaire de Site</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AIR -->
+            <div class="equip-card" data-category="air">
+                <div class="equip-info">
+                    <span class="equip-type">Hélicoptère Multirôle</span>
+                    <h3 class="equip-name">Airbus H145M</h3>
+                    <p class="equip-desc">Extrêmement polyvalent (transport, EVASAN, reconnaissance). Équipé du système
+                        HForce pour un appui au sol rapide.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Vitesse: 268 km/h</span>
+                        <span class="stat-tag">Système: HForce Option 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="air">
+                <div class="equip-info">
+                    <span class="equip-type">Hélicoptère d'Attaque</span>
+                    <h3 class="equip-name">Airbus Tigre HAD</h3>
+                    <p class="equip-desc">Conçu pour la destruction. Optimise la puissance de feu aéroportée contre les
+                        anomalies hostiles ou Groupes d'Intérêt.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Armement: Canon 30mm / Hellfire</span>
+                        <span class="stat-tag">Rôle: Neutralisation Offensive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="air">
+                <div class="equip-info">
+                    <span class="equip-type">Appareil Hybride</span>
+                    <h3 class="equip-name">Boeing-Bell MV-22B Osprey</h3>
+                    <p class="equip-desc">Combine décollage vertical (hélico) et rayon d'action d'un avion. Utilisé par
+                        les FIM pour les missions à hauts risques.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Plafond: 7620 m</span>
+                        <span class="stat-tag">Distance: 1627 km</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="air">
+                <div class="equip-info">
+                    <span class="equip-type">Drone MALE</span>
+                    <h3 class="equip-name">EADS Harfang</h3>
+                    <p class="equip-desc">Principal drone de surveillance. Utilisé pour la reconnaissance avant
+                        intervention FIM et la traque d'objets SCP en fuite.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Autonomie: Surveillance Longue</span>
+                        <span class="stat-tag">Charge: 250 kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEAPONS -->
+            <div class="equip-card" data-category="weapons">
+                <div class="equip-info">
+                    <span class="equip-type">Pistolet Standard</span>
+                    <h3 class="equip-name">FN Five-seveN</h3>
+                    <p class="equip-desc">Arme de poing standard des officiers de sécurité. Utilise la munition 5.7mm
+                        perforante, idéale contre les menaces biologiques.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Calibre: 5.7 x 28mm</span>
+                        <span class="stat-tag">Capacité: 20 coups</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="weapons">
+                <div class="equip-info">
+                    <span class="equip-type">Pistolet-Mitrailleur</span>
+                    <h3 class="equip-name">FN P90</h3>
+                    <p class="equip-desc">Arme de dotation privilégiée pour le combat en milieu clos (corridors de
+                        Sites). Perfore le kevlar sans traverser le béton.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Calibre: 5.7 x 28mm</span>
+                        <span class="stat-tag">Cadence: 900 c/min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="weapons">
+                <div class="equip-info">
+                    <span class="equip-type">Fusil d'Assaut</span>
+                    <h3 class="equip-name">FN SCAR (L/H)</h3>
+                    <p class="equip-desc">Arme standard des équipes d'intervention tactique. Entièrement modulable
+                        (lunettes, lance-grenades, types de canons).</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Calibre: 5.56mm / 7.62mm</span>
+                        <span class="stat-tag">Status: Standard Inter-Branche</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="weapons">
+                <div class="equip-info">
+                    <span class="equip-type">Fusil de Précision</span>
+                    <h3 class="equip-name">PGM Hécate II</h3>
+                    <p class="equip-desc">Puissance de feu supérieure alliée à une précision extrême. Utilisé par les
+                        FIM pour la neutralisation de cibles distantes ou blindées.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Calibre: 12.7 x 99mm (.50 BMG)</span>
+                        <span class="stat-tag">Portée: 1800m</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPECIAL -->
+            <div class="equip-card" data-category="special">
+                <div class="equip-info">
+                    <span class="equip-type">Exosquelette de Manutention</span>
+                    <h3 class="equip-name">Lockheed Martin HULC</h3>
+                    <p class="equip-desc">Permet de porter jusqu'à 90 kg sans effort. Utilisé pour le transport manuel
+                        de containers d'anomalies lourdes.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Autonomie: 8h</span>
+                        <span class="stat-tag">Charge: 90kg</span>
+                        <span class="stat-tag">Status: Opérationnel Limit</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="special">
+                <div class="equip-info">
+                    <span class="equip-type">Armure de Combat Intégrale</span>
+                    <h3 class="equip-name">Projet TALOS (Prototype)</h3>
+                    <p class="equip-desc">Exosquelette de combat avec fluide magnéto-rhéologique solide sous courant.
+                        Capteurs vitaux et vision nocturne Gen-III intégrés.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Status: Prototype (10 unités)</span>
+                        <span class="stat-tag">Techno: Fluide Rhéologique</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equip-card" data-category="special">
+                <div class="equip-info">
+                    <span class="equip-type">Fusil de Saturation</span>
+                    <h3 class="equip-name">Gilboa Snake</h3>
+                    <p class="equip-desc">Fusil à double canon et double culasse. Permet une saturation maximale pour
+                        ralentir des entités à régénération rapide.</p>
+                    <div class="equip-stats">
+                        <span class="stat-tag">Config: Double Canon</span>
+                        <span class="stat-tag">Rôle: Saturation de zone</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 FONDATION SCP - DÉPARTEMENT DE LA MANUFACTURE BRANCHE FR<br>
+        SÉCURISER. CONFINER. PROTÉGER.
+    </footer>
+
+    <script>
+        const buttons = document.querySelectorAll('.cat-btn');
+        const cards = document.querySelectorAll('.equip-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // UI Toggle
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter Logic
+                const cat = btn.getAttribute('data-cat');
+                cards.forEach(card => {
+                    if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

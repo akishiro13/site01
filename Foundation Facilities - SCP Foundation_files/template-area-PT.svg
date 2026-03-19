@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="79.375mm" height="79.375mm" version="1.1" viewBox="0 0 79.375 79.375" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-167.57 -120.7)">
+  <g transform="matrix(39.257 0 0 39.257 -6410.6 -4617.5)" stroke-miterlimit="3.956">
+   <g transform="matrix(.18248 0 0 -.18248 105.58 34.299)" shape-rendering="auto" stroke-width=".55254">
+    <path d="m350.53-479c0 2.9217-2.3685 5.2902-5.2902 5.2902-2.9217 0-5.2902-2.3685-5.2902-5.2902s2.3685-5.2902 5.2902-5.2902c2.9217 0 5.2902 2.3685 5.2902 5.2902z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fff" image-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;paint-order:fill markers stroke;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    <path d="m345.23-484.54c-3.0568 0-5.5391 2.4842-5.5391 5.541 0 3.0568 2.4822 5.5391 5.5391 5.5391 3.0568 0 5.541-2.4822 5.541-5.5391 0-3.0568-2.4842-5.541-5.541-5.541zm0 0.5c2.7866 0 5.041 2.2544 5.041 5.041 0 2.7866-2.2544 5.0391-5.041 5.0391-2.7866 0-5.0391-2.2525-5.0391-5.0391 0-2.7866 2.2525-5.041 5.0391-5.041z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#121212" image-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;paint-order:fill markers stroke;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   </g>
+   <g stroke="#121212">
+    <circle cx="168.58" cy="121.71" r=".79552" fill-opacity="0" stroke-dashoffset="1.5" stroke-width=".10083" style="paint-order:fill markers stroke"/>
+    <path d="m168.58 122.24a0.53195 0.53195 0 0 0 0.53098-0.53194 0.53195 0.53195 0 0 0-0.53195-0.53196 0.53195 0.53195 0 0 0-0.53195 0.53196 0.53195 0.53195 0 0 0 0.53195 0.53194 0.53195 0.53195 0 0 0 7.6e-4 0zm-7.6e-4 -0.10058a0.43138 0.43138 0 0 1-6e-5 0 0.43138 0.43138 0 0 1-0.43138-0.43136 0.43138 0.43138 0 0 1 0.43138-0.43139 0.43138 0.43138 0 0 1 0.43137 0.43139 0.43138 0.43138 0 0 1-0.4313 0.43136z" fill="#121212" fill-rule="evenodd" stroke-width=".050415"/>
+    <path d="m168.58 122.2v0.29052" fill-opacity="0" stroke-width=".10083"/>
+   </g>
+   <g fill="#121212" stroke="#121212" stroke-width=".10083">
+    <path d="m169.07 121.71h0.29052"/>
+    <path d="m168.09 121.71h-0.29052"/>
+    <path d="m168.58 121.22v-0.29053"/>
+   </g>
+  </g>
+ </g>
+</svg>

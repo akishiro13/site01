@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : MANIFESTE DE LA FONDATION</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            --accent: #2e2e2e;
+            --white-glow: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --header-font: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&family=Outfit:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
+            min-height: 100vh;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        header {
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--header-font);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        main {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .doctrine-card {
+            background: rgba(12, 12, 12, 0.98);
+            border: 1px solid var(--accent);
+            padding: 50px;
+            position: relative;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 1);
+        }
+
+        .seal {
+            display: block;
+            width: 350px;
+            filter: grayscale(1) brightness(2);
+            opacity: 0.02;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .manifesto-header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 30px;
+        }
+
+        .manifesto-header h2 {
+            font-family: var(--header-font);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .manifesto-header p {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            margin-bottom: 45px;
+        }
+
+        .content-section h3 {
+            font-family: var(--header-font);
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section h3::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            display: inline-block;
+        }
+
+        .text-block {
+            text-align: justify;
+            color: #bbb;
+            margin-bottom: 20px;
+            white-space: pre-line;
+            font-size: 0.95rem;
+        }
+
+        .sub-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--accent);
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .pillar {
+            padding: 20px;
+            border: 1px solid var(--accent);
+            background: rgba(196, 30, 58, 0.02);
+            text-align: center;
+        }
+
+        .pillar-title {
+            font-family: var(--header-font);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .pillar-text {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #fff;
+            margin: 50px 0;
+            padding: 25px;
+            border-left: 2px solid var(--primary);
+            background: rgba(196, 30, 58, 0.05);
+        }
+
+        .footer-note {
+            margin-top: 60px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #444;
+            padding-top: 25px;
+            border-top: 1px solid var(--accent);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            border: 1px solid var(--primary);
+            padding: 6px 18px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .highlight { color: var(--primary); font-weight: 600; }
+
+        @media (max-width: 800px) {
+            .pillar-grid { grid-template-columns: 1fr; }
+            .doctrine-card { padding: 25px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo">
+            <h1>SCiP-NET // ACCÈS ARCHIVES</h1>
+        </a>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">&lt; RETOUR TERMINAL</a>
+
+        <div class="doctrine-card">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="Seal" class="seal">
+
+            <div class="manifesto-header">
+                <h2>Qu'est-ce que la Fondation ?</h2>
+                <p>MANIFESTE DE CONNAISSANCE GLOBALE // DOCUMENT DÉCLASSIFIÉ</p>
+            </div>
+
+            <div class="content-section">
+                <h3>Notre Nature</h3>
+                <div class="text-block">
+Le genre humain dans son état actuel existe depuis un quart de million d'années, et pourtant seuls les derniers 4000 ans ont eu la moindre signification.
+
+Alors, qu'avons nous fait durant près de 250 000 ans ? Nous nous sommes serrés dans des cavernes autour de feux tremblotants, emplis de crainte pour des choses que nous ne comprenions pas. Ce n'était pas seulement le mystère du lever de Soleil, mais aussi les oiseaux énormes à tête humaine et les rochers animés. Alors nous les appelions "Dieux" et "Démons", et nous les implorions de nous épargner, nous priions pour notre salut.
+
+Avec le temps, leur nombre diminua tandis que le nôtre s'élevait. Le monde commença à avoir davantage de sens alors que les choses à y craindre se raréfiaient. Et pourtant, l'inexpliqué ne peut jamais totalement disparaître, comme si l'univers était indissociable de l'absurde et de l'impossible.
+
+Le genre humain ne doit pas retourner se cacher dans la peur. Personne d'autre ne nous protégera, nous devons faire face nous-mêmes.
+
+Tandis que le reste de l'humanité s'établit dans la lumière, nous devons nous dresser dans l'obscurité pour mieux la combattre, la contenir, et la dissimuler aux yeux du public, afin que d'autres puissent vivre dans un monde sensé et normal.
+
+Nous Sécurisons.
+Nous Contenons.
+Nous Protégeons.
+
+— L'Administrateur
+                </div>
+            </div>
+
+            <div class="quote">
+                "Nous mourons dans l'ombre pour que vous puissiez vivre dans la lumière."
+            </div>
+
+            <div class="content-section">
+                <h3>Énoncé de la Mission</h3>
+                <div class="text-block">
+En agissant de façon clandestine et à l'échelle mondiale, la Fondation est au-dessus des lois, investie par l'ensemble des pays de la tâche de confiner les objets, entités et phénomènes anormaux. Ces anomalies sont une menace significative pour la sécurité du monde, tant sur le plan physique que psychologique.
+
+La Fondation assure le maintien de la normalité pour que la population du monde puisse vivre chaque jour à l'abri de la peur, de la méfiance et du doute, et pour préserver l'indépendance de l'humanité vis-à-vis de toute force extraterrestre, extradimensionnelle ou extranormale.
+
+Notre mission est triple :
+                </div>
+
+                <div class="pillar-grid">
+                    <div class="pillar">
+                        <div class="pillar-title">Sécuriser</div>
+                        <div class="pillar-text">Empêcher les anomalies de tomber entre les mains d'organisations civiles ou adverses.</div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-title">Contenir</div>
+                        <div class="pillar-text">Empêcher leur influence ou leurs effets de s'étendre par le confinement.</div>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-title">Protéger</div>
+                        <div class="pillar-text">Protéger l'humanité des effets de ces anomalies jusqu'à compréhension totale.</div>
+                    </div>
+                </div>
+
+                <div class="text-block">
+La Fondation peut également neutraliser ou détruire les anomalies en dernier recours, si elles sont jugées trop dangereuses pour être confinées.
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Les opérations de la Fondation</h3>
+                <div class="text-block">
+Les opérations de la Fondation sont menées de façon secrète et clandestine à travers le globe pour réaliser nos missions primaires.
+                </div>
+
+                <div class="sub-container">
+                    <h4 style="color:white; margin-bottom:10px; font-size:0.9rem; text-transform:uppercase;">Les Procédures de Confinement Spéciales</h4>
+                    <div class="text-block" style="font-size:0.9rem;">
+La Fondation possède une base de données conséquente d'informations concernant les anomalies nécessitant des Procédures de Confinement Spéciales, communément abrégées "PCS". La base de données de la Fondation contient les descriptions de telles anomalies et les procédures d'urgence pour maintenir ou rétablir leur confinement dans le cas d'une brèche de confinement ou d'un autre événement.
+
+Les anomalies peuvent prendre des formes diverses, qu'elles soient des objets, des entités, des emplacements géographiques ou des phénomènes autonomes. Ces anomalies sont catégorisées en plusieurs Classes d'objets et confinées dans les Installations sécurisées de la Fondation, ou sur place si une relocalisation s'avère impossible.
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Sécurité interne</h3>
+                <div class="text-block">
+La Fondation opère dans le plus grand secret. Tous les membres du personnel de la Fondation doivent posséder toutes les connaissances de base, respecter les Niveaux de Sécurité ainsi que le compartimentage de l'information. Les membres du personnel violant les protocoles de sécurité de la Fondation sont identifiés, détenus, et sujets à des mesures disciplinaires.
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Organisations rivales et Groupes d'Intérêts</h3>
+                <div class="text-block">
+La Fondation n'est pas la seule organisation ayant connaissance de l'anormal et capable d'interagir avec ou de l'utiliser. Certains Groupes d'Intérêt ont des objectifs similaires à la Fondation et peuvent coopérer avec nous pour préserver la sécurité mondiale, mais la plupart sont opportunistes et agissent uniquement pour nourrir leurs intérêts. 
+
+Les membres du personnel de la Fondation sont invités à considérer en permanence tout individu de ces groupes comme suspect, et la collaboration avec de telles personnes sans l'autorisation d'un responsable de la Fondation est un motif d'élimination ou d'autres mesures disciplinaires.
+                </div>
+            </div>
+
+            <div class="footer-note">
+                DOCUMENT : FOUNDATION-GENERAL-01 // NIVEAU D'ACCRÉDITATION : TOUS PERSONNELS<br>
+                RÉSEAU SÉCURISÉ SITE-01 // TOUTE DIFFUSION NON AUTORISÉE EST PUNIE DE MORT.
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

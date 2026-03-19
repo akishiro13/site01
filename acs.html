@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : SITE-01 // GUIDE ACS</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            /* Deep Red */
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #1a1a1a;
+            --accent: #2e2e2e;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-header: 'Arial Black', sans-serif;
+
+            /* ACS Specific colors */
+            --safe: #4e9a06;
+            --euclid: #f57900;
+            --keter: #cc0000;
+            --thaumiel: #3465a4;
+            --neutralized: #888a85;
+            --apollyon: #ce5c00;
+            --archon: #5c3566;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(196, 30, 58, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: -1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            background-color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 40px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 120px);
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+        }
+
+        .page-title h2 {
+            font-family: var(--font-header);
+            color: var(--primary);
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--primary-glow);
+            text-transform: uppercase;
+        }
+
+        .page-title p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .warning-banner {
+            background-color: rgba(196, 30, 58, 0.1);
+            border: 1px solid var(--primary);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .warning-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .warning-text h3 {
+            font-family: var(--font-header);
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .section-header {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-header::before {
+            content: ">>";
+            color: var(--primary);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .class-card {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 5px;
+            background-color: var(--primary);
+        }
+
+        /* Specific class color overrides */
+        .card-safe::before {
+            background-color: var(--safe);
+        }
+
+        .card-euclid::before {
+            background-color: var(--euclid);
+        }
+
+        .card-keter::before {
+            background-color: var(--keter);
+        }
+
+        .card-thaumiel::before {
+            background-color: var(--thaumiel);
+        }
+
+        .card-neutralized::before {
+            background-color: var(--neutralized);
+        }
+
+        .card-apollyon::before {
+            background-color: var(--apollyon);
+        }
+
+        .card-archon::before {
+            background-color: var(--archon);
+        }
+
+        .class-title {
+            font-family: var(--font-header);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-safe .class-title {
+            color: var(--safe);
+        }
+
+        .card-euclid .class-title {
+            color: var(--euclid);
+        }
+
+        .card-keter .class-title {
+            color: var(--keter);
+        }
+
+        .card-thaumiel .class-title {
+            color: var(--thaumiel);
+        }
+
+        .card-neutralized .class-title {
+            color: var(--neutralized);
+        }
+
+        .card-apollyon .class-title {
+            color: var(--apollyon);
+        }
+
+        .card-archon .class-title {
+            color: var(--archon);
+        }
+
+        .class-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .diagram-container {
+            background-color: var(--secondary);
+            border: 1px solid var(--accent);
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .diagram {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            filter: invert(1) hue-rotate(180deg) brightness(1.2);
+            /* Make standard ACS image fit the theme */
+        }
+
+        .stat-block {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: right;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 40px;
+            top: 140px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: var(--font-header);
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .number-tag {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-family: var(--font-header);
+            font-size: 4rem;
+            opacity: 0.05;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        /* Disruption and Risk Colors */
+        .color-dark {
+            color: #4e9a06;
+        }
+
+        .color-vlam {
+            color: #3465a4;
+        }
+
+        .color-keneq {
+            color: #edd400;
+        }
+
+        .color-ekhi {
+            color: #f57900;
+        }
+
+        .color-amida {
+            color: #cc0000;
+        }
+
+        .color-notice {
+            color: #4e9a06;
+        }
+
+        .color-caution {
+            color: #3465a4;
+        }
+
+        .color-warning {
+            color: #edd400;
+        }
+
+        .color-danger {
+            color: #f57900;
+        }
+
+        .color-critical {
+            color: #cc0000;
+        }
+
+        /* ACS Generator Styles */
+        .generator-container {
+            background-color: var(--secondary);
+            border: 2px solid var(--primary);
+            padding: 40px;
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .generator-container::after {
+            content: "WORKSTATION // ACS-GEN-V4";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .generator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-family: var(--font-header);
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: #000;
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 10px;
+            font-family: var(--font-main);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* ACS Card Preview */
+        .preview-pane {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 20px;
+            background-image: radial-gradient(#1a1a1a 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .acs-card-preview {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            border: 4px solid #000;
+        }
+
+        .acs-header {
+            display: flex;
+            background: #000;
+            color: #fff;
+            padding: 10px 15px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .acs-header .scp-num {
+            font-weight: 900;
+            font-size: 1.4rem;
+        }
+
+        .acs-header .clearance-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .clearance-circle {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .acs-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            height: 140px;
+            border-bottom: 4px solid #000;
+        }
+
+        .acs-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            text-align: center;
+            border-right: 2px solid #000;
+            position: relative;
+        }
+
+        .acs-box:last-child {
+            border-right: none;
+        }
+
+        .acs-label {
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .acs-value {
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .acs-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .acs-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: brightness(0);
+            /* Force icons to be pure black for clarity on light BG */
+        }
+
+        .acs-footer {
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            background: #f0f0f0;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-family: var(--font-header);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        @media screen and (max-width: 900px) {
+            .generator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo">
+            <div>
+                <h1>Base de données SCiP-NET</h1>
+                <div class="subtitle">SITE-01 // QG OVERWATCH</div>
+            </div>
+        </a>
+        <div class="stat-block">
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">NIVEAU D'ACCRÉDITATION</div>
+                <div style="color: var(--primary); font-weight: bold;">COMMANDEMENT O5</div>
+            </div>
+            <div class="stat-item">
+                <div style="font-size: 0.7rem; color: #888;">STATUT DU DOCUMENT</div>
+                <div style="color: #0f0; font-weight: bold;">RESTREINT</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">&lt; RETOUR</a>
+
+        <div class="page-title">
+            <h2>Système de Classification des Anomalies</h2>
+            <p>Aperçu complet des classes de confinement, de perturbation et de risque</p>
+        </div>
+
+        <div class="warning-banner">
+            <div class="warning-icon">⚠</div>
+            <div class="warning-text">
+                <h3>APERÇU OBLIGATOIRE POUR TOUS LES DIRECTEURS DE SITE</h3>
+                <p>Le Système de Classification des Anomalies (ACS) fournit un cadre standardisé pour communiquer
+                    rapidement la difficulté de confinement, le potentiel de perturbation et le danger d'une entité
+                    anormale. Le respect strict de cette norme de classification est requis dans toute la documentation
+                    interne de la Fondation.
+                </p>
+            </div>
+        </div>
+
+        <h3 class="section-header">CLASSES DE CONFINEMENT PRIMAIRES</h3>
+        <p style="margin-bottom: 20px; color: #aaa;">La classe primaire indique la difficulté de confiner l'anomalie,
+            communément appelée le "Test de la Boîte Verrouillée".</p>
+
+        <div class="grid-layout">
+            <div class="class-card card-safe">
+                <div class="number-tag">01</div>
+                <div class="class-title">SAFE</div>
+                <div class="class-desc">
+                    Les anomalies de classe Sûr sont celles qui sont facilement et de manière sécurisée confinées. Cela
+                    est souvent dû au fait que la Fondation a suffisamment étudié l'anomalie pour que le confinement ne
+                    nécessite pas de ressources significatives ou que les anomalies nécessitent une activation ou un
+                    déclencheur spécifique et conscient.<br><br>
+                    <i>Test de la Boîte : Si vous l'enfermez dans une boîte, que vous la laissez seule et que rien de
+                        mal ne se produit, elle est Sûr.</i>
+                </div>
+            </div>
+
+            <div class="class-card card-euclid">
+                <div class="number-tag">02</div>
+                <div class="class-title">EUCLID</div>
+                <div class="class-desc">
+                    Les anomalies de classe Euclide nécessitent plus de ressources pour être confinées complètement ou
+                    le confinement n'est pas toujours fiable. Généralement, c'est parce que l'anomalie est
+                    insuffisamment comprise ou intrinsèquement imprévisible. Les anomalies sentientes, sapientes et/ou
+                    imprévisibles sont presque toujours classées Euclide au minimum.<br><br>
+                    <i>Test de la Boîte : Si vous l'enfermez dans une boîte, que vous la laissez seule et que vous
+                        n'êtes pas sûr de ce qui va se passer, elle est Euclide.</i>
+                </div>
+            </div>
+
+            <div class="class-card card-keter">
+                <div class="number-tag">03</div>
+                <div class="class-title">KETER</div>
+                <div class="class-desc">
+                    Les anomalies de classe Keter sont extrêmement difficiles à confiner de manière cohérente ou fiable,
+                    les procédures de confinement étant souvent étendues et complexes. La Fondation ne peut souvent pas
+                    bien confiner ces anomalies faute d'une compréhension solide ou de la technologie nécessaire pour
+                    les contrer.<br><br>
+                    <i>Test de la Boîte : Si vous l'enfermez dans une boîte, que vous la laissez seule et qu'elle s'en
+                        échappe facilement, elle est Keter.</i>
+                </div>
+            </div>
+
+            <div class="class-card card-thaumiel">
+                <div class="number-tag">04</div>
+                <div class="class-title">THAUMIEL</div>
+                <div class="class-desc">
+                    Les anomalies de classe Thaumiel sont des anomalies hautement classifiées et extrêmement rares
+                    utilisées par la Fondation pour confiner ou neutraliser les effets d'autres anomalies très
+                    dangereuses, particulièrement les objets de classe Keter. Même l'existence de ces objets est
+                    classifiée aux plus hauts niveaux de la Fondation.<br><br>
+                    <i>Test de la Boîte : Si elle EST la boîte, elle est Thaumiel.</i>
+                </div>
+            </div>
+
+            <div class="class-card card-neutralized">
+                <div class="number-tag">05</div>
+                <div class="class-title">NEUTRALIZED</div>
+                <div class="class-desc">
+                    Les anomalies neutralisées sont celles qui ne sont plus anormales, soit parce qu'elles ont été
+                    intentionnellement ou accidentellement détruites, soit parce qu'elles ont été désactivées.
+                </div>
+            </div>
+
+            <div class="class-card card-apollyon">
+                <div class="number-tag">06</div>
+                <div class="class-title">APOLLYON</div>
+                <div class="class-desc">
+                    Les anomalies de classe Apollyon sont des anomalies qui ne peuvent pas être confinées, dont on
+                    attend une brèche imminente, ou un scénario similaire. Ces anomalies sont généralement associées à
+                    des menaces de fin du monde ou à un scénario de classe K et nécessitent un effort massif de la
+                    Fondation.
+                </div>
+            </div>
+
+            <div class="class-card card-archon">
+                <div class="number-tag">07</div>
+                <div class="class-title">ARCHON</div>
+                <div class="class-desc">
+                    Les anomalies de classe Archon sont des anomalies qui pourraient théoriquement être confinées mais
+                    qu'il est préférable de laisser non confinées pour une raison quelconque. Elles peuvent faire partie
+                    de la réalité consensuelle difficile à conceptualiser ou avoir des effets néfastes si elles sont
+                    confinées. La caractéristique n'est pas l'impossibilité de confinement, mais le choix de la
+                    Fondation de ne pas confiner.
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-header">CLASSES DE PERTURBATION</h3>
+        <p style="margin-bottom: 20px; color: #aaa;">La classe de perturbation dicte la capacité de l'anomalie à
+            perturber le statu quo et à briser le Voile de la Normalité.</p>
+
+        <div class="grid-layout">
+            <div class="class-card" style="border-left: 5px solid #4e9a06;">
+                <div class="class-title color-dark">DARK (1)</div>
+                <div class="class-desc">La perturbation connue ou potentielle est si faible qu'elle n'est pas
+                    préoccupante. L'anomalie est essentiellement dormante à moins d'interactions. Pratiquement aucun
+                    potentiel de briser le voile.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #3465a4;">
+                <div class="class-title color-vlam">VLAM (2)</div>
+                <div class="class-desc">La perturbation connue ou potentielle est localisée à un petit groupe
+                    d'individus. Les effets de l'anomalie sont limités à une personne ou une zone restreinte. Très
+                    faible potentiel de briser le voile.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #edd400;">
+                <div class="class-title color-keneq">KENEQ (3)</div>
+                <div class="class-desc">La perturbation connue ou potentielle s'étend à un nombre de personnes défini
+                    approximativement par une ville. Les effets pourraient se propager assez rapidement pour causer une
+                    préoccupation significative. Potentiel modéré de briser le voile.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #f57900;">
+                <div class="class-title color-ekhi">EKHI (4)</div>
+                <div class="class-desc">La perturbation connue ou potentielle s'étend approximativement d'une zone
+                    métropolitaine à un pays entier. La perturbation pourrait s'étendre au monde connu. Forte
+                    probabilité de briser le voile.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #cc0000;">
+                <div class="class-title color-amida">AMIDA (5)</div>
+                <div class="class-desc">La perturbation connue ou potentielle s'étend au monde entier et possiblement à
+                    l'univers. Une rupture du voile est imminente ou a déjà eu lieu.</div>
+            </div>
+        </div>
+
+        <h3 class="section-header">CLASSES DE RISQUE</h3>
+        <p style="margin-bottom: 20px; color: #aaa;">La classe de risque dicte la sévérité des effets de l'anomalie sur
+            un individu et la facilité avec laquelle on peut s'en remettre.</p>
+
+        <div class="grid-layout">
+            <div class="class-card" style="border-left: 5px solid #4e9a06;">
+                <div class="class-title color-notice">NOTICE (1)</div>
+                <div class="class-desc">Les effets anormaux sont légers ou inexistants. Un individu à proximité
+                    immédiate de l'anomalie ne ressentirait rien, ou seulement le plus léger des inconforts.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #3465a4;">
+                <div class="class-title color-caution">CAUTION (2)</div>
+                <div class="class-desc">Les effets anormaux sont légers à modérés. Un individu à proximité peut
+                    ressentir un inconfort ou une douleur passagère, mais la récupération est facile et totale.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #edd400;">
+                <div class="class-title color-warning">WARNING (3)</div>
+                <div class="class-desc">Les effets anormaux sont modérés à sévères. Une exposition prolongée résultera
+                    probablement en des dommages permanents. La récupération est possible mais extrêmement difficile.
+                </div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #f57900;">
+                <div class="class-title color-danger">DANGER (4)</div>
+                <div class="class-desc">Les effets anormaux sont sévères à extrêmes. L'exposition résultera rapidement
+                    en des dommages permanents ou la mort. La récupération est presque impossible.</div>
+            </div>
+            <div class="class-card" style="border-left: 5px solid #cc0000;">
+                <div class="class-title color-critical">CRITICAL (5)</div>
+                <div class="class-desc">Les effets anormaux sont instantanément extrêmes et potentiellement totalement
+                    oblitérants. La mort instantanée ou pire est virtuellement garantie. Aucune récupération n'est
+                    possible.</div>
+            </div>
+        </div>
+
+        <div class="diagram-container">
+            <h3
+                style="font-family: var(--font-header); color: var(--primary); margin-bottom: 20px; text-transform: uppercase;">
+                MODÈLE DE COMPOSANT VISUEL ACS</h3>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap;">
+                <!-- Recreating the ACS banner look with CSS -->
+                <div
+                    style="background: #222; border: 4px solid #fff; padding: 20px; display: flex; flex-direction: column; width: 400px; max-width: 100%;">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 2px solid #555; padding-bottom: 10px; margin-bottom: 15px;">
+                        <span style="font-family: var(--font-header); font-size: 1.5rem; color: #fff;">OBJET #:
+                            SCP-XXXX</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                        <div
+                            style="background: #500; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="font-size: 0.7rem; color: #ccc;">CLASSE DE CONFINEMENT</span>
+                            <span
+                                style="font-family: var(--font-header); font-size: 1.2rem; color: var(--keter);">KETER</span>
+                        </div>
+                        <div
+                            style="background: #420; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="font-size: 0.7rem; color: #ccc;">CLASSE DE PERTURBATION</span>
+                            <span
+                                style="font-family: var(--font-header); font-size: 1.2rem; color: var(--ekhi);">EKHI</span>
+                        </div>
+                        <div
+                            style="background: #420; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <span style="font-size: 0.7rem; color: #ccc;">CLASSE DE RISQUE</span>
+                            <span
+                                style="font-family: var(--font-header); font-size: 1.2rem; color: var(--danger);">DANGER</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #aaa; font-size: 0.9rem;">Représentation visuelle standard du module du
+                Système de Classification des Anomalies.</p>
+        </div>
+
+        <h3 class="section-header">GÉNÉRATEUR DE CARTE ACS</h3>
+        <p style="color: #aaa;">Utilisez cet outil pour générer l'en-tête officiel de votre rapport de recherche.</p>
+
+        <div class="generator-container">
+            <div class="generator-form">
+                <div class="form-group">
+                    <label>Numéro SCP</label>
+                    <input type="text" id="gen-scp-num" value="SCP-7000" placeholder="SCP-XXXX">
+                </div>
+                <div class="form-group">
+                    <label>Niveau d'Accréditation</label>
+                    <select id="gen-clearance">
+                        <option value="1">Niveau 1 (Confidentiel)</option>
+                        <option value="2">Niveau 2 (Restreint)</option>
+                        <option value="3" selected>Niveau 3 (Secret Défense)</option>
+                        <option value="4">Niveau 4 (Top Secret)</option>
+                        <option value="5">Niveau 5 (Thaumiel/O5)</option>
+                        <option value="O5">Conseil O5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Classe de Confinement</label>
+                    <select id="gen-containment">
+                        <option value="Safe">SAFE</option>
+                        <option value="Euclid" selected>EUCLID</option>
+                        <option value="Keter">KETER</option>
+                        <option value="Thaumiel">THAUMIEL</option>
+                        <option value="Neutralized">NEUTRALIZED</option>
+                        <option value="Apollyon">APOLLYON</option>
+                        <option value="Archon">ARCHON</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Classe de Perturbation</label>
+                    <select id="gen-disruption">
+                        <option value="Dark">DARK (1)</option>
+                        <option value="Vlam" selected>VLAM (2)</option>
+                        <option value="Keneq">KENEQ (3)</option>
+                        <option value="Ekhi">EKHI (4)</option>
+                        <option value="Amida">AMIDA (5)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Classe de Risque</label>
+                    <select id="gen-risk">
+                        <option value="Notice">NOTICE (1)</option>
+                        <option value="Caution" selected>CAUTION (2)</option>
+                        <option value="Warning">WARNING (3)</option>
+                        <option value="Danger">DANGER (4)</option>
+                        <option value="Critical">CRITICAL (5)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="preview-pane">
+                <div class="acs-card-preview" id="acs-preview-card">
+                    <div class="acs-header">
+                        <div class="scp-num" id="card-scp-num">SCP-7000</div>
+                        <div class="clearance-box">
+                            LEVEL <div class="clearance-circle" id="card-clearance">3</div>
+                        </div>
+                    </div>
+                    <div class="acs-main">
+                        <div class="acs-box" id="box-containment" style="background: #fdf6e3;">
+                            <div class="acs-label">CONFINEMENT</div>
+                            <div class="acs-icon"><img id="icon-containment" src="" alt="Icon"></div>
+                            <div class="acs-value" id="val-containment">EUCLID</div>
+                        </div>
+                        <div class="acs-box" id="box-disruption" style="background: #eee8d5;">
+                            <div class="acs-label">PERTURBATION</div>
+                            <div class="acs-icon"><img id="icon-disruption" src="" alt="Icon"></div>
+                            <div class="acs-value" id="val-disruption">VLAM</div>
+                        </div>
+                        <div class="acs-box" id="box-risk" style="background: #eee8d5;">
+                            <div class="acs-label">RISQUE</div>
+                            <div class="acs-icon"><img id="icon-risk" src="" alt="Icon"></div>
+                            <div class="acs-value" id="val-risk">CAUTION</div>
+                        </div>
+                    </div>
+                    <div class="acs-footer">SCiP-NET CLASSIFICATION SYSTEM</div>
+                </div>
+                <button class="download-btn"
+                    onclick="alert('Module prêt pour capture d\'écran. Utilisez Win+Shift+S pour exporter la carte.')">Finaliser
+                    la Carte</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const config = {
+            containment: {
+                Safe: { color: "#4e9a06", bg: "#eef7e1", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/safe-icon.svg" },
+                Euclid: { color: "#f57900", bg: "#fdf3e7", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/euclid-icon.svg" },
+                Keter: { color: "#cc0000", bg: "#f9e6e6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/keter-icon.svg" },
+                Thaumiel: { color: "#3465a4", bg: "#e6f0f9", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg" },
+                Neutralized: { color: "#888a85", bg: "#f2f2f2", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/neutralized-icon.svg" },
+                Apollyon: { color: "#ce5c00", bg: "#f9efe6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/apollyon-icon.svg" },
+                Archon: { color: "#5c3566", bg: "#f1eef3", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/archon-icon.svg" }
+            },
+            disruption: {
+                Dark: { color: "#4e9a06", bg: "#f1f1f1", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/dark-icon.svg" },
+                Vlam: { color: "#3465a4", bg: "#e6f0f9", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/vlam-icon.svg" },
+                Keneq: { color: "#edd400", bg: "#fdfbe6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/keneq-icon.svg" },
+                Ekhi: { color: "#f57900", bg: "#fdf3e7", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/ekhi-icon.svg" },
+                Amida: { color: "#cc0000", bg: "#f9e6e6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/amida-icon.svg" }
+            },
+            risk: {
+                Notice: { color: "#4e9a06", bg: "#f1f1f1", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/notice-icon.svg" },
+                Caution: { color: "#3465a4", bg: "#e6f0f9", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/caution-icon.svg" },
+                Warning: { color: "#edd400", bg: "#fdfbe6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/warning-icon.svg" },
+                Danger: { color: "#f57900", bg: "#fdf3e7", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/danger-icon.svg" },
+                Critical: { color: "#cc0000", bg: "#f9e6e6", icon: "https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/critical-icon.svg" }
+            }
+        };
+
+        function updateCard() {
+            const scpNum = document.getElementById('gen-scp-num').value.toUpperCase();
+            const clearance = document.getElementById('gen-clearance').value;
+            const containment = document.getElementById('gen-containment').value;
+            const disruption = document.getElementById('gen-disruption').value;
+            const risk = document.getElementById('gen-risk').value;
+
+            // Header update
+            document.getElementById('card-scp-num').innerText = scpNum || "SCP-XXXX";
+            document.getElementById('card-clearance').innerText = clearance;
+
+            // Containment Box
+            const cData = config.containment[containment];
+            const boxC = document.getElementById('box-containment');
+            boxC.style.backgroundColor = cData.bg;
+            boxC.style.color = cData.color;
+            document.getElementById('icon-containment').src = cData.icon;
+            document.getElementById('val-containment').innerText = containment;
+
+            // Disruption Box
+            const dData = config.disruption[disruption];
+            const boxD = document.getElementById('box-disruption');
+            boxD.style.backgroundColor = dData.bg;
+            boxD.style.color = dData.color;
+            document.getElementById('icon-disruption').src = dData.icon;
+            document.getElementById('val-disruption').innerText = disruption;
+
+            // Risk Box
+            const rData = config.risk[risk];
+            const boxR = document.getElementById('box-risk');
+            boxR.style.backgroundColor = rData.bg;
+            boxR.style.color = rData.color;
+            document.getElementById('icon-risk').src = rData.icon;
+            document.getElementById('val-risk').innerText = risk;
+        }
+
+        // Event listeners
+        const inputs = ['gen-scp-num', 'gen-clearance', 'gen-containment', 'gen-disruption', 'gen-risk'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateCard);
+            document.getElementById(id).addEventListener('change', updateCard);
+        });
+
+        // Init
+        updateCard();
+    </script>
+
+</html>

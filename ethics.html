@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCiP-NET : COMITÉ D'ÉTHIQUE</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --primary: #c41e3a;
+            /* Deep Red */
+            --primary-glow: rgba(196, 30, 58, 0.4);
+            --secondary: #121212;
+            --accent: #1a1a1a;
+            --glass: rgba(20, 20, 20, 0.9);
+            --font-main: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            --header-font: 'Outfit', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.05) 0%, transparent 70%),
+                linear-gradient(rgba(196, 30, 58, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196, 30, 58, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            min-height: 100vh;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        header {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--primary);
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        h1 {
+            font-family: var(--header-font);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        main {
+            padding: 40px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .section-header h2 {
+            font-family: var(--header-font);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header p {
+            color: #888;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .philosophy-box {
+            background: var(--secondary);
+            border: 1px solid var(--accent);
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            border-right: 5px solid var(--primary);
+        }
+
+        .philosophy-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 15rem;
+            color: rgba(196, 30, 58, 0.05);
+            font-family: serif;
+        }
+
+        .quote {
+            font-family: var(--header-font);
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            color: var(--primary);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--glass);
+            border: 1px solid var(--accent);
+            padding: 30px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .highlight-box {
+            background: rgba(196, 30, 58, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            margin-top: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .mtf-section {
+            margin-top: 50px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+            border: 2px solid var(--primary);
+            padding: 40px;
+            border-radius: 8px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .mtf-logo {
+            width: 150px;
+            height: 150px;
+            filter: drop-shadow(0 0 15px var(--primary-glow));
+        }
+
+        .mtf-info h3 {
+            font-family: var(--header-font);
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .mtf-tagline {
+            color: var(--primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid var(--accent);
+            color: #555;
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="./Foundation Facilities - SCP Foundation_files/Site-01.svg" alt="SCP Logo" class="logo"
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=='">
+            <h1>SCiP-NET // COMITÉ D'ÉTHIQUE</h1>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-link">Terminal Principal</a>
+            <a href="archives.html" class="nav-link">Archives</a>
+            <a href="departments.html" class="nav-link">Départements</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="section-header">
+            <h2>Mandat du Comité d'Éthique</h2>
+            <p>SURVEILLANCE INDÉPENDANTE ET DROIT DE VETO OPÉRATIONNEL // ACCRÉDITATION NIVEAU 5 REQUISE POUR LES JUGEMENTS EN COURS</p>
+        </div>
+
+        <div class="philosophy-box">
+            <div class="quote">
+                "Nous ne sommes pas des monstres. Nous faisons des choses monstrueuses, mais nous ne sommes pas des monstres."
+            </div>
+            <div class="quote-author">— Note d'orientation du Comité d'Éthique</div>
+            <p style="margin-top: 20px; color: #888; font-style: italic;">
+                "La Fondation est froide, mais elle n'est pas cruelle."
+            </p>
+        </div>
+
+        <div class="grid">
+            <div class="info-card">
+                <h3>⚖️ Rôle et Fonction</h3>
+                <p>Bien que certains chercheurs le considèrent comme une plaisanterie bureaucratique, le Comité d'Éthique est une branche puissante et indépendante. Son rôle est de surveiller toutes les procédures de confinement et d'expérimentation pour s'assurer que le "mal nécessaire" reste acceptable.</p>
+                <div class="highlight-box">
+                    LE COMITÉ A LE DROIT DE VETO SUR TOUTE PROCÉDURE JUGÉE INUTILEMENT CRUELLE.
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🔒 Autorité Supérieure</h3>
+                <p>Le Comité d'Éthique est la seule institution, avec l'Administrateur, à posséder une autorité dépassant techniquement celle du Conseil O5 en matière de conduite morale. Ils connaissent chaque secret, chaque dossier expurgé et chaque sacrifice.</p>
+                <div class="highlight-box">
+                    POUVOIR DE SANCTION : ALLANT DE LA RÉDUCTION DE SOLDE À L'EXÉCUTION POUR CRIMES CONTRE L'HUMANITÉ.
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🔍 Surveillance du Personnel</h3>
+                <p>Le Comité examine régulièrement l'état psychologique des chercheurs seniors et des directeurs de site. Si un individu commence à montrer des signes de sadisme ou de perte de perspective morale, le Comité intervient avant qu'il ne devienne un danger pour la Fondation.</p>
+                <div class="highlight-box">
+                    SURVEILLANCE CONTINUE DES UTILISATIONS DE PERSONNEL DE CLASSE D.
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📜 Le Code d'Éthique</h3>
+                <p>Toutes les opérations de la Fondation doivent s'aligner sur le Code. Le Comité ne cherche pas à rendre la Fondation "gentille", mais à maintenir son intégrité stratégique. Une cruauté gratuite est une perte de ressources et un risque de sécurité.</p>
+                <div class="highlight-box">
+                    OBJECTIF : MINIMISER LES SACRIFICES TOUT EN ASSURANT LE CONFINEMENT.
+                </div>
+            </div>
+        </div>
+
+        <div class="mtf-section">
+            <img src="https://scp-wiki.wdfiles.com/local--files/task-forces/Omega1.png" alt="Omega-1 Logo" class="mtf-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzQxZTNhIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNNTAgMjUgTDUwIDc1IE0zMCA0NSBMNTAgMjUgTDcwIDQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiNjNDFlM2EiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg=='">
+            <div class="mtf-info">
+                <div class="mtf-tagline">FORCE D'INTERVENTION MOBILE</div>
+                <h3>FIM Omega-1 ("La Main Gauche de la Loi")</h3>
+                <p>La force armée personnelle du Comité d'Éthique. Elle est chargée d'appréhender et de neutraliser les membres de la Fondation — y compris les membres du Conseil O5 — qui violent les protocoles éthiques de manière critique.</p>
+                <p style="margin-top: 10px; font-family: var(--font-mono); font-size: 0.8rem; color: #888;">
+                    // CONTRE-POIDS DIRECT À LA FIM ALPHA-1 ("LA MAIN DROITE DU ROUGE") //
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 COMITÉ D'ÉTHIQUE FONDATION SCP - SITE-01<br>
+        LA CONSCIENCE DE LA FONDATION.
+    </footer>
+</body>
+
+</html>
